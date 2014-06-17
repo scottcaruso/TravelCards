@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		308600771950149A003FF8A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600761950149A003FF8A1 /* Foundation.framework */; };
+		308600791950149A003FF8A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600781950149A003FF8A1 /* CoreGraphics.framework */; };
+		3086007B1950149A003FF8A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3086007A1950149A003FF8A1 /* UIKit.framework */; };
+		308600811950149A003FF8A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3086007F1950149A003FF8A1 /* InfoPlist.strings */; };
+		308600831950149A003FF8A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600821950149A003FF8A1 /* main.m */; };
+		308600871950149A003FF8A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600861950149A003FF8A1 /* AppDelegate.m */; };
+		3086008A1950149A003FF8A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308600881950149A003FF8A1 /* Main.storyboard */; };
+		3086008D1950149A003FF8A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3086008C1950149A003FF8A1 /* ViewController.m */; };
+		3086008F1950149A003FF8A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3086008E1950149A003FF8A1 /* Images.xcassets */; };
+		308600961950149A003FF8A1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600951950149A003FF8A1 /* XCTest.framework */; };
+		308600971950149A003FF8A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600761950149A003FF8A1 /* Foundation.framework */; };
+		308600981950149A003FF8A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3086007A1950149A003FF8A1 /* UIKit.framework */; };
+		308600A01950149A003FF8A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3086009E1950149A003FF8A1 /* InfoPlist.strings */; };
+		308600A21950149A003FF8A1 /* Travel_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600A11950149A003FF8A1 /* Travel_CardsTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		308600991950149A003FF8A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3086006B1950149A003FF8A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 308600721950149A003FF8A1;
+			remoteInfo = "Travel Cards";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		308600731950149A003FF8A1 /* Travel Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Travel Cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		308600761950149A003FF8A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		308600781950149A003FF8A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3086007A1950149A003FF8A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3086007E1950149A003FF8A1 /* Travel Cards-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Travel Cards-Info.plist"; sourceTree = "<group>"; };
+		308600801950149A003FF8A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		308600821950149A003FF8A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		308600841950149A003FF8A1 /* Travel Cards-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Travel Cards-Prefix.pch"; sourceTree = "<group>"; };
+		308600851950149A003FF8A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		308600861950149A003FF8A1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		308600891950149A003FF8A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3086008B1950149A003FF8A1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3086008C1950149A003FF8A1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3086008E1950149A003FF8A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		308600941950149A003FF8A1 /* Travel CardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Travel CardsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		308600951950149A003FF8A1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3086009D1950149A003FF8A1 /* Travel CardsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Travel CardsTests-Info.plist"; sourceTree = "<group>"; };
+		3086009F1950149A003FF8A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		308600A11950149A003FF8A1 /* Travel_CardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Travel_CardsTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		308600701950149A003FF8A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				308600791950149A003FF8A1 /* CoreGraphics.framework in Frameworks */,
+				3086007B1950149A003FF8A1 /* UIKit.framework in Frameworks */,
+				308600771950149A003FF8A1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		308600911950149A003FF8A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				308600961950149A003FF8A1 /* XCTest.framework in Frameworks */,
+				308600981950149A003FF8A1 /* UIKit.framework in Frameworks */,
+				308600971950149A003FF8A1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3086006A1950149A003FF8A1 = {
+			isa = PBXGroup;
+			children = (
+				3086007C1950149A003FF8A1 /* Travel Cards */,
+				3086009B1950149A003FF8A1 /* Travel CardsTests */,
+				308600751950149A003FF8A1 /* Frameworks */,
+				308600741950149A003FF8A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		308600741950149A003FF8A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				308600731950149A003FF8A1 /* Travel Cards.app */,
+				308600941950149A003FF8A1 /* Travel CardsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		308600751950149A003FF8A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				308600761950149A003FF8A1 /* Foundation.framework */,
+				308600781950149A003FF8A1 /* CoreGraphics.framework */,
+				3086007A1950149A003FF8A1 /* UIKit.framework */,
+				308600951950149A003FF8A1 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3086007C1950149A003FF8A1 /* Travel Cards */ = {
+			isa = PBXGroup;
+			children = (
+				308600851950149A003FF8A1 /* AppDelegate.h */,
+				308600861950149A003FF8A1 /* AppDelegate.m */,
+				308600881950149A003FF8A1 /* Main.storyboard */,
+				3086008B1950149A003FF8A1 /* ViewController.h */,
+				3086008C1950149A003FF8A1 /* ViewController.m */,
+				3086008E1950149A003FF8A1 /* Images.xcassets */,
+				3086007D1950149A003FF8A1 /* Supporting Files */,
+			);
+			path = "Travel Cards";
+			sourceTree = "<group>";
+		};
+		3086007D1950149A003FF8A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3086007E1950149A003FF8A1 /* Travel Cards-Info.plist */,
+				3086007F1950149A003FF8A1 /* InfoPlist.strings */,
+				308600821950149A003FF8A1 /* main.m */,
+				308600841950149A003FF8A1 /* Travel Cards-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3086009B1950149A003FF8A1 /* Travel CardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				308600A11950149A003FF8A1 /* Travel_CardsTests.m */,
+				3086009C1950149A003FF8A1 /* Supporting Files */,
+			);
+			path = "Travel CardsTests";
+			sourceTree = "<group>";
+		};
+		3086009C1950149A003FF8A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3086009D1950149A003FF8A1 /* Travel CardsTests-Info.plist */,
+				3086009E1950149A003FF8A1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		308600721950149A003FF8A1 /* Travel Cards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 308600A51950149A003FF8A1 /* Build configuration list for PBXNativeTarget "Travel Cards" */;
+			buildPhases = (
+				3086006F1950149A003FF8A1 /* Sources */,
+				308600701950149A003FF8A1 /* Frameworks */,
+				308600711950149A003FF8A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Travel Cards";
+			productName = "Travel Cards";
+			productReference = 308600731950149A003FF8A1 /* Travel Cards.app */;
+			productType = "com.apple.product-type.application";
+		};
+		308600931950149A003FF8A1 /* Travel CardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 308600A81950149A003FF8A1 /* Build configuration list for PBXNativeTarget "Travel CardsTests" */;
+			buildPhases = (
+				308600901950149A003FF8A1 /* Sources */,
+				308600911950149A003FF8A1 /* Frameworks */,
+				308600921950149A003FF8A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3086009A1950149A003FF8A1 /* PBXTargetDependency */,
+			);
+			name = "Travel CardsTests";
+			productName = "Travel CardsTests";
+			productReference = 308600941950149A003FF8A1 /* Travel CardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3086006B1950149A003FF8A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Scott Caruso";
+				TargetAttributes = {
+					308600931950149A003FF8A1 = {
+						TestTargetID = 308600721950149A003FF8A1;
+					};
+				};
+			};
+			buildConfigurationList = 3086006E1950149A003FF8A1 /* Build configuration list for PBXProject "Travel Cards" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3086006A1950149A003FF8A1;
+			productRefGroup = 308600741950149A003FF8A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				308600721950149A003FF8A1 /* Travel Cards */,
+				308600931950149A003FF8A1 /* Travel CardsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		308600711950149A003FF8A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3086008F1950149A003FF8A1 /* Images.xcassets in Resources */,
+				308600811950149A003FF8A1 /* InfoPlist.strings in Resources */,
+				3086008A1950149A003FF8A1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		308600921950149A003FF8A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				308600A01950149A003FF8A1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3086006F1950149A003FF8A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3086008D1950149A003FF8A1 /* ViewController.m in Sources */,
+				308600871950149A003FF8A1 /* AppDelegate.m in Sources */,
+				308600831950149A003FF8A1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		308600901950149A003FF8A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				308600A21950149A003FF8A1 /* Travel_CardsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3086009A1950149A003FF8A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 308600721950149A003FF8A1 /* Travel Cards */;
+			targetProxy = 308600991950149A003FF8A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3086007F1950149A003FF8A1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				308600801950149A003FF8A1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		308600881950149A003FF8A1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				308600891950149A003FF8A1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3086009E1950149A003FF8A1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3086009F1950149A003FF8A1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		308600A31950149A003FF8A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		308600A41950149A003FF8A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		308600A61950149A003FF8A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Travel Cards/Travel Cards-Prefix.pch";
+				INFOPLIST_FILE = "Travel Cards/Travel Cards-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		308600A71950149A003FF8A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Travel Cards/Travel Cards-Prefix.pch";
+				INFOPLIST_FILE = "Travel Cards/Travel Cards-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		308600A91950149A003FF8A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Travel Cards.app/Travel Cards";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Travel Cards/Travel Cards-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Travel CardsTests/Travel CardsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		308600AA1950149A003FF8A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Travel Cards.app/Travel Cards";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Travel Cards/Travel Cards-Prefix.pch";
+				INFOPLIST_FILE = "Travel CardsTests/Travel CardsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3086006E1950149A003FF8A1 /* Build configuration list for PBXProject "Travel Cards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				308600A31950149A003FF8A1 /* Debug */,
+				308600A41950149A003FF8A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		308600A51950149A003FF8A1 /* Build configuration list for PBXNativeTarget "Travel Cards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				308600A61950149A003FF8A1 /* Debug */,
+				308600A71950149A003FF8A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		308600A81950149A003FF8A1 /* Build configuration list for PBXNativeTarget "Travel CardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				308600A91950149A003FF8A1 /* Debug */,
+				308600AA1950149A003FF8A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3086006B1950149A003FF8A1 /* Project object */;
+}

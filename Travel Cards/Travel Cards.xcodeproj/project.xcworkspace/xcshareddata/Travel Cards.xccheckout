@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BA2ED5FD-A1B5-43BA-9691-04104A1D5D22</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Travel Cards</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>31DCFB61-1C1D-445A-8C3C-060100A6E81D</key>
+		<string>https://github.com/scottcaruso/TravelCards.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Travel Cards/Travel Cards.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>31DCFB61-1C1D-445A-8C3C-060100A6E81D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/scottcaruso/TravelCards.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>31DCFB61-1C1D-445A-8C3C-060100A6E81D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>31DCFB61-1C1D-445A-8C3C-060100A6E81D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TravelCards</string>
+		</dict>
+	</array>
+</dict>
+</plist>
