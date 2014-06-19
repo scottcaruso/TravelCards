@@ -21,6 +21,7 @@
 		308600981950149A003FF8A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3086007A1950149A003FF8A1 /* UIKit.framework */; };
 		308600A01950149A003FF8A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3086009E1950149A003FF8A1 /* InfoPlist.strings */; };
 		308600A21950149A003FF8A1 /* Travel_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600A11950149A003FF8A1 /* Travel_CardsTests.m */; };
+		308600AC195287C5003FF8A1 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 308600AB195287C5003FF8A1 /* placeholder.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		3086009D1950149A003FF8A1 /* Travel CardsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Travel CardsTests-Info.plist"; sourceTree = "<group>"; };
 		3086009F1950149A003FF8A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		308600A11950149A003FF8A1 /* Travel_CardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Travel_CardsTests.m; sourceTree = "<group>"; };
+		308600AB195287C5003FF8A1 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = placeholder.jpg; path = ../../../../../placeholder.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				3086008B1950149A003FF8A1 /* ViewController.h */,
 				3086008C1950149A003FF8A1 /* ViewController.m */,
 				3086008E1950149A003FF8A1 /* Images.xcassets */,
+				308600AB195287C5003FF8A1 /* placeholder.jpg */,
 				3086007D1950149A003FF8A1 /* Supporting Files */,
 			);
 			path = "Travel Cards";
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3086008F1950149A003FF8A1 /* Images.xcassets in Resources */,
+				308600AC195287C5003FF8A1 /* placeholder.jpg in Resources */,
 				308600811950149A003FF8A1 /* InfoPlist.strings in Resources */,
 				3086008A1950149A003FF8A1 /* Main.storyboard in Resources */,
 			);
@@ -456,6 +460,7 @@
 				308600A71950149A003FF8A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		308600A81950149A003FF8A1 /* Build configuration list for PBXNativeTarget "Travel CardsTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +469,7 @@
 				308600AA1950149A003FF8A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
