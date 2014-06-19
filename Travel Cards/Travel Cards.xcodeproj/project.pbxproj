@@ -22,6 +22,8 @@
 		308600A01950149A003FF8A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3086009E1950149A003FF8A1 /* InfoPlist.strings */; };
 		308600A21950149A003FF8A1 /* Travel_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600A11950149A003FF8A1 /* Travel_CardsTests.m */; };
 		308600AC195287C5003FF8A1 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 308600AB195287C5003FF8A1 /* placeholder.jpg */; };
+		308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */; };
+		308600B11952B19C003FF8A1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600B01952B19C003FF8A1 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		3086009F1950149A003FF8A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		308600A11950149A003FF8A1 /* Travel_CardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Travel_CardsTests.m; sourceTree = "<group>"; };
 		308600AB195287C5003FF8A1 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = placeholder.jpg; path = ../../../../../placeholder.jpg; sourceTree = "<group>"; };
+		308600AD1952ADAA003FF8A1 /* MapScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScreenViewController.h; sourceTree = "<group>"; };
+		308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapScreenViewController.m; sourceTree = "<group>"; };
+		308600B01952B19C003FF8A1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308600B11952B19C003FF8A1 /* MapKit.framework in Frameworks */,
 				308600791950149A003FF8A1 /* CoreGraphics.framework in Frameworks */,
 				3086007B1950149A003FF8A1 /* UIKit.framework in Frameworks */,
 				308600771950149A003FF8A1 /* Foundation.framework in Frameworks */,
@@ -103,6 +109,7 @@
 		308600751950149A003FF8A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				308600B01952B19C003FF8A1 /* MapKit.framework */,
 				308600761950149A003FF8A1 /* Foundation.framework */,
 				308600781950149A003FF8A1 /* CoreGraphics.framework */,
 				3086007A1950149A003FF8A1 /* UIKit.framework */,
@@ -119,6 +126,8 @@
 				308600881950149A003FF8A1 /* Main.storyboard */,
 				3086008B1950149A003FF8A1 /* ViewController.h */,
 				3086008C1950149A003FF8A1 /* ViewController.m */,
+				308600AD1952ADAA003FF8A1 /* MapScreenViewController.h */,
+				308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */,
 				3086008E1950149A003FF8A1 /* Images.xcassets */,
 				308600AB195287C5003FF8A1 /* placeholder.jpg */,
 				3086007D1950149A003FF8A1 /* Supporting Files */,
@@ -254,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3086008D1950149A003FF8A1 /* ViewController.m in Sources */,
+				308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */,
 				308600871950149A003FF8A1 /* AppDelegate.m in Sources */,
 				308600831950149A003FF8A1 /* main.m in Sources */,
 			);

@@ -187,7 +187,7 @@
         <!--Map View-->
         <scene sceneID="3KU-0T-U8C">
             <objects>
-                <viewController id="4HJ-Pm-1CK" userLabel="Map View" sceneMemberID="viewController">
+                <viewController id="4HJ-Pm-1CK" userLabel="Map View" customClass="MapScreenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rpP-qA-h0i"/>
                         <viewControllerLayoutGuide type="bottom" id="9Cq-sA-YZ9"/>
@@ -199,6 +199,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="por-jk-KIa">
                                 <rect key="frame" x="0.0" y="68" width="320" height="456"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4HJ-Pm-1CK" id="Aqr-b7-qVW"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttA-jD-n0s">
                                 <rect key="frame" x="0.0" y="523" width="320" height="45"/>
@@ -226,6 +229,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="(CITY NAME HERE)" id="HKU-Vg-f55"/>
+                    <connections>
+                        <outlet property="locationMap" destination="por-jk-KIa" id="QEb-ps-Jwy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMo-Ku-kGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
