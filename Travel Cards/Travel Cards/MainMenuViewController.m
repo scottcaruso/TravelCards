@@ -54,35 +54,42 @@
 //This creates the rows for the ViewController table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4; //This is just placeholder!
+    return 4;
 }
 
 //This feeds the data for the table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
+    NSString *cellIdentifier = @"Cell";
+    NSString *menuItem;
     
-    UITableViewCell *thisCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *thisCell;
+    if (indexPath.row == 0)
+    {
+        thisCell = [tableView dequeueReusableCellWithIdentifier:@"Collections"];
+        menuItem = @"Collections";
+    } else if (indexPath.row == 1)
+    {
+        thisCell = [tableView dequeueReusableCellWithIdentifier:@"Achievements"];
+        menuItem = @"Achicevements";
+    } else if (indexPath.row == 2)
+    {
+        thisCell = [tableView dequeueReusableCellWithIdentifier:@"Settings"];
+        menuItem = @"Settings";
+    } else if (indexPath.row == 3)
+    {
+        thisCell = [tableView dequeueReusableCellWithIdentifier:@"User"];
+        menuItem = @"User Control";
+    }
     if (thisCell == nil)
     {
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    NSString *menuItem;
-    if (indexPath.row == 0)
-    {
-        menuItem = @"Collections";
-    } else if (indexPath.row == 1)
-    {
-        menuItem = @"Achicevements";
-    } else if (indexPath.row == 2)
-    {
-        menuItem = @"Settings";
-    } else if (indexPath.row == 3)
-    {
-        menuItem = @"Login Control";
-    }
     thisCell.textLabel.text = menuItem;
+    thisCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return thisCell;
 }
+
+
 
 @end

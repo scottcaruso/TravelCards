@@ -10,7 +10,9 @@
 
 @interface MainMenuViewController : UIViewController <UITableViewDelegate>
 {
-    IBOutlet UITableView *mainMenuTable;
+    
 }
+
+@property IBOutlet UITableView *mainMenuTable;
 
 @end
