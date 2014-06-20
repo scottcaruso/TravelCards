@@ -156,21 +156,27 @@
                                             <segue destination="0dl-ua-Ryj" kind="push" id="TEv-5w-fGY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings" id="dD1-aF-tU9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings" id="dD1-aF-tU9">
                                         <rect key="frame" x="0.0" y="110" width="333" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dD1-aF-tU9" id="3z3-Rj-oLK">
-                                            <rect key="frame" x="0.0" y="0.0" width="333" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="u3f-lO-dZu" kind="push" id="CIK-Dg-qeT"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="User" id="DFQ-gx-gbJ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="User" id="DFQ-gx-gbJ">
                                         <rect key="frame" x="0.0" y="154" width="333" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DFQ-gx-gbJ" id="nz0-ub-KmC">
-                                            <rect key="frame" x="0.0" y="0.0" width="333" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vXZ-lx-hvc" kind="push" id="4b3-Hh-7tc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -639,6 +645,35 @@
             </objects>
             <point key="canvasLocation" x="-124" y="-69"/>
         </scene>
+        <!--View Controller - Settings-->
+        <scene sceneID="2dv-Xp-yJH">
+            <objects>
+                <viewController id="u3f-lO-dZu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6aS-he-4lZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Um1-6k-hn5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1vp-o4-njN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jMC-JJ-ipR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">This is placeholder for a Settings screen. We're not sure if this will be in the final version of the app, but will at least house Debug settings for the testers to modify.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="bQN-dl-uH1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bY2-5m-4FQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="336" y="-62"/>
+        </scene>
         <!--Found Location Popup-->
         <scene sceneID="mfY-BY-bgx">
             <objects>
@@ -669,6 +704,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="4b3-Hh-7tc"/>
         <segue reference="rsE-oc-t03"/>
     </inferredMetricsTieBreakers>
 </document>
