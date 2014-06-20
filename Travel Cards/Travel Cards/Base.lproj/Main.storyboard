@@ -106,7 +106,7 @@
         <!--Main Menu-->
         <scene sceneID="I3d-IG-jdK">
             <objects>
-                <viewController id="34H-w2-Os8" userLabel="Main Menu" sceneMemberID="viewController">
+                <viewController id="34H-w2-Os8" userLabel="Main Menu" customClass="MainMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Ir-bi-5E4"/>
                         <viewControllerLayoutGuide type="bottom" id="tJn-Fd-ZiT"/>
@@ -174,11 +174,17 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="delegate" destination="34H-w2-Os8" id="DO5-3n-nhQ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Main Menu" id="2gR-Sa-ftl"/>
+                    <connections>
+                        <outlet property="mainMenuTable" destination="6ZD-w2-xig" id="W3y-mW-tgc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qst-Lv-m0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -300,7 +306,7 @@
         <!--Achievements-->
         <scene sceneID="Srt-Ft-VFy">
             <objects>
-                <viewController id="0dl-ua-Ryj" userLabel="Achievements" sceneMemberID="viewController">
+                <viewController id="0dl-ua-Ryj" userLabel="Achievements" customClass="AchievementsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kEc-W5-iwF"/>
                         <viewControllerLayoutGuide type="bottom" id="UZK-iG-Wr2"/>
@@ -324,11 +330,18 @@
                                 <rect key="frame" x="0.0" y="218" width="320" height="350"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="0dl-ua-Ryj" id="Un2-k3-buO"/>
+                                    <outlet property="delegate" destination="0dl-ua-Ryj" id="xnL-4l-uQP"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Achievements" id="tEq-QK-ET9"/>
+                    <connections>
+                        <outlet property="achievementTable" destination="2Pr-g9-FS7" id="chQ-FL-Fo5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1s2-wn-FG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -337,7 +350,7 @@
         <!--Collection List-->
         <scene sceneID="4NQ-JY-tbu">
             <objects>
-                <viewController id="ezy-6q-MBs" userLabel="Collection List" sceneMemberID="viewController">
+                <viewController id="ezy-6q-MBs" userLabel="Collection List" customClass="CollectionListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FYJ-Wp-E3t"/>
                         <viewControllerLayoutGuide type="bottom" id="dXK-aj-QVL"/>
@@ -363,6 +376,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="delegate" destination="TYN-7Q-AGA" id="CCn-75-H20"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -652,6 +668,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bJF-rz-mIX"/>
+        <segue reference="rsE-oc-t03"/>
     </inferredMetricsTieBreakers>
 </document>

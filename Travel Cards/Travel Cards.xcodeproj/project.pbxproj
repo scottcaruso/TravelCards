@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		307DD8DD1954058D00860DB9 /* AchievementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307DD8DC1954058D00860DB9 /* AchievementsViewController.m */; };
+		307DD8E0195405A800860DB9 /* CollectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307DD8DF195405A800860DB9 /* CollectionListViewController.m */; };
+		307DD8E3195407AD00860DB9 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307DD8E2195407AD00860DB9 /* MainMenuViewController.m */; };
 		308600771950149A003FF8A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600761950149A003FF8A1 /* Foundation.framework */; };
 		308600791950149A003FF8A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600781950149A003FF8A1 /* CoreGraphics.framework */; };
 		3086007B1950149A003FF8A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3086007A1950149A003FF8A1 /* UIKit.framework */; };
@@ -37,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		307DD8DB1954058D00860DB9 /* AchievementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsViewController.h; sourceTree = "<group>"; };
+		307DD8DC1954058D00860DB9 /* AchievementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsViewController.m; sourceTree = "<group>"; };
+		307DD8DE195405A800860DB9 /* CollectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionListViewController.h; sourceTree = "<group>"; };
+		307DD8DF195405A800860DB9 /* CollectionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionListViewController.m; sourceTree = "<group>"; };
+		307DD8E1195407AD00860DB9 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		307DD8E2195407AD00860DB9 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		308600731950149A003FF8A1 /* Travel Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Travel Cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308600761950149A003FF8A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		308600781950149A003FF8A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,13 +130,19 @@
 		3086007C1950149A003FF8A1 /* Travel Cards */ = {
 			isa = PBXGroup;
 			children = (
+				308600881950149A003FF8A1 /* Main.storyboard */,
 				308600851950149A003FF8A1 /* AppDelegate.h */,
 				308600861950149A003FF8A1 /* AppDelegate.m */,
-				308600881950149A003FF8A1 /* Main.storyboard */,
 				3086008B1950149A003FF8A1 /* ViewController.h */,
 				3086008C1950149A003FF8A1 /* ViewController.m */,
+				307DD8E1195407AD00860DB9 /* MainMenuViewController.h */,
+				307DD8E2195407AD00860DB9 /* MainMenuViewController.m */,
 				308600AD1952ADAA003FF8A1 /* MapScreenViewController.h */,
 				308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */,
+				307DD8DB1954058D00860DB9 /* AchievementsViewController.h */,
+				307DD8DC1954058D00860DB9 /* AchievementsViewController.m */,
+				307DD8DE195405A800860DB9 /* CollectionListViewController.h */,
+				307DD8DF195405A800860DB9 /* CollectionListViewController.m */,
 				3086008E1950149A003FF8A1 /* Images.xcassets */,
 				308600AB195287C5003FF8A1 /* placeholder.jpg */,
 				3086007D1950149A003FF8A1 /* Supporting Files */,
@@ -262,10 +277,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				307DD8E0195405A800860DB9 /* CollectionListViewController.m in Sources */,
 				3086008D1950149A003FF8A1 /* ViewController.m in Sources */,
 				308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */,
+				307DD8DD1954058D00860DB9 /* AchievementsViewController.m in Sources */,
 				308600871950149A003FF8A1 /* AppDelegate.m in Sources */,
 				308600831950149A003FF8A1 /* main.m in Sources */,
+				307DD8E3195407AD00860DB9 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
