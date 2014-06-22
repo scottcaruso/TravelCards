@@ -72,7 +72,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="34H-w2-Os8" kind="push" id="Zn6-4f-g6E"/>
+                                    <action selector="clickSubmitButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0oF-Nh-ncU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -80,8 +80,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Travel Cards Login" id="ICs-Xw-5Qx"/>
                     <connections>
-                        <outlet property="password" destination="ULo-dp-2cg" id="Jxe-lv-Bh0"/>
-                        <outlet property="userName" destination="yjk-3s-fl4" id="Ch2-Gk-6F7"/>
+                        <outlet property="password" destination="ULo-dp-2cg" id="KrI-gI-MOf"/>
+                        <outlet property="submitButton" destination="Nvy-7x-qZ3" id="pc6-Ix-t3c"/>
+                        <outlet property="userName" destination="yjk-3s-fl4" id="ZUn-6v-Q7R"/>
+                        <segue destination="34H-w2-Os8" kind="push" identifier="Login" id="IuB-Z5-3hG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -178,9 +180,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="vXZ-lx-hvc" kind="push" id="4b3-Hh-7tc"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -708,7 +707,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4b3-Hh-7tc"/>
         <segue reference="rsE-oc-t03"/>
     </inferredMetricsTieBreakers>
 </document>

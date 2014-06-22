@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface ViewController : UIViewController
 {
     IBOutlet UITextField *userName;
     IBOutlet UITextField *password;
+    IBOutlet UIButton *submitButton;
 }
+
+-(IBAction)clickSubmitButton:(id)sender;
 
 @end

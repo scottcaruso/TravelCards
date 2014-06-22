@@ -27,4 +27,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)clickSubmitButton:(id)sender
+{
+    NSString *enteredUserName = userName.text;
+    NSString *enteredPassword = password.text;
+    if ([enteredUserName isEqualToString:@""] || [enteredPassword isEqualToString:@""])
+    {
+        UIAlertView *checkEntry = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"It looks like you've left the User Name or Password field blank. Please try again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        checkEntry.alertViewStyle = UIAlertViewStyleDefault;
+        [checkEntry show];
+    } else
+    {
+        [PFUser logInWithUsernameInBackground:enteredUserName password:enteredPassword
+            block:^(PFUser *user, NSError *error)
+            {
+                if (user)
+                {
+                    [self performSegueWithIdentifier:@"Login" sender:self];
+                } else
+                {
+                    NSLog(@"%@",error);
+                    UIAlertView *loginFailed = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem logging you in. Please check your login details and try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        loginFailed.alertViewStyle = UIAlertViewStyleDefault;
+                        [loginFailed show];
+                }
+                }];
+    }
+}
+
 @end
