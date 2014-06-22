@@ -79,6 +79,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Travel Cards Login" id="ICs-Xw-5Qx"/>
+                    <connections>
+                        <outlet property="password" destination="ULo-dp-2cg" id="Jxe-lv-Bh0"/>
+                        <outlet property="userName" destination="yjk-3s-fl4" id="Ch2-Gk-6F7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
