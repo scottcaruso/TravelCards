@@ -20,6 +20,7 @@
 		307DD8F319569B2400860DB9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307DD8F219569B2400860DB9 /* Security.framework */; };
 		307DD8F619569B3300860DB9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307DD8F419569B3300860DB9 /* StoreKit.framework */; };
 		307DD8F719569B3300860DB9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307DD8F519569B3300860DB9 /* SystemConfiguration.framework */; };
+		307DD8FA1957B44300860DB9 /* NewAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307DD8F91957B44300860DB9 /* NewAccountViewController.m */; };
 		308600771950149A003FF8A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600761950149A003FF8A1 /* Foundation.framework */; };
 		308600791950149A003FF8A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600781950149A003FF8A1 /* CoreGraphics.framework */; };
 		3086007B1950149A003FF8A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3086007A1950149A003FF8A1 /* UIKit.framework */; };
@@ -66,6 +67,8 @@
 		307DD8F219569B2400860DB9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		307DD8F419569B3300860DB9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		307DD8F519569B3300860DB9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		307DD8F81957B44300860DB9 /* NewAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAccountViewController.h; sourceTree = "<group>"; };
+		307DD8F91957B44300860DB9 /* NewAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAccountViewController.m; sourceTree = "<group>"; };
 		308600731950149A003FF8A1 /* Travel Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Travel Cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		308600761950149A003FF8A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		308600781950149A003FF8A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -175,6 +178,8 @@
 				308600861950149A003FF8A1 /* AppDelegate.m */,
 				3086008B1950149A003FF8A1 /* ViewController.h */,
 				3086008C1950149A003FF8A1 /* ViewController.m */,
+				307DD8F81957B44300860DB9 /* NewAccountViewController.h */,
+				307DD8F91957B44300860DB9 /* NewAccountViewController.m */,
 				307DD8E1195407AD00860DB9 /* MainMenuViewController.h */,
 				307DD8E2195407AD00860DB9 /* MainMenuViewController.m */,
 				308600AD1952ADAA003FF8A1 /* MapScreenViewController.h */,
@@ -320,6 +325,7 @@
 				307DD8E0195405A800860DB9 /* CollectionListViewController.m in Sources */,
 				3086008D1950149A003FF8A1 /* ViewController.m in Sources */,
 				308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */,
+				307DD8FA1957B44300860DB9 /* NewAccountViewController.m in Sources */,
 				307DD8DD1954058D00860DB9 /* AchievementsViewController.m in Sources */,
 				308600871950149A003FF8A1 /* AppDelegate.m in Sources */,
 				308600831950149A003FF8A1 /* main.m in Sources */,

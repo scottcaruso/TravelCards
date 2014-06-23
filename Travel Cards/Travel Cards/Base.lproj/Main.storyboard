@@ -93,7 +93,7 @@
         <!--Create New User Screen-->
         <scene sceneID="qWE-Gi-ht2">
             <objects>
-                <viewController id="rho-hK-amK" userLabel="Create New User Screen" sceneMemberID="viewController">
+                <viewController id="rho-hK-amK" userLabel="Create New User Screen" customClass="NewAccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fIW-QQ-VLJ"/>
                         <viewControllerLayoutGuide type="bottom" id="aI2-7Y-vFF"/>
@@ -101,9 +101,46 @@
                     <view key="view" contentMode="scaleToFill" id="4zN-hk-Tyf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Desired Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LSQ-Wp-rXQ">
+                                <rect key="frame" x="29" y="113" width="263" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Desired Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cHs-qM-uzE">
+                                <rect key="frame" x="29" y="162" width="263" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Retype Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VgP-WD-CgG">
+                                <rect key="frame" x="29" y="213" width="263" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH4-hE-jB0">
+                                <rect key="frame" x="102" y="291" width="117" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create New User">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickNewAccountButton:" destination="rho-hK-amK" eventType="touchUpInside" id="yid-vq-MYn"/>
+                                    <action selector="clickSubmitButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7DG-Pu-otk"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create New User" id="MO8-UX-km3"/>
+                    <connections>
+                        <outlet property="desiredPassword" destination="cHs-qM-uzE" id="Xma-F8-AUm"/>
+                        <outlet property="desiredUserName" destination="LSQ-Wp-rXQ" id="VFv-I6-CTu"/>
+                        <outlet property="retypePassword" destination="VgP-WD-CgG" id="EcC-ZW-tWZ"/>
+                        <segue destination="vXZ-lx-hvc" kind="push" identifier="CreateUserSuccess" id="rdn-FG-90o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vlm-63-APg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -707,6 +744,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="rdn-FG-90o"/>
         <segue reference="rsE-oc-t03"/>
     </inferredMetricsTieBreakers>
 </document>
