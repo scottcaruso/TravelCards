@@ -58,6 +58,18 @@
     mapRegion.span = mapSpan;
     mapRegion.center = mapCenter;
     [mapView setRegion:mapRegion];
+    [self addAnnotations:mapCenter.latitude longitude:mapCenter.longitude];
+    
+}
+
+-(void)addAnnotations:(float)lat longitude:(float)lon
+{
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    CLLocationCoordinate2D coord;
+    coord.latitude = lat;
+    coord.longitude = lon;
+    point.coordinate = coord;
+    [locationMap addAnnotation:point];
 }
 
 @end

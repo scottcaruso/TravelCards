@@ -14,4 +14,6 @@
     IBOutlet MKMapView *locationMap;
 }
 
+-(void)addAnnotations:(float)lat longitude:(float)lon;
+
 @end
