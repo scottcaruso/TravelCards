@@ -52,7 +52,24 @@
         [noMatch show];
     } else
     {
-        //Run creation code
+        PFUser *user = [PFUser user];
+        user.username = enteredUserName;
+        user.password = enteredPassword;
+        
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                NSString *successString = [NSString stringWithFormat:@"The account %@ was successfully created.",enteredUserName];
+                UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success!" message:successString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                success.alertViewStyle = UIAlertViewStyleDefault;
+                [success show];
+                [self performSegueWithIdentifier:@"CreateUserSuccess" sender:self];
+            } else {
+                NSString *errorString = [error userInfo][@"error"];
+                UIAlertView *accountCreateError = [[UIAlertView alloc] initWithTitle:@"Oops!" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                accountCreateError.alertViewStyle = UIAlertViewStyleDefault;
+                [accountCreateError show];
+            }
+        }];
     }
 }
 
