@@ -48,7 +48,16 @@
 
 -(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
-    
+    MKCoordinateSpan mapSpan; //default span that all of these locations use
+    mapSpan.latitudeDelta = 1.5f;
+    mapSpan.longitudeDelta = 1.5f;
+    CLLocationCoordinate2D mapCenter;
+    mapCenter.latitude = 30.4500f;
+    mapCenter.longitude = -91.1400f;
+    MKCoordinateRegion mapRegion;
+    mapRegion.span = mapSpan;
+    mapRegion.center = mapCenter;
+    [mapView setRegion:mapRegion];
 }
 
 @end
