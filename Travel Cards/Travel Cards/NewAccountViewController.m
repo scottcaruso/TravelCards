@@ -62,7 +62,6 @@
                 UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success!" message:successString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 success.alertViewStyle = UIAlertViewStyleDefault;
                 [success show];
-                [self performSegueWithIdentifier:@"CreateUserSuccess" sender:self];
             } else {
                 NSString *errorString = [error userInfo][@"error"];
                 UIAlertView *accountCreateError = [[UIAlertView alloc] initWithTitle:@"Oops!" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -70,6 +69,17 @@
                 [accountCreateError show];
             }
         }];
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ([alertView.title isEqualToString:@"Success!"])
+    {
+        if (buttonIndex == 0)
+        {
+            [self performSegueWithIdentifier:@"CreateUserSuccess" sender:self];
+        }
     }
 }
 

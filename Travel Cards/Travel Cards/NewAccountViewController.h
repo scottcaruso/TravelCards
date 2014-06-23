@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface NewAccountViewController : UIViewController
+@interface NewAccountViewController : UIViewController <UIAlertViewDelegate>
 {
     IBOutlet UITextField *desiredUserName;
     IBOutlet UITextField *desiredPassword;
