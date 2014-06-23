@@ -14,6 +14,7 @@
     IBOutlet UITextField *userName;
     IBOutlet UITextField *password;
     IBOutlet UIButton *submitButton;
+    IBOutlet UISwitch *saveLoginDetails;
 }
 
 -(IBAction)clickSubmitButton:(id)sender;

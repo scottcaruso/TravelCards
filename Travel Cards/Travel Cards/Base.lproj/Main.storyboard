@@ -81,6 +81,7 @@
                     <navigationItem key="navigationItem" title="Travel Cards Login" id="ICs-Xw-5Qx"/>
                     <connections>
                         <outlet property="password" destination="ULo-dp-2cg" id="KrI-gI-MOf"/>
+                        <outlet property="saveLoginDetails" destination="6ks-E0-gUR" id="Tc1-FO-Jx6"/>
                         <outlet property="submitButton" destination="Nvy-7x-qZ3" id="pc6-Ix-t3c"/>
                         <outlet property="userName" destination="yjk-3s-fl4" id="ZUn-6v-Q7R"/>
                         <segue destination="34H-w2-Os8" kind="push" identifier="Login" id="IuB-Z5-3hG"/>

@@ -17,6 +17,26 @@
 - (void)viewDidLoad
 {
     [self.navigationItem setHidesBackButton:YES];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool savedUser = [defaults valueForKey:@"IsSaved"];
+    if (savedUser)
+    {
+        NSString *savedUserName = [defaults valueForKey:@"SavedUserName"];
+        NSString *savedPassword = [defaults valueForKey:@"SavedPassword"];
+        [PFUser logInWithUsernameInBackground:savedUserName password:savedPassword
+                                        block:^(PFUser *user, NSError *error)
+         {
+             if (user)
+             {
+                 [self performSegueWithIdentifier:@"Login" sender:self];
+             } else
+             {
+                 UIAlertView *loginFailed = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem logging you in with your saved details. Please re-enter them." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 loginFailed.alertViewStyle = UIAlertViewStyleDefault;
+                 [loginFailed show];
+             }
+         }];
+    }
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -43,6 +63,14 @@
             {
                 if (user)
                 {
+                    if ([saveLoginDetails isOn])
+                    {
+                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                        [defaults setValue:enteredUserName forKey:@"SavedUserName"];
+                        [defaults setValue:enteredPassword forKey:@"SavedPassword"];
+                        [defaults setBool:true forKey:@"IsSaved"];
+                        [defaults synchronize];
+                    }
                     [self performSegueWithIdentifier:@"Login" sender:self];
                 } else
                 {
