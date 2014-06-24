@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad
 {
+    numberOfAchievementCategories = 5; //This is just placeholder for now. It will be generated from the dynamic data.
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -48,13 +49,35 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    //This returns the number of Achievement categories as stored in Parse
+    return numberOfAchievementCategories;
 }
 
 //This creates the rows for the ViewController table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10; //This is just placeholder!
+    //We should create a dictionary or something similar that matches up the ID of the section with the number of achievements in it. In this case, we will simply use a static value.
+    if (section < numberOfAchievementCategories)
+    {
+        return 3;
+    } else
+    {
+    return 0;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    for (int x = 1; x <= numberOfAchievementCategories; x++)
+    {
+        if (section == x-1)
+        {
+            sectionName = [[NSString alloc] initWithFormat:@"City Number %i",x];
+            return sectionName;
+        }
+    }
+    return nil;
 }
 
 //This feeds the data for the table view
@@ -67,7 +90,8 @@
     {
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    NSString *sampleAchievement = @"Sample Achievement";
+    NSString *sampleAchievement = @"Sample Achievement";;
+
     thisCell.textLabel.text = sampleAchievement;
     return thisCell;
 }

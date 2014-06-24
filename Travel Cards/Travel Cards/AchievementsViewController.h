@@ -11,6 +11,7 @@
 @interface AchievementsViewController : UIViewController <UITableViewDelegate>
 {
     IBOutlet UITableView *achievementTable;
+    int numberOfAchievementCategories;
 }
 
 @end

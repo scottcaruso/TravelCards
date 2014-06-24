@@ -69,6 +69,7 @@
     coord.latitude = lat;
     coord.longitude = lon;
     point.coordinate = coord;
+    point.title = @"Tiger Stadium - LSU";
     [locationMap addAnnotation:point];
 }
 
