@@ -398,7 +398,7 @@
         <!--Collection List-->
         <scene sceneID="4NQ-JY-tbu">
             <objects>
-                <viewController id="ezy-6q-MBs" userLabel="Collection List" customClass="CollectionListViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ezy-6q-MBs" userLabel="Collection List" customClass="CollectionListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FYJ-Wp-E3t"/>
                         <viewControllerLayoutGuide type="bottom" id="dXK-aj-QVL"/>
@@ -408,24 +408,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MWg-qx-Kbh">
-                                <rect key="frame" x="0.0" y="65" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="el3-gf-hwo">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="el3-gf-hwo" id="MBn-JN-hKZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="rnH-72-eyp" kind="push" id="rsE-oc-t03"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
-                                    <outlet property="delegate" destination="TYN-7Q-AGA" id="CCn-75-H20"/>
+                                    <outlet property="dataSource" destination="ezy-6q-MBs" id="kar-5A-Znk"/>
+                                    <outlet property="delegate" destination="ezy-6q-MBs" id="7wm-dY-2uJ"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -746,6 +734,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="rdn-FG-90o"/>
-        <segue reference="rsE-oc-t03"/>
     </inferredMetricsTieBreakers>
 </document>

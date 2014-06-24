@@ -48,13 +48,26 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *returnString;
+    if (section == 0)
+    {
+        returnString = @"Active Collections";
+    } else if (section == 1)
+    {
+        returnString = @"All Collections";
+    }
+    return returnString;
 }
 
 //This creates the rows for the ViewController table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10; //This is just placeholder!
+    return 2; //This is just placeholder!
 }
 
 //This feeds the data for the table view
