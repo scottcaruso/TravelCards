@@ -20,5 +20,6 @@
 @property float longitude;
 
 -(void)addAnnotations;
+-(void)getDataForLocation:(NSString*)className;
 
 @end

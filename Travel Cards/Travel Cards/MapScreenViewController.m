@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     locationData = [[NSMutableDictionary alloc] init];
+    [self getDataForLocation:city];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -78,8 +79,8 @@
     //So, now we take the data we just got from the previous view to help set our mapview.
     
     MKCoordinateSpan mapSpan;
-    mapSpan.latitudeDelta = 1.5f;
-    mapSpan.longitudeDelta = 1.5f;
+    mapSpan.latitudeDelta = .5f;
+    mapSpan.longitudeDelta = .5f;
     CLLocationCoordinate2D mapCenter;
     mapCenter.latitude = latitude;
     mapCenter.longitude = longitude;
