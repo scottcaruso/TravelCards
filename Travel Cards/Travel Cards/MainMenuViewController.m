@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [self.navigationItem setHidesBackButton:YES];
+    cityName.text = @"New York, NY";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

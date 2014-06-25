@@ -10,7 +10,7 @@
 
 @interface MainMenuViewController : UIViewController <UITableViewDelegate>
 {
-    
+    IBOutlet UILabel *cityName;
 }
 
 @property IBOutlet UITableView *mainMenuTable;
