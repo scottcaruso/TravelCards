@@ -13,6 +13,7 @@
 @end
 
 @implementation MapScreenViewController
+@synthesize city;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

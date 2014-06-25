@@ -14,6 +14,8 @@
     IBOutlet MKMapView *locationMap;
 }
 
+@property NSString *city;
+
 -(void)addAnnotations:(float)lat longitude:(float)lon;
 
 @end
