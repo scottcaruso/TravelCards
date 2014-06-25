@@ -12,10 +12,13 @@
 @interface MapScreenViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 {
     IBOutlet MKMapView *locationMap;
+    NSMutableDictionary *locationData;
 }
 
 @property NSString *city;
+@property float latitude;
+@property float longitude;
 
--(void)addAnnotations:(float)lat longitude:(float)lon;
+-(void)addAnnotations;
 
 @end

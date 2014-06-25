@@ -11,8 +11,13 @@
 @interface MainMenuViewController : UIViewController <UITableViewDelegate>
 {
     IBOutlet UILabel *cityName;
+    NSString *cityDataString;
+    float latitude;
+    float longitude;
 }
 
 @property IBOutlet UITableView *mainMenuTable;
+
+-(void)runGeolocationAndLocationFinding;
 
 @end

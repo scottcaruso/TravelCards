@@ -27,7 +27,16 @@
 - (void)viewDidLoad
 {
     [self.navigationItem setHidesBackButton:YES];
+    
+    //When we load the view, we are going to run the Geolocation functions. For now, we are spoofing the
+    //data so that we can test the application as if we are in the New York area.
+    [self runGeolocationAndLocationFinding];
+    
     cityName.text = @"New York, NY";
+    cityDataString = @"NewYork";
+    latitude = 40.748f;
+    longitude = -73.99f;
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -82,6 +91,18 @@
     return thisCell;
 }
 
+-(void)runGeolocationAndLocationFinding
+{
+    /* This is where the Geolocation will run, along with determining if there is a Travel Cards destination somewhere
+     in a reasonable distance near the current location. */
+    
+    //Step 1 - Geolocate the user
+    //Step 2 - Parse the Travel Cards location data
+    //Step 3 - Compare current location to other locations to find out which, if any, is closest
+    //Step 4 - Determine if this location is within X distance of current location
+    //Step 5 - Update Main Menu accordingly and set instance variables
+}
+
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
@@ -90,8 +111,10 @@
          // Get reference to the destination view controller
          MapScreenViewController *newView = [segue destinationViewController];
      
-         // Pass the city identifier
-         newView.city = @"NewYork";
+         // Pass the city identifier, latitude, and longitude of the current location
+         newView.city = cityDataString;
+         newView.latitude = latitude;
+         newView.longitude = longitude;
      }
  }
 

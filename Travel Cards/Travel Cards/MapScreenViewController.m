@@ -7,13 +7,14 @@
 //
 
 #import "MapScreenViewController.h"
+#import <Parse/Parse.h>
 
 @interface MapScreenViewController ()
 
 @end
 
 @implementation MapScreenViewController
-@synthesize city;
+@synthesize city,latitude,longitude;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +27,7 @@
 
 - (void)viewDidLoad
 {
+    locationData = [[NSMutableDictionary alloc] init];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -47,31 +49,71 @@
 }
 */
 
+-(void)getDataForLocation:(NSString*)className
+{
+    PFQuery *query = [PFQuery queryWithClassName:className];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            //Retrieve the city's landmarks from the cloud.
+            for (PFObject *object in objects)
+            {
+                NSString *currentLocationName = [object objectForKey:@"landmark"];
+                NSString *currentLocationDescription = [object objectForKey:@"description"];
+                NSNumber *currentLocationLatitude = [object objectForKey:@"latitude"];
+                NSNumber *currentLocationLongitude = [object objectForKey:@"longitude"];
+                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, nil];
+                [locationData setValue:arrayOfData forKey:currentLocationName];
+            }
+            [self addAnnotations];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
 -(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
-    MKCoordinateSpan mapSpan; //default span that all of these locations use
+    //So, now we take the data we just got from the previous view to help set our mapview.
+    
+    MKCoordinateSpan mapSpan;
     mapSpan.latitudeDelta = 1.5f;
     mapSpan.longitudeDelta = 1.5f;
     CLLocationCoordinate2D mapCenter;
-    mapCenter.latitude = 30.4500f;
-    mapCenter.longitude = -91.1400f;
+    mapCenter.latitude = latitude;
+    mapCenter.longitude = longitude;
     MKCoordinateRegion mapRegion;
     mapRegion.span = mapSpan;
     mapRegion.center = mapCenter;
     [mapView setRegion:mapRegion];
-    [self addAnnotations:mapCenter.latitude longitude:mapCenter.longitude];
-    
 }
 
--(void)addAnnotations:(float)lat longitude:(float)lon
+-(void)addAnnotations
 {
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    CLLocationCoordinate2D coord;
-    coord.latitude = lat;
-    coord.longitude = lon;
-    point.coordinate = coord;
-    point.title = @"Tiger Stadium - LSU";
-    [locationMap addAnnotation:point];
+    //Adding annotations for all of the places within this given location, based on the data we've pulled for it.
+    
+    //We count the number of landmarks in the city based on the locationData we just pulled.
+    //We get an array of the key names to cycle through.
+    //Using those key names, we grab latitude and longitude for each name.
+    //We plot an annotation at each location based on the real-world data.
+    
+    int numberOfLandmarks = [locationData count];
+    NSArray *arrayOfKeys = [locationData allKeys];
+    for (int x = 0; x < numberOfLandmarks; x++)
+    {
+        NSString *thisName = [arrayOfKeys objectAtIndex:x];
+        NSArray *arrayOfData = [locationData objectForKey:thisName];
+        NSNumber *thisLatitude = [arrayOfData objectAtIndex:1];
+        NSNumber *thisLongitude = [arrayOfData objectAtIndex:2];
+        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        CLLocationCoordinate2D coord;
+        coord.latitude = [thisLatitude doubleValue];
+        coord.longitude = [thisLongitude doubleValue];
+        point.coordinate = coord;
+        point.title = thisName;
+        [locationMap addAnnotation:point];
+    }
 }
 
 @end
