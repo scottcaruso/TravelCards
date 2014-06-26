@@ -8,6 +8,7 @@
 
 #import "MapScreenViewController.h"
 #import "PostcardViewController.h"
+#import "CollectionsViewController.h"
 #import <Parse/Parse.h>
 
 @interface MapScreenViewController ()
@@ -152,6 +153,14 @@
         newView.locationDescription = [thisData objectAtIndex:0];
         newView.imageURL = [thisData objectAtIndex:3];
         newView.landmarkID = [thisData objectAtIndex:4];
+    }
+    if ([[segue identifier] isEqualToString:@"goToCollection"])
+    {
+        // Get reference to the destination view controller
+        CollectionsViewController *newView = [segue destinationViewController];
+        
+        // Pass the city identifier, latitude, and longitude of the current location
+        newView.cityCodeName = city;
     }
 }
 
