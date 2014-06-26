@@ -7,12 +7,15 @@
 //
 
 #import "CollectionsViewController.h"
+#import "CustomCollectionViewCell.h"
+#import <Parse/Parse.h>
 
 @interface CollectionsViewController ()
 
 @end
 
 @implementation CollectionsViewController
+@synthesize cityCodeName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,6 +28,9 @@
 
 - (void)viewDidLoad
 {
+    listOfLandmarks = [[NSMutableArray alloc] initWithObjects:nil];
+    listOfURLs = [[NSMutableArray alloc] initWithObjects:nil];
+    [self retrieveNumberOfLandmarks];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -35,10 +41,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return [listOfLandmarks count];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView
@@ -48,12 +53,44 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    if (cell == nil)
+    CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    UIImage *thisImage = [self convertURLtoImage:[listOfURLs objectAtIndex:indexPath.row]];
+    if (cell != nil)
     {
-        cell.backgroundColor = [UIColor whiteColor];
+        cell.locationName.text = [listOfLandmarks objectAtIndex:indexPath.row];
+        [cell.backgroundImage setImage:thisImage];
     }
     return cell;
+}
+
+-(void)retrieveNumberOfLandmarks
+{
+    PFQuery *query = [PFQuery queryWithClassName:cityCodeName];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            for (PFObject *object in objects)
+            {
+                NSString *currentLocationName = [object objectForKey:@"landmark"];
+                NSString *imageURL = [object objectForKey:@"imageURL"];
+                [listOfLandmarks addObject:currentLocationName];
+                [listOfURLs addObject:imageURL];
+            }
+            [collectionView reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(UIImage*)convertURLtoImage:(NSString*)url
+{
+    id path = (NSString*)url;
+    NSURL *thisURL = [NSURL URLWithString:path];
+    NSData *data = [NSData dataWithContentsOfURL:thisURL];
+    UIImage *image = [[UIImage alloc] initWithData:data];
+    return image;
 }
 
 /*

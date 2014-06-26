@@ -7,6 +7,7 @@
 //
 
 #import "CollectionListViewController.h"
+#import "CollectionsViewController.h"
 #import <Parse/Parse.h>
 
 @interface CollectionListViewController ()
@@ -28,6 +29,7 @@
 {
     numberOfRows = 0;
     listOfCities = [[NSMutableArray alloc] initWithObjects:nil];
+    citiesPlusCodes = [[NSMutableDictionary alloc] init];
     [self retrieveNumberOfRowsAndCities];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -38,17 +40,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -86,6 +77,7 @@
             for (PFObject *object in objects)
             {
                 [unsortedCities addObject:[object objectForKey:@"cityName"]];
+                [citiesPlusCodes setValue:[object objectForKey:@"cityClassName"] forKey:[object objectForKey:@"cityName"]];
             }
             listOfCities = (NSMutableArray*)[unsortedCities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             [collectionTable reloadData];
@@ -94,6 +86,19 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"selectedCity"])
+    {
+        NSIndexPath *selectedIndexPath = [collectionTable indexPathForCell:sender];
+        UITableViewCell *cell = [collectionTable cellForRowAtIndexPath:selectedIndexPath];
+        NSString *cityName = cell.textLabel.text;
+        NSString *cityCodeName = [citiesPlusCodes objectForKey:cityName];
+        CollectionsViewController *newView = [segue destinationViewController];
+        newView.cityCodeName = cityCodeName;
+    }
 }
 
 @end

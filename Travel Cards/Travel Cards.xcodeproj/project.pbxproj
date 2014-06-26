@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		306B58BC195A9DA9005DADB8 /* newyork_mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */; };
 		306B58BF195B9265005DADB8 /* PostcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58BE195B9265005DADB8 /* PostcardViewController.m */; };
+		306B58C4195BEE2B005DADB8 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */; };
 		307DD8DD1954058D00860DB9 /* AchievementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307DD8DC1954058D00860DB9 /* AchievementsViewController.m */; };
 		307DD8E0195405A800860DB9 /* CollectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307DD8DF195405A800860DB9 /* CollectionListViewController.m */; };
 		307DD8E3195407AD00860DB9 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307DD8E2195407AD00860DB9 /* MainMenuViewController.m */; };
@@ -57,6 +58,8 @@
 		306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newyork_mainmenu.png; sourceTree = "<group>"; };
 		306B58BD195B9265005DADB8 /* PostcardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostcardViewController.h; sourceTree = "<group>"; };
 		306B58BE195B9265005DADB8 /* PostcardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostcardViewController.m; sourceTree = "<group>"; };
+		306B58C2195BEE2B005DADB8 /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
+		306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
 		307DD8DB1954058D00860DB9 /* AchievementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsViewController.h; sourceTree = "<group>"; };
 		307DD8DC1954058D00860DB9 /* AchievementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsViewController.m; sourceTree = "<group>"; };
 		307DD8DE195405A800860DB9 /* CollectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionListViewController.h; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 				307DD8DF195405A800860DB9 /* CollectionListViewController.m */,
 				307DD8FB1959336300860DB9 /* CollectionsViewController.h */,
 				307DD8FC1959336300860DB9 /* CollectionsViewController.m */,
+				306B58C2195BEE2B005DADB8 /* CustomCollectionViewCell.h */,
+				306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */,
 				3086008E1950149A003FF8A1 /* Images.xcassets */,
 				308600AB195287C5003FF8A1 /* placeholder.jpg */,
 				306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */,
@@ -340,6 +345,7 @@
 				307DD8E0195405A800860DB9 /* CollectionListViewController.m in Sources */,
 				3086008D1950149A003FF8A1 /* ViewController.m in Sources */,
 				308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */,
+				306B58C4195BEE2B005DADB8 /* CustomCollectionViewCell.m in Sources */,
 				307DD8FD1959336300860DB9 /* CollectionsViewController.m in Sources */,
 				307DD8FA1957B44300860DB9 /* NewAccountViewController.m in Sources */,
 				307DD8DD1954058D00860DB9 /* AchievementsViewController.m in Sources */,

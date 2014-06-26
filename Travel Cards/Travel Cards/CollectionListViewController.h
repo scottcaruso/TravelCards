@@ -13,6 +13,7 @@
     IBOutlet UITableView *collectionTable;
     int numberOfRows;
     NSMutableArray *listOfCities;
+    NSMutableDictionary *citiesPlusCodes;
 }
 
 -(void)retrieveNumberOfRowsAndCities;

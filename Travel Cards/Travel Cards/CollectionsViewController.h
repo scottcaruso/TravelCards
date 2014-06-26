@@ -9,5 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface CollectionsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+{
+    int numberOfLocations;
+    NSMutableArray *listOfLandmarks;
+    NSMutableArray *listOfURLs;
+    IBOutlet UICollectionView *collectionView;
+}
+
+@property NSString *cityCodeName;
+
+-(void)retrieveNumberOfLandmarks;
+-(UIImage*)convertURLtoImage:(NSString*)url;
 
 @end
