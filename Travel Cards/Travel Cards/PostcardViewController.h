@@ -15,8 +15,10 @@
     IBOutlet UITextView *postcardDetails;
     IBOutlet UIImageView *postcardImage;
     IBOutlet UIView *thisView;
+    IBOutlet UIButton *addToCollectionButton;
     NSString *thisObjectID;
     PFQuery *query;
+    bool isThisCardAlreadyOwned;
 }
 
 @property NSString *locationDatabase;

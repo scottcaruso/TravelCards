@@ -267,7 +267,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="por-jk-KIa">
-                                <rect key="frame" x="0.0" y="68" width="320" height="456"/>
+                                <rect key="frame" x="0.0" y="67" width="320" height="415"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="4HJ-Pm-1CK" id="Aqr-b7-qVW"/>
@@ -377,6 +377,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="fu9-xd-wG4"/>
                     <connections>
+                        <outlet property="addToCollectionButton" destination="09v-lA-ESZ" id="fBb-ia-R8J"/>
                         <outlet property="postcardDetails" destination="jze-2b-hvo" id="3xD-Tl-aoR"/>
                         <outlet property="postcardImage" destination="RXq-ge-ftg" id="nJ6-TT-X1g"/>
                         <outlet property="postcardTitle" destination="A7O-eZ-Vyp" id="8Yp-9c-mp3"/>
@@ -604,6 +605,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="1p0-X3-cTl"/>
-        <segue reference="9j3-Mg-cH1"/>
+        <segue reference="bJF-rz-mIX"/>
     </inferredMetricsTieBreakers>
 </document>

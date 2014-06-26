@@ -66,6 +66,12 @@
             for (PFObject *object in objects)
             {
                 thisObjectID = object.objectId;
+                NSNumber *landmarkOwned = [object objectForKey:landmarkID];
+                if ([landmarkOwned intValue] == 1)
+                {
+                    isThisCardAlreadyOwned = true;
+                    [self updateButtonIfOwned:isThisCardAlreadyOwned];
+                }
             }
             thisView.hidden = FALSE;
         } else
@@ -73,6 +79,15 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
+
+-(void)updateButtonIfOwned:(bool)owned
+{
+    if (owned)
+    {
+        [addToCollectionButton setTitle:@"Already collected!" forState:UIControlStateNormal];
+        [addToCollectionButton setEnabled:false];
+    }
 }
 
 -(IBAction)addCardToCollection:(id)sender
@@ -83,6 +98,8 @@
         collectionObject[landmarkID] = @1;
         [collectionObject saveInBackground];
     }];
+    [addToCollectionButton setTitle:@"Collected!" forState:UIControlStateNormal];
+    [addToCollectionButton setEnabled:false];
 }
 
 
