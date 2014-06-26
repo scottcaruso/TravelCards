@@ -25,6 +25,17 @@
 
 - (void)viewDidLoad
 {
+    PFQuery *query = [PFUser query];
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error)
+        {
+            // The count request succeeded. Log the count
+            numberOfUsers = count;
+        } else
+        {
+            //We need to add some error handling in the event that this doesn't work right.
+        }
+    }];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -52,9 +63,12 @@
         [noMatch show];
     } else
     {
+        int newUserID = numberOfUsers+1;
+        NSNumber *newUserNumber = [[NSNumber alloc] initWithInt:newUserID];
         PFUser *user = [PFUser user];
         user.username = enteredUserName;
         user.password = enteredPassword;
+        user[@"userID"] = newUserNumber;
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {

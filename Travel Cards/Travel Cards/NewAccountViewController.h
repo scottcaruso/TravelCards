@@ -14,6 +14,7 @@
     IBOutlet UITextField *desiredUserName;
     IBOutlet UITextField *desiredPassword;
     IBOutlet UITextField *retypePassword;
+    int numberOfUsers;
 }
 
 -(IBAction)clickNewAccountButton:(id)sender;
