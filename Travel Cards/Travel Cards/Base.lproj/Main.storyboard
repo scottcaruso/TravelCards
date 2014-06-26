@@ -214,6 +214,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vXZ-lx-hvc" kind="push" identifier="Logout" id="1p0-X3-cTl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -600,7 +603,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rdn-FG-90o"/>
+        <segue reference="1p0-X3-cTl"/>
         <segue reference="9j3-Mg-cH1"/>
     </inferredMetricsTieBreakers>
 </document>

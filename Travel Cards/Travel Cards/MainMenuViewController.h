@@ -18,6 +18,7 @@
 
 @property IBOutlet UITableView *mainMenuTable;
 
+-(void)logUserOut;
 -(void)runGeolocationAndLocationFinding;
 
 @end

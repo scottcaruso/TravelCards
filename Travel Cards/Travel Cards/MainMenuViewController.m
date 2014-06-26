@@ -103,7 +103,13 @@
     //Step 5 - Update Main Menu accordingly and set instance variables
 }
 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
+-(void)logUserOut
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removePersistentDomainForName:@"com.fullsail.TestApp.Travel-Cards"];
+    [defaults synchronize];
+}
+
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
  {
      if ([[segue identifier] isEqualToString:@"mapPush"])
@@ -116,6 +122,10 @@
          newView.cityTitle = cityName.text;
          newView.latitude = latitude;
          newView.longitude = longitude;
+     }
+     if ([[segue identifier] isEqualToString:@"Logout"])
+     {
+         [self logUserOut];
      }
  }
 
