@@ -332,7 +332,7 @@
                         <viewControllerLayoutGuide type="top" id="Sps-la-yKv"/>
                         <viewControllerLayoutGuide type="bottom" id="1H5-Yo-Y9V"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="i2Q-T5-1Re">
+                    <view key="view" hidden="YES" contentMode="scaleToFill" id="i2Q-T5-1Re">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -357,6 +357,9 @@
                                 <state key="normal" title="Add to Collection">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addCardToCollection:" destination="kaY-2b-49z" eventType="touchUpInside" id="ev7-cF-IOX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7O-eZ-Vyp">
                                 <rect key="frame" x="0.0" y="356" width="320" height="21"/>
@@ -374,6 +377,7 @@
                         <outlet property="postcardDetails" destination="jze-2b-hvo" id="3xD-Tl-aoR"/>
                         <outlet property="postcardImage" destination="RXq-ge-ftg" id="nJ6-TT-X1g"/>
                         <outlet property="postcardTitle" destination="A7O-eZ-Vyp" id="8Yp-9c-mp3"/>
+                        <outlet property="thisView" destination="i2Q-T5-1Re" id="iep-5N-wBI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HqN-ur-UTo" userLabel="First Responder" sceneMemberID="firstResponder"/>

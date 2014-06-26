@@ -20,8 +20,10 @@
 @property NSString *cityTitle;
 @property float latitude;
 @property float longitude;
+@property NSNumber *userID;
 
 -(void)addAnnotations;
 -(void)getDataForLocation:(NSString*)className;
+-(void)verifyIfCollectionExistsAndCreateIfNot;
 
 @end

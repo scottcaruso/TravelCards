@@ -15,7 +15,7 @@
 @end
 
 @implementation MapScreenViewController
-@synthesize city,cityTitle,latitude,longitude;
+@synthesize city,cityTitle,latitude,longitude,userID;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,9 +28,11 @@
 
 - (void)viewDidLoad
 {
+    userID = [[NSNumber alloc] initWithInt:1];
     locationData = [[NSMutableDictionary alloc] init];
     [self.navigationItem setTitle:cityTitle];
     [self getDataForLocation:city];
+    [self verifyIfCollectionExistsAndCreateIfNot];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -55,7 +57,8 @@
                 NSNumber *currentLocationLatitude = [object objectForKey:@"latitude"];
                 NSNumber *currentLocationLongitude = [object objectForKey:@"longitude"];
                 NSString *imageURL = [object objectForKey:@"imageURL"];
-                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, nil];
+                NSString *landmarkID = [object objectForKey:@"landmarkID"];
+                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, landmarkID, nil];
                 [locationData setValue:arrayOfData forKey:currentLocationName];
             }
             [self addAnnotations];
@@ -116,6 +119,22 @@
     currentlySelectedAnnotation = currentTitle;
 }
 
+-(void)verifyIfCollectionExistsAndCreateIfNot
+{
+    NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",city];
+    PFQuery *query = [PFQuery queryWithClassName:collectionString];
+    [query whereKey:@"userID" equalTo:userID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        if (objects.count == 0)
+        {
+            PFObject *newUser = [PFObject objectWithClassName:collectionString];
+            newUser[@"userID"] = @1;
+            [newUser saveInBackground];
+        }
+    }];
+}
+
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"advanceToPostcard"])
@@ -125,9 +144,12 @@
  
         // Pass the city identifier, latitude, and longitude of the current location
         NSArray *thisData = [locationData objectForKey:currentlySelectedAnnotation];
+        newView.locationDatabase = city;
         newView.locationName = currentlySelectedAnnotation;
         newView.locationDescription = [thisData objectAtIndex:0];
         newView.imageURL = [thisData objectAtIndex:3];
+        newView.landmarkID = [thisData objectAtIndex:4];
+        newView.userID = userID; //placeholder
     }
 }
 

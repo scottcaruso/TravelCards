@@ -13,7 +13,7 @@
 @end
 
 @implementation PostcardViewController
-@synthesize locationName,locationDescription,imageURL;
+@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad
 {
+    [self obtainObjectID];
     postcardTitle.text = locationName;
     postcardDetails.text = locationDescription;
     postcardImage.image = [self convertURLtoImage:imageURL];
@@ -47,6 +48,39 @@
     UIImage *image = [[UIImage alloc] initWithData:data];
     return image;
 }
+
+-(void)obtainObjectID
+{
+    NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",locationDatabase];
+    query = [PFQuery queryWithClassName:collectionString];
+    [query whereKey:@"userID" equalTo:userID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            // The find succeeded.
+            // Do something with the found object
+            for (PFObject *object in objects)
+            {
+                thisObjectID = object.objectId;
+            }
+            thisView.hidden = FALSE;
+        } else
+        {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(IBAction)addCardToCollection:(id)sender
+{
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:thisObjectID block:^(PFObject *collectionObject, NSError *error)
+    {
+        collectionObject[landmarkID] = @1;
+        [collectionObject saveInBackground];
+    }];
+}
+
 
 /*
 #pragma mark - Navigation
