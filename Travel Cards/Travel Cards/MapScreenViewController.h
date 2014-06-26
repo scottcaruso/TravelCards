@@ -13,9 +13,11 @@
 {
     IBOutlet MKMapView *locationMap;
     NSMutableDictionary *locationData;
+    NSString *currentlySelectedAnnotation;
 }
 
 @property NSString *city;
+@property NSString *cityTitle;
 @property float latitude;
 @property float longitude;
 

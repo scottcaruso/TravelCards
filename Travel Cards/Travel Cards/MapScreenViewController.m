@@ -7,6 +7,7 @@
 //
 
 #import "MapScreenViewController.h"
+#import "PostcardViewController.h"
 #import <Parse/Parse.h>
 
 @interface MapScreenViewController ()
@@ -14,7 +15,7 @@
 @end
 
 @implementation MapScreenViewController
-@synthesize city,latitude,longitude;
+@synthesize city,cityTitle,latitude,longitude;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +29,7 @@
 - (void)viewDidLoad
 {
     locationData = [[NSMutableDictionary alloc] init];
+    [self.navigationItem setTitle:cityTitle];
     [self getDataForLocation:city];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -38,17 +40,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 -(void)getDataForLocation:(NSString*)className
 {
@@ -63,7 +54,8 @@
                 NSString *currentLocationDescription = [object objectForKey:@"description"];
                 NSNumber *currentLocationLatitude = [object objectForKey:@"latitude"];
                 NSNumber *currentLocationLongitude = [object objectForKey:@"longitude"];
-                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, nil];
+                NSString *imageURL = [object objectForKey:@"imageURL"];
+                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, nil];
                 [locationData setValue:arrayOfData forKey:currentLocationName];
             }
             [self addAnnotations];
@@ -79,8 +71,8 @@
     //So, now we take the data we just got from the previous view to help set our mapview.
     
     MKCoordinateSpan mapSpan;
-    mapSpan.latitudeDelta = .5f;
-    mapSpan.longitudeDelta = .5f;
+    mapSpan.latitudeDelta = .08f;
+    mapSpan.longitudeDelta = .08f;
     CLLocationCoordinate2D mapCenter;
     mapCenter.latitude = latitude;
     mapCenter.longitude = longitude;
@@ -114,6 +106,28 @@
         point.coordinate = coord;
         point.title = thisName;
         [locationMap addAnnotation:point];
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    MKPointAnnotation *point = view.annotation;
+    NSString *currentTitle = point.title;
+    currentlySelectedAnnotation = currentTitle;
+}
+
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"advanceToPostcard"])
+    {
+        // Get reference to the destination view controller
+        PostcardViewController *newView = [segue destinationViewController];
+ 
+        // Pass the city identifier, latitude, and longitude of the current location
+        NSArray *thisData = [locationData objectForKey:currentlySelectedAnnotation];
+        newView.locationName = currentlySelectedAnnotation;
+        newView.locationDescription = [thisData objectAtIndex:0];
+        newView.imageURL = [thisData objectAtIndex:3];
     }
 }
 

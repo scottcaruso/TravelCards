@@ -113,6 +113,7 @@
      
          // Pass the city identifier, latitude, and longitude of the current location
          newView.city = cityDataString;
+         newView.cityTitle = cityName.text;
          newView.latitude = latitude;
          newView.longitude = longitude;
      }
