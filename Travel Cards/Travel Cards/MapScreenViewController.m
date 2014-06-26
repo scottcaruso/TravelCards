@@ -28,7 +28,10 @@
 
 - (void)viewDidLoad
 {
-    userID = [[NSNumber alloc] initWithInt:1];
+    //Load the saved User ID
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    userID = [defaults objectForKey:@"SavedUserID"];
+    
     locationData = [[NSMutableDictionary alloc] init];
     [self.navigationItem setTitle:cityTitle];
     [self getDataForLocation:city];
@@ -149,7 +152,6 @@
         newView.locationDescription = [thisData objectAtIndex:0];
         newView.imageURL = [thisData objectAtIndex:3];
         newView.landmarkID = [thisData objectAtIndex:4];
-        newView.userID = userID; //placeholder
     }
 }
 

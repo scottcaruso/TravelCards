@@ -63,16 +63,16 @@
             {
                 if (user)
                 {
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                     if ([saveLoginDetails isOn])
                     {
-                        NSNumber *userID = [user objectForKey:@"userID"];
-                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                         [defaults setValue:enteredUserName forKey:@"SavedUserName"];
                         [defaults setValue:enteredPassword forKey:@"SavedPassword"];
-                        [defaults setValue:userID forKey:@"SavedUserID"];
                         [defaults setBool:true forKey:@"IsSaved"];
-                        [defaults synchronize];
                     }
+                    NSNumber *userID = [user objectForKey:@"userID"];
+                    [defaults setValue:userID forKey:@"SavedUserID"];
+                    [defaults synchronize];
                     [self performSegueWithIdentifier:@"Login" sender:self];
                 } else
                 {

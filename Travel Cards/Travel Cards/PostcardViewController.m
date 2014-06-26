@@ -26,6 +26,10 @@
 
 - (void)viewDidLoad
 {
+    //Load the saved User ID
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    userID = [defaults objectForKey:@"SavedUserID"];
+    
     [self obtainObjectID];
     postcardTitle.text = locationName;
     postcardDetails.text = locationDescription;

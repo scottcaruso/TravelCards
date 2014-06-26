@@ -7,6 +7,7 @@
 //
 
 #import "CollectionListViewController.h"
+#import <Parse/Parse.h>
 
 @interface CollectionListViewController ()
 
@@ -25,6 +26,9 @@
 
 - (void)viewDidLoad
 {
+    numberOfRows = 0;
+    listOfCities = [[NSMutableArray alloc] initWithObjects:nil];
+    [self retrieveNumberOfRowsAndCities];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -48,26 +52,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *returnString;
-    if (section == 0)
-    {
-        returnString = @"Active Collections";
-    } else if (section == 1)
-    {
-        returnString = @"All Collections";
-    }
-    return returnString;
+    return 1;
 }
 
 //This creates the rows for the ViewController table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2; //This is just placeholder!
+    return numberOfRows; //This is just placeholder!
 }
 
 //This feeds the data for the table view
@@ -80,9 +71,29 @@
     {
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    NSString *sampleAchievement = @"Sample Collection";
-    thisCell.textLabel.text = sampleAchievement;
+    NSString *collectionItem = [listOfCities objectAtIndex:indexPath.row];
+    thisCell.textLabel.text = collectionItem;
     return thisCell;
+}
+
+-(void)retrieveNumberOfRowsAndCities
+{
+    __block NSMutableArray *unsortedCities = [[NSMutableArray alloc] initWithObjects:nil];
+    PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            numberOfRows = objects.count;
+            for (PFObject *object in objects)
+            {
+                [unsortedCities addObject:[object objectForKey:@"cityName"]];
+            }
+            listOfCities = (NSMutableArray*)[unsortedCities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            [collectionTable reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 @end

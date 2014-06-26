@@ -453,6 +453,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Collections" id="2O4-B8-cHd"/>
+                    <connections>
+                        <outlet property="collectionTable" destination="MWg-qx-Kbh" id="C9l-Ny-0lQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yoX-rc-uOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
