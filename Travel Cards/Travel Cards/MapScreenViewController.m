@@ -132,7 +132,7 @@
         if (objects.count == 0)
         {
             PFObject *newUser = [PFObject objectWithClassName:collectionString];
-            newUser[@"userID"] = @1;
+            newUser[@"userID"] = userID;
             [newUser saveInBackground];
         }
     }];

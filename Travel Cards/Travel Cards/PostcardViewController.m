@@ -98,7 +98,7 @@
         collectionObject[landmarkID] = @1;
         [collectionObject saveInBackground];
     }];
-    [addToCollectionButton setTitle:@"Collected!" forState:UIControlStateNormal];
+    [addToCollectionButton setTitle:@"Already collected!" forState:UIControlStateNormal];
     [addToCollectionButton setEnabled:false];
 }
 
