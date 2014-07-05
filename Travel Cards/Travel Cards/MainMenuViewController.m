@@ -32,10 +32,15 @@
     //data so that we can test the application as if we are in the New York area.
     [self runGeolocationAndLocationFinding];
     
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
     cityName.text = @"New York, NY";
     cityDataString = @"NewYork";
-    latitude = 40.748f;
-    longitude = -73.99f;
+    //latitude = 40.748f;
+    //longitude = -73.99f;
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -101,6 +106,14 @@
     //Step 3 - Compare current location to other locations to find out which, if any, is closest
     //Step 4 - Determine if this location is within X distance of current location
     //Step 5 - Update Main Menu accordingly and set instance variables
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *lastLocation = [locations lastObject];
+    longitude = lastLocation.coordinate.longitude;
+    latitude = lastLocation.coordinate.latitude;
+    NSLog(@"latitude:%f,longitude:%f",latitude,longitude);
 }
 
 -(void)logUserOut

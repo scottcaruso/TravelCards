@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface MainMenuViewController : UIViewController <UITableViewDelegate>
+@interface MainMenuViewController : UIViewController <UITableViewDelegate, CLLocationManagerDelegate>
 {
     IBOutlet UILabel *cityName;
     NSString *cityDataString;
+    CLLocationManager *locationManager;
     float latitude;
     float longitude;
 }
