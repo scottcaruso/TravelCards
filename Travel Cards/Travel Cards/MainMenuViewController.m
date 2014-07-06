@@ -8,6 +8,7 @@
 
 #import "MainMenuViewController.h"
 #import "MapScreenViewController.h"
+#import <Parse/Parse.h>
 
 @interface MainMenuViewController ()
 
@@ -28,14 +29,11 @@
 {
     [self.navigationItem setHidesBackButton:YES];
     
+    dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
+    
     //When we load the view, we are going to run the Geolocation functions. For now, we are spoofing the
     //data so that we can test the application as if we are in the New York area.
     [self runGeolocationAndLocationFinding];
-    
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
     
     cityName.text = @"New York, NY";
     cityDataString = @"NewYork";
@@ -102,7 +100,46 @@
      in a reasonable distance near the current location. */
     
     //Step 1 - Geolocate the user
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
     //Step 2 - Parse the Travel Cards location data
+    PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects)
+            {
+                NSNumber *thisLat = [object objectForKey:@"latitude"];
+                NSNumber *thisLon = [object objectForKey:@"longitude"];
+                double latDouble = [thisLat doubleValue];
+                double lonDouble = [thisLon doubleValue];
+                CLLocation *thisLocation = [[CLLocation alloc] initWithLatitude:latDouble longitude:lonDouble];
+                [dictionaryofCoordinates setValue:thisLocation forKey:[object objectForKey:@"cityName"]];
+            }
+            CLLocationDistance distance = 10000000000000;
+            NSString *cityName;
+            CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+            for (int x = 0; x < [dictionaryofCoordinates count]; x++)
+            {
+                NSArray *arrayOfKeys = [dictionaryofCoordinates allKeys];
+                CLLocation *locationToCheck = [dictionaryofCoordinates objectForKey:[arrayOfKeys objectAtIndex:x]];
+                CLLocationDistance currentDistance = [currentLocation distanceFromLocation:locationToCheck];
+                if (currentDistance < distance)
+                {
+                    distance = currentDistance;
+                    cityName = [arrayOfKeys objectAtIndex:x];
+                }
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
+    
+    
     //Step 3 - Compare current location to other locations to find out which, if any, is closest
     //Step 4 - Determine if this location is within X distance of current location
     //Step 5 - Update Main Menu accordingly and set instance variables

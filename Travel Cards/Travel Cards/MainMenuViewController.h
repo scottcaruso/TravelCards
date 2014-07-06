@@ -16,6 +16,8 @@
     CLLocationManager *locationManager;
     float latitude;
     float longitude;
+    
+    NSMutableDictionary *dictionaryofCoordinates; //Used to store Parse data so we can figure out which location is the closest.
 }
 
 @property IBOutlet UITableView *mainMenuTable;
