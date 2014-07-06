@@ -31,9 +31,15 @@
     
     dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
     
+    //Step 1 - Start Geolocating user
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
     //When we load the view, we are going to run the Geolocation functions. For now, we are spoofing the
     //data so that we can test the application as if we are in the New York area.
-    [self runGeolocationAndLocationFinding];
+    //[self runGeolocationAndLocationFinding];
     
     cityName.text = @"New York, NY";
     cityDataString = @"NewYork";
@@ -99,12 +105,6 @@
     /* This is where the Geolocation will run, along with determining if there is a Travel Cards destination somewhere
      in a reasonable distance near the current location. */
     
-    //Step 1 - Geolocate the user
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
-    
     //Step 2 - Parse the Travel Cards location data
     PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -119,8 +119,9 @@
                 [dictionaryofCoordinates setValue:thisLocation forKey:[object objectForKey:@"cityName"]];
             }
             CLLocationDistance distance = 10000000000000;
-            NSString *cityName;
+            NSString *nameOfCity;
             CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+            //Step 3 - Compare current location to other locations to find out which, if any, is closest
             for (int x = 0; x < [dictionaryofCoordinates count]; x++)
             {
                 NSArray *arrayOfKeys = [dictionaryofCoordinates allKeys];
@@ -129,19 +130,21 @@
                 if (currentDistance < distance)
                 {
                     distance = currentDistance;
-                    cityName = [arrayOfKeys objectAtIndex:x];
+                    nameOfCity = [arrayOfKeys objectAtIndex:x];
                 }
             }
+            //THIS IS A DEBUG POPUP FOR TESTING PURPOSES. WILL BE REMOVED IN FINAL UI
+            NSString *alertString = [[NSString alloc] initWithFormat:@"The location nearest to you is %@, which is %f meters away.",nameOfCity,distance];
+            UIAlertView *closestLocation = [[UIAlertView alloc] initWithTitle:@"PLACEHOLDER" message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            closestLocation.alertViewStyle = UIAlertViewStyleDefault;
+            [closestLocation show];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-
     
-    
-    //Step 3 - Compare current location to other locations to find out which, if any, is closest
-    //Step 4 - Determine if this location is within X distance of current location
+    //Step 4 - Determine if this location is within X distance of current location -- NOT SURE THAT I WANT TO DO THIS
     //Step 5 - Update Main Menu accordingly and set instance variables
 }
 
@@ -151,6 +154,8 @@
     longitude = lastLocation.coordinate.longitude;
     latitude = lastLocation.coordinate.latitude;
     NSLog(@"latitude:%f,longitude:%f",latitude,longitude);
+    [self runGeolocationAndLocationFinding];
+    [locationManager stopUpdatingLocation];
 }
 
 -(void)logUserOut
