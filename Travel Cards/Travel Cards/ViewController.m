@@ -37,6 +37,16 @@
              }
          }];
     }
+    
+    for (NSString* family in [UIFont familyNames])
+    {
+        NSLog(@"%@", family);
+        
+        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+        {
+            NSLog(@"  %@", name);
+        }
+    }
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }

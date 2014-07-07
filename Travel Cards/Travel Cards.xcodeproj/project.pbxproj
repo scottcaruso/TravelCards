@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */; };
+		3041F5F0196B230000C5E26C /* Antipasto_extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */; };
+		3041F5F1196B230300C5E26C /* Antipasto_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */; };
 		306B58BC195A9DA9005DADB8 /* newyork_mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */; };
 		306B58BF195B9265005DADB8 /* PostcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58BE195B9265005DADB8 /* PostcardViewController.m */; };
 		306B58C4195BEE2B005DADB8 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */; };
@@ -55,7 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newyork_mainmenu.png; sourceTree = "<group>"; };
+		3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extrabold.otf; sourceTree = "<group>"; };
+		3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extralight.otf; sourceTree = "<group>"; };
+		3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_regular.otf; sourceTree = "<group>"; };
+		306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newyork_mainmenu.png; path = "Travel Cards/newyork_mainmenu.png"; sourceTree = "<group>"; };
 		306B58BD195B9265005DADB8 /* PostcardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostcardViewController.h; sourceTree = "<group>"; };
 		306B58BE195B9265005DADB8 /* PostcardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostcardViewController.m; sourceTree = "<group>"; };
 		306B58C2195BEE2B005DADB8 /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
@@ -99,7 +105,7 @@
 		3086009D1950149A003FF8A1 /* Travel CardsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Travel CardsTests-Info.plist"; sourceTree = "<group>"; };
 		3086009F1950149A003FF8A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		308600A11950149A003FF8A1 /* Travel_CardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Travel_CardsTests.m; sourceTree = "<group>"; };
-		308600AB195287C5003FF8A1 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = placeholder.jpg; path = ../../../../../placeholder.jpg; sourceTree = "<group>"; };
+		308600AB195287C5003FF8A1 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = placeholder.jpg; path = ../../../../placeholder.jpg; sourceTree = "<group>"; };
 		308600AD1952ADAA003FF8A1 /* MapScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScreenViewController.h; sourceTree = "<group>"; };
 		308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapScreenViewController.m; sourceTree = "<group>"; };
 		308600B01952B19C003FF8A1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -140,6 +146,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3041F5EA196B229500C5E26C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				308600AB195287C5003FF8A1 /* placeholder.jpg */,
+				306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */,
+			);
+			name = Images;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		3041F5EB196B22AE00C5E26C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */,
+				3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */,
+				3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
 		3086006A1950149A003FF8A1 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +210,8 @@
 		3086007C1950149A003FF8A1 /* Travel Cards */ = {
 			isa = PBXGroup;
 			children = (
+				3041F5EB196B22AE00C5E26C /* Font */,
+				3041F5EA196B229500C5E26C /* Images */,
 				308600881950149A003FF8A1 /* Main.storyboard */,
 				308600851950149A003FF8A1 /* AppDelegate.h */,
 				308600861950149A003FF8A1 /* AppDelegate.m */,
@@ -206,8 +234,6 @@
 				306B58C2195BEE2B005DADB8 /* CustomCollectionViewCell.h */,
 				306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */,
 				3086008E1950149A003FF8A1 /* Images.xcassets */,
-				308600AB195287C5003FF8A1 /* placeholder.jpg */,
-				306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */,
 				3086007D1950149A003FF8A1 /* Supporting Files */,
 			);
 			path = "Travel Cards";
@@ -318,7 +344,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3041F5F1196B230300C5E26C /* Antipasto_regular.otf in Resources */,
 				306B58BC195A9DA9005DADB8 /* newyork_mainmenu.png in Resources */,
+				3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */,
+				3041F5F0196B230000C5E26C /* Antipasto_extralight.otf in Resources */,
 				3086008F1950149A003FF8A1 /* Images.xcassets in Resources */,
 				308600AC195287C5003FF8A1 /* placeholder.jpg in Resources */,
 				308600811950149A003FF8A1 /* InfoPlist.strings in Resources */,
