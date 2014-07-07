@@ -38,15 +38,8 @@
          }];
     }
     
-    for (NSString* family in [UIFont familyNames])
-    {
-        NSLog(@"%@", family);
-        
-        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-        {
-            NSLog(@"  %@", name);
-        }
-    }
+    [self setFonts];
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -93,6 +86,14 @@
                 }
                 }];
     }
+}
+
+-(void)setFonts
+{
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    [userName setFont:font];
+    [password setFont:font];
+    [saveUser setFont:font];
 }
 
 @end

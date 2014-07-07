@@ -13,6 +13,7 @@
 {
     IBOutlet UITextField *userName;
     IBOutlet UITextField *password;
+    IBOutlet UILabel *saveUser;
     IBOutlet UIButton *submitButton;
     IBOutlet UISwitch *saveLoginDetails;
 }

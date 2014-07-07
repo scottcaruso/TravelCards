@@ -149,8 +149,8 @@
 		3041F5EA196B229500C5E26C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				308600AB195287C5003FF8A1 /* placeholder.jpg */,
 				306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */,
+				308600AB195287C5003FF8A1 /* placeholder.jpg */,
 			);
 			name = Images;
 			path = ..;
@@ -512,6 +512,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Travel Cards/Travel Cards-Prefix.pch";
 				INFOPLIST_FILE = "Travel Cards/Travel Cards-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -529,6 +530,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Travel Cards/Travel Cards-Prefix.pch";
 				INFOPLIST_FILE = "Travel Cards/Travel Cards-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
