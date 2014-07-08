@@ -143,7 +143,7 @@
                         <outlet property="desiredUserName" destination="LSQ-Wp-rXQ" id="VFv-I6-CTu"/>
                         <outlet property="retypePassword" destination="VgP-WD-CgG" id="EcC-ZW-tWZ"/>
                         <outlet property="submitButton" destination="hH4-hE-jB0" id="9Ll-TO-WQT"/>
-                        <segue destination="vXZ-lx-hvc" kind="push" identifier="CreateUserSuccess" id="rdn-FG-90o"/>
+                        <segue destination="34H-w2-Os8" kind="push" identifier="CreateUserSuccess" id="4nk-T0-jBq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vlm-63-APg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -611,7 +611,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rdn-FG-90o"/>
+        <segue reference="1p0-X3-cTl"/>
+        <segue reference="4nk-T0-jBq"/>
         <segue reference="9j3-Mg-cH1"/>
         <segue reference="9oO-2h-1dY"/>
     </inferredMetricsTieBreakers>

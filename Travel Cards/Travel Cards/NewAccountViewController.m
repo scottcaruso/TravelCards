@@ -7,6 +7,7 @@
 //
 
 #import "NewAccountViewController.h"
+#import <Parse/Parse.h>
 
 @interface NewAccountViewController ()
 
@@ -95,7 +96,29 @@
     {
         if (buttonIndex == 0)
         {
-            [self performSegueWithIdentifier:@"CreateUserSuccess" sender:self];
+            [PFUser logInWithUsernameInBackground:desiredUserName.text password:desiredPassword.text
+                                            block:^(PFUser *user, NSError *error)
+             {
+                 if (user)
+                 {
+                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                     //Need to add Save Login Details button.
+                     /*if ([saveLoginDetails isOn])
+                     {
+                         [defaults setValue:enteredUserName forKey:@"SavedUserName"];
+                         [defaults setValue:enteredPassword forKey:@"SavedPassword"];
+                         [defaults setBool:true forKey:@"IsSaved"];
+                     }*/
+                     NSNumber *userID = [user objectForKey:@"userID"];
+                     [defaults setValue:userID forKey:@"SavedUserID"];
+                     [defaults synchronize];
+                     //[self performSegueWithIdentifier:@"Login" sender:self];
+                     [self performSegueWithIdentifier:@"CreateUserSuccess" sender:self];
+                 } else
+                 {
+                     NSLog(@"%@",error);
+                 }
+             }];
         }
     }
 }
