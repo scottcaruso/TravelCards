@@ -21,5 +21,6 @@
 }
 
 -(IBAction)clickSubmitButton:(id)sender;
+-(IBAction)textFieldReturn:(id)sender;
 
 @end

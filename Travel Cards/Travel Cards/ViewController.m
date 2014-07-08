@@ -111,4 +111,22 @@
       NSFontAttributeName, nil]];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([userName isFirstResponder] && [touch view] != userName)
+    {
+        [userName resignFirstResponder];
+    } else if ([password isFirstResponder] && [touch view] != password)
+    {
+        [password resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
 @end
