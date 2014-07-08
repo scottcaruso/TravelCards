@@ -75,11 +75,19 @@
                                     <action selector="clickSubmitButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0oF-Nh-ncU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="© 2014, TravelCards, Inc. All Rights Reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcJ-pv-Cd2">
+                                <rect key="frame" x="50" y="495" width="221" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ICs-Xw-5Qx"/>
                     <connections>
+                        <outlet property="copyright" destination="AcJ-pv-Cd2" id="8sq-j2-g1b"/>
                         <outlet property="newUserButton" destination="vEr-tA-3eR" id="hgZ-Ly-jGp"/>
                         <outlet property="password" destination="ULo-dp-2cg" id="KrI-gI-MOf"/>
                         <outlet property="saveLoginDetails" destination="6ks-E0-gUR" id="Tc1-FO-Jx6"/>
@@ -612,7 +620,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="1p0-X3-cTl"/>
-        <segue reference="4nk-T0-jBq"/>
+        <segue reference="IuB-Z5-3hG"/>
         <segue reference="9j3-Mg-cH1"/>
         <segue reference="9oO-2h-1dY"/>
     </inferredMetricsTieBreakers>

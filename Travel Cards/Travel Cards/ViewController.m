@@ -97,9 +97,11 @@
 {
     UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
     UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
+    UIFont *thinFont = [UIFont fontWithName:@"Antipasto-ExtraLight" size:12];
     [userName setFont:font];
     [password setFont:font];
     [saveUser setFont:font];
+    [copyright setFont:thinFont];
     submitButton.titleLabel.font = boldFont;
     newUserButton.titleLabel.font = font;
     

@@ -13,6 +13,7 @@
 {
     IBOutlet UITextField *userName;
     IBOutlet UITextField *password;
+    IBOutlet UILabel *copyright;
     IBOutlet UILabel *saveUser;
     IBOutlet UIButton *submitButton;
     IBOutlet UIButton *newUserButton;
