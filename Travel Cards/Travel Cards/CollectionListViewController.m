@@ -63,7 +63,9 @@
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     NSString *collectionItem = [listOfCities objectAtIndex:indexPath.row];
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
     thisCell.textLabel.text = collectionItem;
+    thisCell.textLabel.font = font;
     return thisCell;
 }
 
