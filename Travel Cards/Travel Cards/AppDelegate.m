@@ -16,6 +16,17 @@
     // Override point for customization after application launch.
     [Parse setApplicationId:@"Rjo9e41IgXihIDu8S9TqA6PE06qbnLHvgRUDp5gQ"
                   clientKey:@"A9x3hrT89QduNEIQgbtyl3ANeSAougxkHqEs99RT"];
+    
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowOffset = CGSizeMake(0.0, 1.0);
+    shadow.shadowColor = [UIColor whiteColor];
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                      [UIFont fontWithName:@"Antipasto-ExtraLight" size:15], NSFontAttributeName,
+                                      [UIColor blackColor], NSForegroundColorAttributeName,
+                                      nil]
+                            forState:UIControlStateNormal];
     return YES;
 }
 							

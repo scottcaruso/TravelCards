@@ -31,6 +31,12 @@
     listOfCities = [[NSMutableArray alloc] initWithObjects:nil];
     citiesPlusCodes = [[NSMutableDictionary alloc] init];
     [self retrieveNumberOfRowsAndCities];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
+      NSFontAttributeName, nil]];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

@@ -174,6 +174,11 @@
     //UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
     [cityName setFont:font];
     [tapImageLabel setFont:font];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
+      NSFontAttributeName, nil]];
 }
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

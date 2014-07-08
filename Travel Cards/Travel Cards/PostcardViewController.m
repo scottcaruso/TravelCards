@@ -113,6 +113,11 @@
     [postcardTitle setFont:font];
     [postcardDetails setFont:thinFont];
     addToCollectionButton.titleLabel.font = boldFont;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
+      NSFontAttributeName, nil]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

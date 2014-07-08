@@ -38,6 +38,11 @@
          }];
     }
     
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto" size:21],
+      NSFontAttributeName, nil]];
+    
     [self setFonts];
     
     [super viewDidLoad];
@@ -97,6 +102,11 @@
     [saveUser setFont:font];
     submitButton.titleLabel.font = boldFont;
     newUserButton.titleLabel.font = font;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
+      NSFontAttributeName, nil]];
 }
 
 @end

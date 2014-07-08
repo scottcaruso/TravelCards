@@ -38,6 +38,7 @@
     }];
     
     [self setFonts];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -107,6 +108,11 @@
     [desiredPassword setFont:font];
     [retypePassword setFont:font];
     submitButton.titleLabel.font = boldFont;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
+      NSFontAttributeName, nil]];
 }
 
 /*

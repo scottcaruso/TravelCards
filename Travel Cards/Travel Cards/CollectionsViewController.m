@@ -31,6 +31,12 @@
     listOfLandmarks = [[NSMutableArray alloc] initWithObjects:nil];
     listOfURLs = [[NSMutableArray alloc] initWithObjects:nil];
     [self retrieveNumberOfLandmarks];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
+      NSFontAttributeName, nil]];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

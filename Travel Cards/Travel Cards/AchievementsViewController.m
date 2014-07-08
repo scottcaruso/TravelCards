@@ -29,6 +29,12 @@
     UIAlertView *achievements = [[UIAlertView alloc] initWithTitle:@"Coming soon!" message:@"Achievements are coming in Sprint 3!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     achievements.alertViewStyle = UIAlertViewStyleDefault;
     [achievements show];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
+      NSFontAttributeName, nil]];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
