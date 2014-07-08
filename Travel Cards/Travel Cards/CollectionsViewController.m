@@ -8,6 +8,7 @@
 
 #import "CollectionsViewController.h"
 #import "CustomCollectionViewCell.h"
+#import "PostcardViewController.h"
 #import <Parse/Parse.h>
 
 @interface CollectionsViewController ()
@@ -99,15 +100,19 @@
     return image;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"PostcardFromCollection"])
+    {
+        NSIndexPath *selectedIndexPath = [collectionView indexPathForCell:sender];
+        CustomCollectionViewCell *cell = [collectionView cellForItemAtIndexPath:selectedIndexPath];
+        PostcardViewController *newView = [segue destinationViewController];
+        newView.locationDatabase = cityCodeName;
+        newView.locationName = cell.locationName.text;
+        //newView.locationDescription = [thisData objectAtIndex:0];
+        newView.imageURL = [listOfURLs objectAtIndex:selectedIndexPath.row];
+        //newView.landmarkID = [thisData objectAtIndex:4];
+    }
 }
-*/
 
 @end

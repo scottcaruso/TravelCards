@@ -78,7 +78,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Travel Cards Login" id="ICs-Xw-5Qx"/>
+                    <navigationItem key="navigationItem" id="ICs-Xw-5Qx"/>
                     <connections>
                         <outlet property="newUserButton" destination="vEr-tA-3eR" id="hgZ-Ly-jGp"/>
                         <outlet property="password" destination="ULo-dp-2cg" id="KrI-gI-MOf"/>
@@ -137,7 +137,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create New User" id="MO8-UX-km3"/>
+                    <navigationItem key="navigationItem" title="New User Creation" id="wP8-CF-nkE"/>
                     <connections>
                         <outlet property="desiredPassword" destination="cHs-qM-uzE" id="Xma-F8-AUm"/>
                         <outlet property="desiredUserName" destination="LSQ-Wp-rXQ" id="VFv-I6-CTu"/>
@@ -530,6 +530,7 @@
                                         <connections>
                                             <outlet property="backgroundImage" destination="FfJ-UC-Gd9" id="9u4-Vw-UCP"/>
                                             <outlet property="locationName" destination="yXC-H2-87E" id="IOJ-Bw-xqZ"/>
+                                            <segue destination="kaY-2b-49z" kind="push" identifier="PostcardFromCollection" id="9oO-2h-1dY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -611,6 +612,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="rdn-FG-90o"/>
-        <segue reference="bJF-rz-mIX"/>
+        <segue reference="9j3-Mg-cH1"/>
+        <segue reference="9oO-2h-1dY"/>
     </inferredMetricsTieBreakers>
 </document>
