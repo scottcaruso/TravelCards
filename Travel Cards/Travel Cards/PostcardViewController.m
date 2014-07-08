@@ -35,6 +35,8 @@
     postcardTitle.text = locationName;
     postcardDetails.text = locationDescription;
     postcardImage.image = [self convertURLtoImage:imageURL];
+    
+    [self setFonts];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -101,6 +103,16 @@
     }];
     [addToCollectionButton setTitle:@"Already collected!" forState:UIControlStateNormal];
     [addToCollectionButton setEnabled:false];
+}
+
+-(void)setFonts
+{
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
+    UIFont *thinFont = [UIFont fontWithName:@"Antipasto-ExtraLight" size:15];
+    [postcardTitle setFont:font];
+    [postcardDetails setFont:thinFont];
+    addToCollectionButton.titleLabel.font = boldFont;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

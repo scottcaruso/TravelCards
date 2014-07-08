@@ -37,6 +37,8 @@
     [self.navigationItem setTitle:cityTitle];
     [self getDataForLocation:city];
     [self verifyIfCollectionExistsAndCreateIfNot];
+    
+    [self setFonts];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -137,6 +139,14 @@
             [newUser saveInBackground];
         }
     }];
+}
+
+-(void)setFonts
+{
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    //UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
+    advanceToPostcard.titleLabel.font = font;
+    advanceToCollections.titleLabel.font = font;
 }
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -292,7 +292,7 @@
                                 <rect key="frame" x="-17" y="479" width="355" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Advance to Postcard">
+                                <state key="normal" title="View Postcard">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -304,6 +304,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="(CITY NAME HERE)" id="HKU-Vg-f55"/>
                     <connections>
+                        <outlet property="advanceToCollections" destination="ttA-jD-n0s" id="c0I-Sn-RME"/>
+                        <outlet property="advanceToPostcard" destination="nO7-Lh-pHD" id="JQw-Cn-se9"/>
                         <outlet property="locationMap" destination="por-jk-KIa" id="QEb-ps-Jwy"/>
                     </connections>
                 </viewController>
