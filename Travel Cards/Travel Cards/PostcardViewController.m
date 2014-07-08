@@ -88,7 +88,7 @@
 {
     if (owned)
     {
-        [addToCollectionButton setTitle:@"Already collected!" forState:UIControlStateNormal];
+        [addToCollectionButton setTitle:@"Collected on: (DATE HERE)" forState:UIControlStateNormal];
         [addToCollectionButton setEnabled:false];
     }
 }

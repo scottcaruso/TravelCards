@@ -97,7 +97,7 @@
 {
     UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
     UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
-    UIFont *thinFont = [UIFont fontWithName:@"Antipasto-ExtraLight" size:12];
+    UIFont *thinFont = [UIFont fontWithName:@"Antipasto-ExtraLight" size:10];
     [userName setFont:font];
     [password setFont:font];
     [saveUser setFont:font];
