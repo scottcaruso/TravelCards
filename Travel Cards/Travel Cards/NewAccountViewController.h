@@ -14,6 +14,7 @@
     IBOutlet UITextField *desiredUserName;
     IBOutlet UITextField *desiredPassword;
     IBOutlet UITextField *retypePassword;
+    IBOutlet UIButton *submitButton;
     int numberOfUsers;
 }
 

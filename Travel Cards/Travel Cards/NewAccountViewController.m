@@ -36,6 +36,8 @@
             //We need to add some error handling in the event that this doesn't work right.
         }
     }];
+    
+    [self setFonts];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -95,6 +97,16 @@
             [self performSegueWithIdentifier:@"CreateUserSuccess" sender:self];
         }
     }
+}
+
+-(void)setFonts
+{
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
+    [desiredUserName setFont:font];
+    [desiredPassword setFont:font];
+    [retypePassword setFont:font];
+    submitButton.titleLabel.font = boldFont;
 }
 
 /*

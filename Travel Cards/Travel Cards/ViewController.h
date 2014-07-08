@@ -15,6 +15,7 @@
     IBOutlet UITextField *password;
     IBOutlet UILabel *saveUser;
     IBOutlet UIButton *submitButton;
+    IBOutlet UIButton *newUserButton;
     IBOutlet UISwitch *saveLoginDetails;
 }
 

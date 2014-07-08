@@ -66,7 +66,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvy-7x-qZ3">
-                                <rect key="frame" x="137" y="274" width="38" height="30"/>
+                                <rect key="frame" x="103" y="269" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,6 +80,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Travel Cards Login" id="ICs-Xw-5Qx"/>
                     <connections>
+                        <outlet property="newUserButton" destination="vEr-tA-3eR" id="hgZ-Ly-jGp"/>
                         <outlet property="password" destination="ULo-dp-2cg" id="KrI-gI-MOf"/>
                         <outlet property="saveLoginDetails" destination="6ks-E0-gUR" id="Tc1-FO-Jx6"/>
                         <outlet property="saveUser" destination="UaW-xX-Qif" id="TiA-bg-OQz"/>
@@ -123,7 +124,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH4-hE-jB0">
-                                <rect key="frame" x="102" y="291" width="117" height="30"/>
+                                <rect key="frame" x="45" y="291" width="231" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create New User">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,6 +142,7 @@
                         <outlet property="desiredPassword" destination="cHs-qM-uzE" id="Xma-F8-AUm"/>
                         <outlet property="desiredUserName" destination="LSQ-Wp-rXQ" id="VFv-I6-CTu"/>
                         <outlet property="retypePassword" destination="VgP-WD-CgG" id="EcC-ZW-tWZ"/>
+                        <outlet property="submitButton" destination="hH4-hE-jB0" id="9Ll-TO-WQT"/>
                         <segue destination="vXZ-lx-hvc" kind="push" identifier="CreateUserSuccess" id="rdn-FG-90o"/>
                     </connections>
                 </viewController>
@@ -605,7 +607,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1p0-X3-cTl"/>
+        <segue reference="rdn-FG-90o"/>
         <segue reference="bJF-rz-mIX"/>
     </inferredMetricsTieBreakers>
 </document>
