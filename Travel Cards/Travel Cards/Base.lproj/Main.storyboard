@@ -251,6 +251,7 @@
                     <connections>
                         <outlet property="cityName" destination="bb0-qq-esV" id="pPm-fz-9Vf"/>
                         <outlet property="mainMenuTable" destination="6ZD-w2-xig" id="W3y-mW-tgc"/>
+                        <outlet property="tapImageLabel" destination="m49-al-f6f" id="ONd-7n-01p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qst-Lv-m0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -607,7 +608,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rdn-FG-90o"/>
+        <segue reference="1p0-X3-cTl"/>
         <segue reference="bJF-rz-mIX"/>
     </inferredMetricsTieBreakers>
 </document>

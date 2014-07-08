@@ -12,6 +12,9 @@
 @interface MainMenuViewController : UIViewController <UITableViewDelegate, CLLocationManagerDelegate>
 {
     IBOutlet UILabel *cityName;
+    IBOutlet UILabel *tapImageLabel;
+    IBOutlet UITableView *mainMenuTable;
+    
     NSString *cityDataString;
     CLLocationManager *locationManager;
     float latitude;
@@ -20,7 +23,7 @@
     NSMutableDictionary *dictionaryofCoordinates; //Used to store Parse data so we can figure out which location is the closest.
 }
 
-@property IBOutlet UITableView *mainMenuTable;
+
 
 -(void)logUserOut;
 -(void)runGeolocationAndLocationFinding;

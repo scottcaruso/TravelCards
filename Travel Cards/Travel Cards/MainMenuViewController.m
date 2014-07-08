@@ -46,6 +46,7 @@
     //latitude = 40.748f;
     //longitude = -73.99f;
     
+    [self setFonts];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -95,7 +96,9 @@
     {
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
     thisCell.textLabel.text = menuItem;
+    thisCell.textLabel.font = font;
     thisCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return thisCell;
 }
@@ -163,6 +166,14 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removePersistentDomainForName:@"com.fullsail.TestApp.Travel-Cards"];
     [defaults synchronize];
+}
+
+-(void)setFonts
+{
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    //UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
+    [cityName setFont:font];
+    [tapImageLabel setFont:font];
 }
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
