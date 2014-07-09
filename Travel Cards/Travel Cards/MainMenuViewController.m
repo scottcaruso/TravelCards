@@ -170,7 +170,7 @@
 
 -(void)setFonts
 {
-    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:17];
     //UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
     [cityName setFont:font];
     [tapImageLabel setFont:font];
