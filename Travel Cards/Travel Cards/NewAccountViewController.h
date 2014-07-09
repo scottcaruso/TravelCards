@@ -19,5 +19,6 @@
 }
 
 -(IBAction)clickNewAccountButton:(id)sender;
+-(IBAction)textFieldReturn:(id)sender;
 
 @end

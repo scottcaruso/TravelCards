@@ -138,15 +138,25 @@
       NSFontAttributeName, nil]];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([desiredUserName isFirstResponder] && [touch view] != desiredUserName)
+    {
+        [desiredUserName resignFirstResponder];
+    } else if ([desiredPassword isFirstResponder] && [touch view] != desiredPassword)
+    {
+        [desiredPassword resignFirstResponder];
+    } else if ([retypePassword isFirstResponder] && [touch view] != retypePassword)
+    {
+        [retypePassword resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
 }
-*/
+
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
 
 @end
