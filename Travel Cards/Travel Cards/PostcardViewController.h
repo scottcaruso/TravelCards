@@ -27,6 +27,7 @@
 @property NSString *imageURL;
 @property NSString *landmarkID;
 @property NSNumber *userID;
+@prpert
 
 -(void)obtainObjectID;
 -(UIImage*)convertURLtoImage:(NSString*)url;
