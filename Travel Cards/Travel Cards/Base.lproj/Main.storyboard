@@ -321,8 +321,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttA-jD-n0s">
                                 <rect key="frame" x="0.0" y="523" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="View City Collection">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -332,9 +333,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-Lh-pHD">
                                 <rect key="frame" x="-17" y="479" width="355" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="View Postcard">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="kaY-2b-49z" kind="push" identifier="advanceToPostcard" id="oXT-Sa-t6V"/>
@@ -658,7 +659,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="4nk-T0-jBq"/>
         <segue reference="1p0-X3-cTl"/>
-        <segue reference="9j3-Mg-cH1"/>
+        <segue reference="bJF-rz-mIX"/>
         <segue reference="oXT-Sa-t6V"/>
     </inferredMetricsTieBreakers>
 </document>
