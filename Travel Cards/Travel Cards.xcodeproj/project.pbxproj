@@ -44,8 +44,8 @@
 		308600A21950149A003FF8A1 /* Travel_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600A11950149A003FF8A1 /* Travel_CardsTests.m */; };
 		308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */; };
 		308600B11952B19C003FF8A1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600B01952B19C003FF8A1 /* MapKit.framework */; };
-		309A0384196C4D6F00B64FE9 /* travelcardslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 309A0383196C4D6F00B64FE9 /* travelcardslogo.png */; };
 		309A0386196CE47E00B64FE9 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 309A0385196CE47E00B64FE9 /* placeholder.jpg */; };
+		309A0388196CE4C400B64FE9 /* travelcardslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 309A0387196CE4C400B64FE9 /* travelcardslogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,8 +109,8 @@
 		308600AD1952ADAA003FF8A1 /* MapScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScreenViewController.h; sourceTree = "<group>"; };
 		308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapScreenViewController.m; sourceTree = "<group>"; };
 		308600B01952B19C003FF8A1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		309A0383196C4D6F00B64FE9 /* travelcardslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = travelcardslogo.png; sourceTree = "<group>"; };
 		309A0385196CE47E00B64FE9 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
+		309A0387196CE4C400B64FE9 /* travelcardslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = travelcardslogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +153,7 @@
 			children = (
 				306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */,
 				309A0385196CE47E00B64FE9 /* placeholder.jpg */,
-				309A0383196C4D6F00B64FE9 /* travelcardslogo.png */,
+				309A0387196CE4C400B64FE9 /* travelcardslogo.png */,
 			);
 			name = Images;
 			path = ..;
@@ -351,8 +351,8 @@
 				306B58BC195A9DA9005DADB8 /* newyork_mainmenu.png in Resources */,
 				3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */,
 				3041F5F0196B230000C5E26C /* Antipasto_extralight.otf in Resources */,
+				309A0388196CE4C400B64FE9 /* travelcardslogo.png in Resources */,
 				309A0386196CE47E00B64FE9 /* placeholder.jpg in Resources */,
-				309A0384196C4D6F00B64FE9 /* travelcardslogo.png in Resources */,
 				3086008F1950149A003FF8A1 /* Images.xcassets in Resources */,
 				308600811950149A003FF8A1 /* InfoPlist.strings in Resources */,
 				3086008A1950149A003FF8A1 /* Main.storyboard in Resources */,
