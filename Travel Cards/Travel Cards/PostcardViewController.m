@@ -89,7 +89,7 @@
     {
         [addToCollectionButton setTitle:@"Not Close Enough to Check In!" forState:UIControlStateNormal];
         [addToCollectionButton setEnabled:false];
-        thisView.hidden = FALSE
+        thisView.hidden = FALSE;
     }
 }
 
