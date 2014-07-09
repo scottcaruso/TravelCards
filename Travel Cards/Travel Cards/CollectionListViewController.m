@@ -27,9 +27,14 @@
 
 - (void)viewDidLoad
 {
-    numberOfRows = 0;
-    listOfCities = [[NSMutableArray alloc] initWithObjects:nil];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    userID = [defaults objectForKey:@"SavedUserID"];
+    
+    numberOfUnownedRows = 0;
+    numberOfOwnedRows = 0;
+    listOfUnownedCities = [[NSMutableArray alloc] initWithObjects:nil];
     citiesPlusCodes = [[NSMutableDictionary alloc] init];
+    ownedCities = [[NSMutableArray alloc] initWithObjects:nil];
     [self retrieveNumberOfRowsAndCities];
     
     [self.navigationController.navigationBar setTitleTextAttributes:
@@ -49,13 +54,44 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    switch (section)
+    {
+        case 0:
+            sectionName = @"Active Collections";
+            break;
+        case 1:
+            sectionName = @"Not Started Collections";
+            break;
+        default:
+            sectionName = @"Collections";
+            break;
+    }
+    return sectionName;
 }
 
 //This creates the rows for the ViewController table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return numberOfRows; //This is just placeholder!
+    NSInteger numberOfRows;
+    switch (section)
+    {
+        case 0:
+            numberOfRows = [ownedCities count];
+            break;
+        case 1:
+            numberOfRows = [listOfUnownedCities count];
+            break;
+        default:
+            numberOfRows = 0;
+            break;
+    }
+    return numberOfRows;
 }
 
 //This feeds the data for the table view
@@ -68,7 +104,14 @@
     {
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    NSString *collectionItem = [listOfCities objectAtIndex:indexPath.row];
+    NSString *collectionItem;
+    if (indexPath.section == 0)
+    {
+        collectionItem = [ownedCities objectAtIndex:indexPath.row];
+    } else
+    {
+        collectionItem = [listOfUnownedCities objectAtIndex:indexPath.row];
+    }
     UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
     thisCell.textLabel.text = collectionItem;
     thisCell.textLabel.font = font;
@@ -78,16 +121,35 @@
 -(void)retrieveNumberOfRowsAndCities
 {
     __block NSMutableArray *unsortedCities = [[NSMutableArray alloc] initWithObjects:nil];
+    __block NSMutableArray *arrayOfCollections = [[NSMutableArray alloc] initWithObjects:nil];
+    PFQuery *user = [PFUser query];
+    [user whereKey:@"userID" equalTo:userID];
+    [user findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects)
+            {
+                arrayOfCollections = [object objectForKey:@"arrayOfCollections"];
+            }
+            if ([arrayOfCollections count] > 0)
+            {
+                for (int x = 0; x < [arrayOfCollections count]; x++)
+                {
+                    [ownedCities addObject:[arrayOfCollections objectAtIndex:x]];
+                }
+            }
+        }
+    }];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            numberOfRows = objects.count;
+            numberOfUnownedRows = objects.count;
             for (PFObject *object in objects)
             {
                 [unsortedCities addObject:[object objectForKey:@"cityName"]];
                 [citiesPlusCodes setValue:[object objectForKey:@"cityClassName"] forKey:[object objectForKey:@"cityName"]];
             }
-            listOfCities = (NSMutableArray*)[unsortedCities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            listOfUnownedCities = (NSMutableArray*)[unsortedCities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             [collectionTable reloadData];
         } else {
             // Log details of the failure

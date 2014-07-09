@@ -11,9 +11,13 @@
 @interface CollectionListViewController : UIViewController <UITableViewDelegate>
 {
     IBOutlet UITableView *collectionTable;
-    int numberOfRows;
-    NSMutableArray *listOfCities;
+    int numberOfUnownedRows;
+    int numberOfOwnedRows;
+    NSNumber *userID;
+    
+    NSMutableArray *listOfUnownedCities;
     NSMutableDictionary *citiesPlusCodes;
+    NSMutableArray *ownedCities;
 }
 
 -(void)retrieveNumberOfRowsAndCities;
