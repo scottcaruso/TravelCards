@@ -14,7 +14,7 @@
 @end
 
 @implementation PostcardViewController
-@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID;
+@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID,closeEnoughToCheckIn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,30 +58,38 @@
 
 -(void)obtainObjectID
 {
-    NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",locationDatabase];
-    query = [PFQuery queryWithClassName:collectionString];
-    [query whereKey:@"userID" equalTo:userID];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            // The find succeeded.
-            // Do something with the found object
-            for (PFObject *object in objects)
+    //Are we close enough to check in? If so, let's see if we've already checked in or not.
+    if (closeEnoughToCheckIn)
+    {
+        NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",locationDatabase];
+        query = [PFQuery queryWithClassName:collectionString];
+        [query whereKey:@"userID" equalTo:userID];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error)
             {
-                thisObjectID = object.objectId;
-                NSNumber *landmarkOwned = [object objectForKey:landmarkID];
-                if ([landmarkOwned intValue] == 1)
+                // The find succeeded.
+                // Do something with the found object
+                for (PFObject *object in objects)
                 {
-                    isThisCardAlreadyOwned = true;
-                    [self updateButtonIfOwned:isThisCardAlreadyOwned];
+                    thisObjectID = object.objectId;
+                    NSNumber *landmarkOwned = [object objectForKey:landmarkID];
+                    if ([landmarkOwned intValue] == 1)
+                    {
+                        isThisCardAlreadyOwned = true;
+                        [self updateButtonIfOwned:isThisCardAlreadyOwned];
+                    }
                 }
+                thisView.hidden = FALSE;
+            } else
+            {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
-            thisView.hidden = FALSE;
-        } else
-        {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+        }];
+    } else
+    {
+        [addToCollectionButton setTitle:@"Not Close Enough to Check In!" forState:UIControlStateNormal];
+        [addToCollectionButton setEnabled:false];
+    }
 }
 
 -(void)updateButtonIfOwned:(bool)owned

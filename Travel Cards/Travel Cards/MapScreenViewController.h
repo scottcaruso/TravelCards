@@ -17,6 +17,8 @@
     
     NSMutableDictionary *locationData;
     NSString *currentlySelectedAnnotation;
+    
+    bool closeEnoughToCheckIn; //a boolean that tells the postcard view if the user is close enough to perform a check-in action
 }
 
 @property NSString *city;

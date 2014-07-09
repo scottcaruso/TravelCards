@@ -27,7 +27,7 @@
 @property NSString *imageURL;
 @property NSString *landmarkID;
 @property NSNumber *userID;
-@prpert
+@property bool closeEnoughToCheckIn;
 
 -(void)obtainObjectID;
 -(UIImage*)convertURLtoImage:(NSString*)url;

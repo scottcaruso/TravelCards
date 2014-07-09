@@ -123,6 +123,9 @@
     MKPointAnnotation *point = view.annotation;
     NSString *currentTitle = point.title;
     currentlySelectedAnnotation = currentTitle;
+    CLLocation *myLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+    CLLocation *pointLocation = [[CLLocation alloc] initWithLatitude:point.coordinate.latitude longitude:point.coordinate.longitude];
+    closeEnoughToCheckIn = [self canWeCheckIn:myLocation landmark:pointLocation];
 }
 
 -(void)verifyIfCollectionExistsAndCreateIfNot
@@ -169,6 +172,7 @@
         newView.locationDescription = [thisData objectAtIndex:0];
         newView.imageURL = [thisData objectAtIndex:3];
         newView.landmarkID = [thisData objectAtIndex:4];
+        newView.closeEnoughToCheckIn = closeEnoughToCheckIn;
     }
     if ([[segue identifier] isEqualToString:@"goToCollection"])
     {
@@ -177,6 +181,18 @@
         
         // Pass the city identifier, latitude, and longitude of the current location
         newView.cityCodeName = city;
+    }
+}
+
+-(bool)canWeCheckIn:(CLLocation*)userLocation landmark:(CLLocation*)landmark
+{
+    CLLocationDistance currentDistance = [userLocation distanceFromLocation:landmark];
+    if (currentDistance <= 500)
+    {
+        return TRUE;
+    } else
+    {
+        return FALSE;
     }
 }
 
