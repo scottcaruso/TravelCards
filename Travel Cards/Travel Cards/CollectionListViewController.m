@@ -105,9 +105,23 @@
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     NSString *collectionItem;
+    NSArray *arrayOfKeys = [citiesPlusCodes allKeys];
+    NSMutableArray *arrayOfOwnedCollections = [[NSMutableArray alloc] init];
     if (indexPath.section == 0)
     {
-        collectionItem = [ownedCities objectAtIndex:indexPath.row];
+        for (int x = 0; x < [ownedCities count]; x ++)
+        {
+            NSString *city = [ownedCities objectAtIndex:x];
+            for (int x = 0; x < [arrayOfKeys count]; x++)
+            {
+                NSString *thisCityCode = [citiesPlusCodes objectForKey:[arrayOfKeys objectAtIndex:x]];
+                if ([thisCityCode isEqualToString:city])
+                {
+                    [arrayOfOwnedCollections addObject:[arrayOfKeys objectAtIndex:x]];
+                }
+            }
+        }
+        collectionItem = [arrayOfOwnedCollections objectAtIndex:indexPath.row];
     } else
     {
         collectionItem = [listOfUnownedCities objectAtIndex:indexPath.row];
@@ -158,7 +172,6 @@
                 {
                     if ([thisCityCode isEqualToString:[ownedCities objectAtIndex:x]])
                     {
-                        [citiesPlusCodes removeObjectForKey:thisKey];
                         [unsortedCities removeObject:thisKey];
                     }
                 }
