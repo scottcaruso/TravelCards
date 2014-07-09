@@ -58,39 +58,34 @@
 
 -(void)obtainObjectID
 {
-    //Are we close enough to check in? If so, let's see if we've already checked in or not.
-    if (closeEnoughToCheckIn)
-    {
-        NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",locationDatabase];
-        query = [PFQuery queryWithClassName:collectionString];
-        [query whereKey:@"userID" equalTo:userID];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error)
+    NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",locationDatabase];
+    query = [PFQuery queryWithClassName:collectionString];
+    [query whereKey:@"userID" equalTo:userID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            // The find succeeded.
+            // Do something with the found object
+            for (PFObject *object in objects)
             {
-                // The find succeeded.
-                // Do something with the found object
-                for (PFObject *object in objects)
+                thisObjectID = object.objectId;
+                NSNumber *landmarkOwned = [object objectForKey:landmarkID];
+                if ([landmarkOwned intValue] == 1)
                 {
-                    thisObjectID = object.objectId;
-                    NSNumber *landmarkOwned = [object objectForKey:landmarkID];
-                    if ([landmarkOwned intValue] == 1)
-                    {
-                        isThisCardAlreadyOwned = true;
-                        [self updateButtonIfOwned:isThisCardAlreadyOwned];
-                    }
+                    isThisCardAlreadyOwned = true;
+                    [self updateButtonIfOwned:isThisCardAlreadyOwned];
+                } else if (!closeEnoughToCheckIn) //Are we close enough to check in? If not, let's stop the user from being able to check-in.
+                {
+                    [addToCollectionButton setTitle:@"Not Close Enough to Check In!" forState:UIControlStateNormal];
+                    [addToCollectionButton setEnabled:false];
                 }
-                thisView.hidden = FALSE;
-            } else
-            {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
-        }];
-    } else
-    {
-        [addToCollectionButton setTitle:@"Not Close Enough to Check In!" forState:UIControlStateNormal];
-        [addToCollectionButton setEnabled:false];
-        thisView.hidden = FALSE;
-    }
+            thisView.hidden = FALSE;
+        } else
+        {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 -(void)updateButtonIfOwned:(bool)owned

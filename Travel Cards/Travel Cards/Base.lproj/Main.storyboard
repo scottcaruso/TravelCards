@@ -309,7 +309,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="por-jk-KIa">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="por-jk-KIa">
                                 <rect key="frame" x="0.0" y="67" width="320" height="415"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
@@ -653,7 +653,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="1p0-X3-cTl"/>
         <segue reference="4nk-T0-jBq"/>
-        <segue reference="9j3-Mg-cH1"/>
-        <segue reference="9oO-2h-1dY"/>
+        <segue reference="bJF-rz-mIX"/>
+        <segue reference="oXT-Sa-t6V"/>
     </inferredMetricsTieBreakers>
 </document>

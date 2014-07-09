@@ -187,7 +187,7 @@
 -(bool)canWeCheckIn:(CLLocation*)userLocation landmark:(CLLocation*)landmark
 {
     CLLocationDistance currentDistance = [userLocation distanceFromLocation:landmark];
-    if (currentDistance <= 500)
+    if (currentDistance <= 750)
     {
         return TRUE;
     } else
