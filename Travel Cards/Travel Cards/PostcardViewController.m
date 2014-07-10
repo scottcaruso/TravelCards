@@ -107,6 +107,10 @@
     }];
     [addToCollectionButton setTitle:@"Already collected!" forState:UIControlStateNormal];
     [addToCollectionButton setEnabled:false];
+    locationNameLabel.text = locationName;
+    modalView.hidden = false;
+    mainView.layer.opacity = .35f;
+
 }
 
 -(void)setFonts
@@ -122,6 +126,12 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
       NSFontAttributeName, nil]];
+}
+
+-(IBAction)closeModalView:(id)sender
+{
+    modalView.hidden = TRUE;
+    mainView.layer.opacity = 1.0f;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

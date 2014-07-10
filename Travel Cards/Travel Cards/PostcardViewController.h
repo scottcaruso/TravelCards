@@ -19,6 +19,13 @@
     NSString *thisObjectID;
     PFQuery *query;
     bool isThisCardAlreadyOwned;
+    
+    IBOutlet UIView *mainView;
+    IBOutlet UIView *modalView;
+    IBOutlet UILabel *locationNameLabel;
+    IBOutlet UIButton *facebookButton;
+    IBOutlet UIButton *twitterButton;
+    IBOutlet UIButton *closeButton;
 }
 
 @property NSString *locationDatabase;
@@ -32,5 +39,6 @@
 -(void)obtainObjectID;
 -(UIImage*)convertURLtoImage:(NSString*)url;
 -(IBAction)addCardToCollection:(id)sender;
+-(IBAction)closeModalView:(id)sender;
 
 @end
