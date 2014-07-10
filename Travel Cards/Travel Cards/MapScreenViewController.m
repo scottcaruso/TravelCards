@@ -78,6 +78,7 @@
                 [locationData setValue:arrayOfData forKey:currentLocationName];
             }
             [self addAnnotations];
+            [self nearbyCheckinPossible];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -205,6 +206,36 @@
     } else
     {
         return FALSE;
+    }
+}
+
+-(void)nearbyCheckinPossible
+{
+    int numberOfLandmarks = [locationData count];
+    NSArray *arrayOfKeys = [locationData allKeys];
+    CLLocation *myLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+    NSString *closestLandmark = @"None";
+    double defaultDistance = 750;
+    for (int x = 0; x < numberOfLandmarks; x++)
+    {
+        NSString *thisName = [arrayOfKeys objectAtIndex:x];
+        NSArray *arrayOfData = [locationData objectForKey:thisName];
+        NSNumber *thisLatitude = [arrayOfData objectAtIndex:1];
+        NSNumber *thisLongitude = [arrayOfData objectAtIndex:2];
+        CLLocation *pointLocation = [[CLLocation alloc] initWithLatitude:[thisLatitude doubleValue] longitude:[thisLongitude doubleValue]];
+        CLLocationDistance currentDistance = [myLocation distanceFromLocation:pointLocation];
+        if (currentDistance < defaultDistance)
+        {
+            closestLandmark = thisName;
+            defaultDistance = currentDistance;
+        }
+    }
+    if (![closestLandmark isEqualToString:@"None"])
+    {
+        NSString *checkinText = [[NSString alloc] initWithFormat:@"You are close to %@! Do you want to view its postcard?",closestLandmark];
+        UIAlertView *checkinAlert = [[UIAlertView alloc] initWithTitle:@"PLACEHOLDER" message:checkinText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        checkinAlert.alertViewStyle = UIAlertViewStyleDefault;
+        [checkinAlert show];
     }
 }
 

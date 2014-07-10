@@ -73,8 +73,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
-            // The find succeeded.
-            // Do something with the found object
             for (PFObject *object in objects)
             {
                 thisObjectID = object.objectId;
