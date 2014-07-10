@@ -127,7 +127,7 @@
     UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
     UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
     UIFont *thinFont = [UIFont fontWithName:@"Antipasto-ExtraLight" size:15];
-    [postcardTitle setFont:font];
+    postcardTitle.titleLabel.font=font;
     [postcardDetails setFont:thinFont];
     addToCollectionButton.titleLabel.font = boldFont;
     

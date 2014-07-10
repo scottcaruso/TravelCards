@@ -105,7 +105,7 @@
     if ([[segue identifier] isEqualToString:@"PostcardFromCollection"])
     {
         NSIndexPath *selectedIndexPath = [collectionView indexPathForCell:sender];
-        CustomCollectionViewCell *cell = [collectionView cellForItemAtIndexPath:selectedIndexPath];
+        CustomCollectionViewCell *cell = (CustomCollectionViewCell*)[collectionView cellForItemAtIndexPath:selectedIndexPath];
         PostcardViewController *newView = [segue destinationViewController];
         newView.locationDatabase = cityCodeName;
         newView.locationName = cell.locationName.text;
