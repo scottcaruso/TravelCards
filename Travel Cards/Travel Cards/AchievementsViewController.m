@@ -26,9 +26,6 @@
 - (void)viewDidLoad
 {
     numberOfAchievementCategories = 5; //This is just placeholder for now. It will be generated from the dynamic data.
-    UIAlertView *achievements = [[UIAlertView alloc] initWithTitle:@"Coming soon!" message:@"Achievements are coming in Sprint 3!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    achievements.alertViewStyle = UIAlertViewStyleDefault;
-    [achievements show];
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:

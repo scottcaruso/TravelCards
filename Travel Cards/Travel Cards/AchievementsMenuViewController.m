@@ -7,6 +7,7 @@
 //
 
 #import "AchievementsMenuViewController.h"
+#import "AchievementTableViewCell.h"
 
 @interface AchievementsMenuViewController ()
 
@@ -35,15 +36,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    return 1;
 }
-*/
+
+//This creates the rows for the ViewController table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+//This feeds the data for the table view
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"Cell";
+    
+    AchievementTableViewCell *thisCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    if (thisCell != nil)
+    {
+        NSString *ranking = [[NSString alloc] initWithFormat:@"%i",indexPath.row+1];
+        thisCell.ranking.text = ranking;
+        thisCell.userName.text = @"Placeholder User Name";
+        thisCell.score.text = @"N/A";
+    }
+    return thisCell;
+}
+
+
 
 @end
