@@ -10,6 +10,7 @@
 		3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */; };
 		3041F5F0196B230000C5E26C /* Antipasto_extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */; };
 		3041F5F1196B230300C5E26C /* Antipasto_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */; };
+		3069E095196E4751004C109E /* AchievementsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3069E094196E4751004C109E /* AchievementsMenuViewController.m */; };
 		306B58BC195A9DA9005DADB8 /* newyork_mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */; };
 		306B58BF195B9265005DADB8 /* PostcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58BE195B9265005DADB8 /* PostcardViewController.m */; };
 		306B58C4195BEE2B005DADB8 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */; };
@@ -62,6 +63,8 @@
 		3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extrabold.otf; sourceTree = "<group>"; };
 		3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extralight.otf; sourceTree = "<group>"; };
 		3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_regular.otf; sourceTree = "<group>"; };
+		3069E093196E4751004C109E /* AchievementsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsMenuViewController.h; sourceTree = "<group>"; };
+		3069E094196E4751004C109E /* AchievementsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsMenuViewController.m; sourceTree = "<group>"; };
 		306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newyork_mainmenu.png; path = "Travel Cards/newyork_mainmenu.png"; sourceTree = "<group>"; };
 		306B58BD195B9265005DADB8 /* PostcardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostcardViewController.h; sourceTree = "<group>"; };
 		306B58BE195B9265005DADB8 /* PostcardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostcardViewController.m; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */,
 				306B58BD195B9265005DADB8 /* PostcardViewController.h */,
 				306B58BE195B9265005DADB8 /* PostcardViewController.m */,
+				3069E093196E4751004C109E /* AchievementsMenuViewController.h */,
+				3069E094196E4751004C109E /* AchievementsMenuViewController.m */,
 				307DD8DB1954058D00860DB9 /* AchievementsViewController.h */,
 				307DD8DC1954058D00860DB9 /* AchievementsViewController.m */,
 				307DD8DE195405A800860DB9 /* CollectionListViewController.h */,
@@ -380,6 +385,7 @@
 				308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */,
 				306B58C4195BEE2B005DADB8 /* CustomCollectionViewCell.m in Sources */,
 				307DD8FD1959336300860DB9 /* CollectionsViewController.m in Sources */,
+				3069E095196E4751004C109E /* AchievementsMenuViewController.m in Sources */,
 				307DD8FA1957B44300860DB9 /* NewAccountViewController.m in Sources */,
 				307DD8DD1954058D00860DB9 /* AchievementsViewController.m in Sources */,
 				308600871950149A003FF8A1 /* AppDelegate.m in Sources */,
