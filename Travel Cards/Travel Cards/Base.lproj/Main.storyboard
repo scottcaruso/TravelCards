@@ -349,6 +349,7 @@
                         <outlet property="advanceToCollections" destination="ttA-jD-n0s" id="c0I-Sn-RME"/>
                         <outlet property="advanceToPostcard" destination="nO7-Lh-pHD" id="JQw-Cn-se9"/>
                         <outlet property="locationMap" destination="por-jk-KIa" id="QEb-ps-Jwy"/>
+                        <segue destination="kaY-2b-49z" kind="push" identifier="fromAlertView" id="oX0-ch-f08"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMo-Ku-kGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -797,6 +798,6 @@
         <segue reference="4nk-T0-jBq"/>
         <segue reference="1p0-X3-cTl"/>
         <segue reference="bJF-rz-mIX"/>
-        <segue reference="9oO-2h-1dY"/>
+        <segue reference="oX0-ch-f08"/>
     </inferredMetricsTieBreakers>
 </document>

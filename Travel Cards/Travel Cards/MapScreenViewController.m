@@ -33,6 +33,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
     
+    defaultCheckinDistance = 750;
+    
     locationData = [[NSMutableDictionary alloc] init];
     [self.navigationItem setTitle:cityTitle];
     [self getDataForLocation:city];
@@ -195,12 +197,28 @@
         // Pass the city identifier, latitude, and longitude of the current location
         newView.cityCodeName = city;
     }
+    if ([[segue identifier] isEqualToString:@"fromAlertView"])
+    {
+        // Get reference to the destination view controller
+        PostcardViewController *newView = [segue destinationViewController];
+        
+        // Pass the city identifier, latitude, and longitude of the current location
+        NSArray *thisData = [locationData objectForKey:locationFromPopup];
+        newView.locationDatabase = city;
+        newView.locationName = locationFromPopup;
+        newView.locationDescription = [thisData objectAtIndex:0];
+        newView.imageURL = [thisData objectAtIndex:3];
+        newView.landmarkID = [thisData objectAtIndex:4];
+        newView.closeEnoughToCheckIn = true;
+        newView.isADealAvailable = [thisData objectAtIndex:5];
+        newView.dealText = [thisData objectAtIndex:6];
+    }
 }
 
 -(bool)canWeCheckIn:(CLLocation*)userLocation landmark:(CLLocation*)landmark
 {
     CLLocationDistance currentDistance = [userLocation distanceFromLocation:landmark];
-    if (currentDistance <= 750)
+    if (currentDistance <= defaultCheckinDistance)
     {
         return TRUE;
     } else
@@ -215,7 +233,7 @@
     NSArray *arrayOfKeys = [locationData allKeys];
     CLLocation *myLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     NSString *closestLandmark = @"None";
-    double defaultDistance = 750;
+    double defaultDistance = defaultCheckinDistance;
     for (int x = 0; x < numberOfLandmarks; x++)
     {
         NSString *thisName = [arrayOfKeys objectAtIndex:x];
@@ -233,9 +251,21 @@
     if (![closestLandmark isEqualToString:@"None"])
     {
         NSString *checkinText = [[NSString alloc] initWithFormat:@"You are close to %@! Do you want to view its postcard?",closestLandmark];
-        UIAlertView *checkinAlert = [[UIAlertView alloc] initWithTitle:@"PLACEHOLDER" message:checkinText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *checkinAlert = [[UIAlertView alloc] initWithTitle:@"Nearby Landmark!" message:checkinText delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
         checkinAlert.alertViewStyle = UIAlertViewStyleDefault;
+        locationFromPopup = closestLandmark;
         [checkinAlert show];
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ([alertView.title isEqualToString:@"Nearby Landmark!"])
+    {
+        if (buttonIndex == 1)
+        {
+            [self performSegueWithIdentifier:@"fromAlertView" sender:self];
+        }
     }
 }
 
