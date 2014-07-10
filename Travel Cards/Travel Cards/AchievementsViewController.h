@@ -12,6 +12,10 @@
 {
     IBOutlet UITableView *achievementTable;
     int numberOfAchievementCategories;
+    
+    NSMutableDictionary *citiesPlusCodes;
+    NSMutableArray *listOfUnownedCities;
+    NSMutableDictionary *achievementsByCity;
 }
 
 @end

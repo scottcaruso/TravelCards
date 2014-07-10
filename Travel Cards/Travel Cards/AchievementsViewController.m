@@ -7,6 +7,7 @@
 //
 
 #import "AchievementsViewController.h"
+#import <Parse/Parse.h>
 
 @interface AchievementsViewController ()
 
@@ -25,12 +26,18 @@
 
 - (void)viewDidLoad
 {
-    numberOfAchievementCategories = 5; //This is just placeholder for now. It will be generated from the dynamic data.
+    numberOfAchievementCategories = 1; //This is just placeholder for now. It will be generated from the dynamic data.
+    
+    citiesPlusCodes = [[NSMutableDictionary alloc] init];
+    achievementsByCity = [[NSMutableDictionary alloc] init];
+    listOfUnownedCities = [[NSMutableArray alloc] initWithObjects:nil];
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
       NSFontAttributeName, nil]];
+    
+    [self retrieveAchievements];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -75,15 +82,16 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSString *sectionName;
-    for (int x = 1; x <= numberOfAchievementCategories; x++)
+    switch (section)
     {
-        if (section == x-1)
-        {
-            sectionName = [[NSString alloc] initWithFormat:@"City Number %i",x];
-            return sectionName;
-        }
+        case 0:
+            sectionName = @"New York";
+            break;
+        default:
+            sectionName = @"Collections";
+            break;
     }
-    return nil;
+    return sectionName;
 }
 
 //This feeds the data for the table view
@@ -94,12 +102,63 @@
     UITableViewCell *thisCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (thisCell == nil)
     {
-        thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    NSString *sampleAchievement = @"Sample Achievement";;
-
-    thisCell.textLabel.text = sampleAchievement;
+    NSString *achievementText;
+    if ([achievementsByCity count] != 0)
+    {
+        NSMutableArray *thisCityAchievements = [achievementsByCity objectForKey:@"NewYork"];
+        achievementText = [thisCityAchievements objectAtIndex:indexPath.row];
+    } else
+    {
+        achievementText = @"Placeholder";
+    }
+    thisCell.textLabel.text = achievementText;
+    thisCell.detailTextLabel.text = @"Complete/Not Complete";
     return thisCell;
+}
+
+-(void)retrieveAchievements
+{
+    __block NSMutableArray *unsortedCities = [[NSMutableArray alloc] initWithObjects:nil];
+    PFQuery *cityQuery = [PFQuery queryWithClassName:@"CityNames"];
+    [cityQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects)
+            {
+                [unsortedCities addObject:[object objectForKey:@"cityName"]];
+                [citiesPlusCodes setValue:[object objectForKey:@"cityClassName"] forKey:[object objectForKey:@"cityName"]];
+            }
+            listOfUnownedCities = (NSMutableArray*)[unsortedCities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            [self putAchievementsIntoDictionary];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(void)putAchievementsIntoDictionary
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Achievements"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSMutableArray *achievementNames = [[NSMutableArray alloc] initWithObjects:nil];
+            for (PFObject *object in objects)
+            {
+                NSString *achievementCity = [object objectForKey:@"achievementCategory"];
+                if ([achievementCity isEqualToString:@"NewYork"])
+                {
+                    [achievementNames addObject:[object objectForKey:@"achievementName"]];
+                    [achievementsByCity setValue:achievementNames forKey:achievementCity];
+                }
+            }
+            [achievementTable reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 @end
