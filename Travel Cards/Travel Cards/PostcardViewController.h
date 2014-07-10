@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
 @interface PostcardViewController : UIViewController
 {
@@ -40,5 +42,7 @@
 -(UIImage*)convertURLtoImage:(NSString*)url;
 -(IBAction)addCardToCollection:(id)sender;
 -(IBAction)closeModalView:(id)sender;
+-(IBAction)clickFacebookButton:(id)sender;
+-(IBAction)clickTwitterButton:(id)sender;
 
 @end

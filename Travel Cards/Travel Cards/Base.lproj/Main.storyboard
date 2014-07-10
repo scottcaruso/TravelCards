@@ -508,6 +508,9 @@
                                         <state key="normal" title="On Facebook">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clickFacebookButton:" destination="kaY-2b-49z" eventType="touchUpInside" id="aCq-3T-Krb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdC-W7-b6n">
                                         <rect key="frame" x="99" y="180" width="70" height="30"/>
@@ -515,6 +518,9 @@
                                         <state key="normal" title="On Twitter">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clickTwitterButton:" destination="kaY-2b-49z" eventType="touchUpInside" id="JF1-qR-uPl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vj9-Ye-qTj">
                                         <rect key="frame" x="90" y="218" width="89" height="30"/>

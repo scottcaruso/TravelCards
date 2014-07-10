@@ -134,6 +134,28 @@
     mainView.layer.opacity = 1.0f;
 }
 
+-(IBAction)clickFacebookButton:(id)sender
+{
+    SLComposeViewController *postToFacebook = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    if (postToFacebook != nil)
+    {
+        NSString *post= [NSString stringWithFormat:@"I just checked into %@ using the Travel Cards App! Check it out at (PLACEHOLDER URL).",locationName];
+        [postToFacebook setInitialText:post];
+        [self presentViewController:postToFacebook animated:true completion:nil];
+    }
+}
+
+-(IBAction)clickTwitterButton:(id)sender
+{
+    SLComposeViewController *postTweet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    if (postTweet != nil)
+    {
+        NSString *tweet= [NSString stringWithFormat:@"I just checked into %@ using the Travel Cards App! Check it out at (PLACEHOLDER URL).",locationName];
+        [postTweet setInitialText:tweet];
+        [self presentViewController:postTweet animated:true completion:nil];
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 
