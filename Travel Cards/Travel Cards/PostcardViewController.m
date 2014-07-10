@@ -14,7 +14,7 @@
 @end
 
 @implementation PostcardViewController
-@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID,closeEnoughToCheckIn;
+@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID,closeEnoughToCheckIn,isADealAvailable,dealText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,9 +32,18 @@
     userID = [defaults objectForKey:@"SavedUserID"];
     
     [self obtainObjectID];
-    postcardTitle.text = locationName;
+    
+    self.title=locationName;
     postcardDetails.text = locationDescription;
     postcardImage.image = [self convertURLtoImage:imageURL];
+    
+    int deal = [isADealAvailable intValue];
+    
+    if (deal == 1)
+    {
+        [postcardTitle setTitle:@"Tap here for a great deal!" forState:UIControlStateNormal];
+        postcardTitle.hidden = false;
+    }
     
     [self setFonts];
     [super viewDidLoad];
@@ -154,6 +163,13 @@
         [postTweet setInitialText:tweet];
         [self presentViewController:postTweet animated:true completion:nil];
     }
+}
+
+-(IBAction)clickDealButton:(id)sender
+{
+    UIAlertView *dealAlert = [[UIAlertView alloc] initWithTitle:@"Special deal!" message:dealText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    dealAlert.alertViewStyle = UIAlertViewStyleDefault;
+    [dealAlert show];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

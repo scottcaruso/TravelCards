@@ -13,7 +13,7 @@
 
 @interface PostcardViewController : UIViewController
 {
-    IBOutlet UILabel *postcardTitle;
+    IBOutlet UIButton *postcardTitle;
     IBOutlet UITextView *postcardDetails;
     IBOutlet UIImageView *postcardImage;
     IBOutlet UIView *thisView;
@@ -36,6 +36,8 @@
 @property NSString *imageURL;
 @property NSString *landmarkID;
 @property NSNumber *userID;
+@property NSNumber *isADealAvailable;
+@property NSString *dealText;
 @property bool closeEnoughToCheckIn;
 
 -(void)obtainObjectID;
@@ -44,5 +46,6 @@
 -(IBAction)closeModalView:(id)sender;
 -(IBAction)clickFacebookButton:(id)sender;
 -(IBAction)clickTwitterButton:(id)sender;
+-(IBAction)clickDealButton:(id)sender;
 
 @end

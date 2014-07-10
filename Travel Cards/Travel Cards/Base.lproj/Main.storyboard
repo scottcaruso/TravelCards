@@ -396,14 +396,18 @@
                                             <action selector="addCardToCollection:" destination="kaY-2b-49z" eventType="touchUpInside" id="ev7-cF-IOX"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7O-eZ-Vyp">
-                                        <rect key="frame" x="0.0" y="283" width="320" height="21"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKH-WK-6hz">
+                                        <rect key="frame" x="0.0" y="274" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <color key="backgroundColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Deal Button">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickDealButton:" destination="kaY-2b-49z" eventType="touchUpInside" id="0ie-Hf-63c"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -482,7 +486,7 @@
                         <outlet property="modalView" destination="P5M-dG-ISj" id="LTL-1b-p7E"/>
                         <outlet property="postcardDetails" destination="jze-2b-hvo" id="3xD-Tl-aoR"/>
                         <outlet property="postcardImage" destination="RXq-ge-ftg" id="nJ6-TT-X1g"/>
-                        <outlet property="postcardTitle" destination="A7O-eZ-Vyp" id="8Yp-9c-mp3"/>
+                        <outlet property="postcardTitle" destination="HKH-WK-6hz" id="og2-zO-hRu"/>
                         <outlet property="thisView" destination="i2Q-T5-1Re" id="iep-5N-wBI"/>
                         <outlet property="twitterButton" destination="RdC-W7-b6n" id="l0z-Na-VsU"/>
                     </connections>
@@ -581,7 +585,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R2k-Tg-Od8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="R2k-Tg-Od8">
                                 <rect key="frame" x="28" y="93" width="104" height="77"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>

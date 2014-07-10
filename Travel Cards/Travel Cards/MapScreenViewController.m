@@ -64,7 +64,17 @@
                 NSNumber *currentLocationLongitude = [object objectForKey:@"longitude"];
                 NSString *imageURL = [object objectForKey:@"imageURL"];
                 NSString *landmarkID = [object objectForKey:@"landmarkID"];
-                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, landmarkID, nil];
+                NSNumber *isADealAvailable = [object objectForKey:@"dealAvailable"];
+                int deal = [isADealAvailable intValue];
+                NSString *currentDealText;
+                if (deal == 1)
+                {
+                    currentDealText = [object objectForKey:@"dealText"];
+                } else
+                {
+                    currentDealText = @"No deal!";
+                }
+                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, landmarkID, isADealAvailable, currentDealText, nil];
                 [locationData setValue:arrayOfData forKey:currentLocationName];
             }
             [self addAnnotations];
@@ -173,6 +183,8 @@
         newView.imageURL = [thisData objectAtIndex:3];
         newView.landmarkID = [thisData objectAtIndex:4];
         newView.closeEnoughToCheckIn = closeEnoughToCheckIn;
+        newView.isADealAvailable = [thisData objectAtIndex:5];
+        newView.dealText = [thisData objectAtIndex:6];
     }
     if ([[segue identifier] isEqualToString:@"goToCollection"])
     {
