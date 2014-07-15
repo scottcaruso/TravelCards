@@ -26,6 +26,9 @@
 
 - (void)viewDidLoad
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    userID = [defaults objectForKey:@"SavedUserID"];
+    
     numberOfAchievementCategories = 1; //This is just placeholder for now. It will be generated from the dynamic data.
     
     citiesPlusCodes = [[NSMutableDictionary alloc] init];
@@ -49,16 +52,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -114,7 +107,7 @@
         achievementText = @"Placeholder";
     }
     thisCell.textLabel.text = achievementText;
-    thisCell.detailTextLabel.text = @"Complete/Not Complete";
+    thisCell.detailTextLabel.text = [achievementStatus objectAtIndex:indexPath.row];
     return thisCell;
 }
 
@@ -143,9 +136,11 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Achievements"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            achievementCodes = [[NSMutableArray alloc] initWithObjects:nil];
             NSMutableArray *achievementNames = [[NSMutableArray alloc] initWithObjects:nil];
             for (PFObject *object in objects)
             {
+                [achievementCodes addObject:object.objectId];
                 NSString *achievementCity = [object objectForKey:@"achievementCategory"];
                 if ([achievementCity isEqualToString:@"NewYork"])
                 {
@@ -153,11 +148,37 @@
                     [achievementsByCity setValue:achievementNames forKey:achievementCity];
                 }
             }
-            [achievementTable reloadData];
+            [self getAchievementCompletionStatuses];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+    }];
+}
+
+-(void)getAchievementCompletionStatuses
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+    [query whereKey:@"userID" equalTo:userID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            achievementStatus = [[NSMutableArray alloc] initWithObjects:nil];
+            for (PFObject *object in objects)
+            {
+                for (int x = 0; x < [achievementCodes count]; x++)
+                {
+                    NSNumber *collectedStatus = [object objectForKey:[achievementCodes objectAtIndex:x]];
+                    if (collectedStatus)
+                    {
+                        [achievementStatus addObject:@"Complete"];
+                    } else
+                    {
+                        [achievementStatus addObject:@"Not Complete"];
+                    }
+                }
+            }
+        }
+        [achievementTable reloadData];
     }];
 }
 

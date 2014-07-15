@@ -12,10 +12,15 @@
 {
     IBOutlet UITableView *achievementTable;
     int numberOfAchievementCategories;
+    NSNumber *userID;
     
+    NSMutableArray *achievementCodes;
     NSMutableDictionary *citiesPlusCodes;
     NSMutableArray *listOfUnownedCities;
     NSMutableDictionary *achievementsByCity;
+    NSMutableArray *collectedOrNot;
+    
+    NSMutableArray *achievementStatus;
 }
 
 @end
