@@ -76,11 +76,10 @@
             for (PFObject *object in objects)
             {
                 thisObjectID = object.objectId;
-                NSNumber *landmarkOwned = [object objectForKey:landmarkID];
-                if ([landmarkOwned intValue] == 1)
+                NSString *landmarkOwned = [object objectForKey:landmarkID];
+                if (landmarkOwned != nil)
                 {
-                    isThisCardAlreadyOwned = true;
-                    [self updateButtonIfOwned:isThisCardAlreadyOwned];
+                    [self updateButtonIfOwned:landmarkOwned];
                 } else if (!closeEnoughToCheckIn) //Are we close enough to check in? If not, let's stop the user from being able to check-in.
                 {
                     [addToCollectionButton setTitle:@"Not Close Enough to Check In!" forState:UIControlStateNormal];
@@ -95,21 +94,25 @@
     }];
 }
 
--(void)updateButtonIfOwned:(bool)owned
+-(void)updateButtonIfOwned:(NSString*)dateOwned
 {
-    if (owned)
-    {
-        [addToCollectionButton setTitle:@"Collected on: (DATE HERE)" forState:UIControlStateNormal];
-        [addToCollectionButton setEnabled:false];
-    }
+    NSString *collectionString = [[NSString alloc] initWithFormat:@"Collected on: %@",dateOwned];
+    [addToCollectionButton setTitle:collectionString forState:UIControlStateNormal];
+    [addToCollectionButton setEnabled:false];
 }
 
 -(IBAction)addCardToCollection:(id)sender
 {
+    NSDate *thisDate = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    
+    NSString *stringFromDate = [formatter stringFromDate:thisDate];
+    
     // Retrieve the object by id
     [query getObjectInBackgroundWithId:thisObjectID block:^(PFObject *collectionObject, NSError *error)
     {
-        collectionObject[landmarkID] = @1;
+        collectionObject[landmarkID] = stringFromDate;
         [collectionObject saveInBackground];
     }];
     [addToCollectionButton setTitle:@"Already collected!" forState:UIControlStateNormal];
