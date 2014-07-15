@@ -32,19 +32,29 @@
     dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
     
     //Step 1 - Start Geolocating user
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool fakeCoordinates = [defaults objectForKey:@"FakeCoordinates"];
+    double savedLatitude = [defaults doubleForKey:@"Latitude"];
+    double savedLongitude = [defaults doubleForKey:@"Longitude"];
+    if (fakeCoordinates)
+    {
+        latitude = savedLatitude;
+        longitude = savedLongitude;
+        [self runGeolocationAndLocationFinding];
+    } else
+    {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [locationManager startUpdatingLocation];
+    }
+
     
     //When we load the view, we are going to run the Geolocation functions. For now, we are spoofing the
     //data so that we can test the application as if we are in the New York area.
-    //[self runGeolocationAndLocationFinding];
     
     cityName.text = @"New York, NY";
     cityDataString = @"NewYork";
-    //latitude = 40.748f;
-    //longitude = -73.99f;
     
     [self setFonts];
     [super viewDidLoad];
@@ -164,7 +174,13 @@
 -(void)logUserOut
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool fakeCoordinates = [defaults objectForKey:@"FakeCoordinates"];
+    double savedLatitude = [defaults doubleForKey:@"Latitude"];
+    double savedLongitude = [defaults doubleForKey:@"Longitude"];
     [defaults removePersistentDomainForName:@"com.fullsail.TestApp.Travel-Cards"];
+    [defaults setBool:fakeCoordinates forKey:@"FakeCoordinates"];
+    [defaults setDouble:savedLatitude forKey:@"Latitude"];
+    [defaults setDouble:savedLongitude forKey:@"Longitude"];
     [defaults synchronize];
 }
 

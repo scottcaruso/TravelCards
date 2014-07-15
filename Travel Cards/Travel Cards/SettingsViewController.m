@@ -48,4 +48,27 @@
     }
 }
 
+-(IBAction)saveDebugSetting:(id)sender
+{
+    double latitude = [latitudeField.text doubleValue];
+    double longitude = [longitudeField.text doubleValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool savedCoordinates;
+    if ([debugSwitch isOn])
+    {
+        savedCoordinates = true;
+    } else
+    {
+        savedCoordinates = false;
+    }
+    [defaults setBool:true forKey:@"FakeCoordinates"];
+    [defaults setDouble:latitude forKey:@"Latitude"];
+    [defaults setDouble:longitude forKey:@"Longitude"];
+    [defaults synchronize];
+    UIAlertView *saveDetails = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"Your debug settings were saved successfully." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    saveDetails.alertViewStyle = UIAlertViewStyleDefault;
+    [saveDetails show];
+    
+}
+
 @end
