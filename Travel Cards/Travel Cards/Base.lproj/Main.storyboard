@@ -734,10 +734,10 @@
             </objects>
             <point key="canvasLocation" x="-124" y="-69"/>
         </scene>
-        <!--View Controller - Debug Settings-->
+        <!--Settings View Controller - Debug Settings-->
         <scene sceneID="2dv-Xp-yJH">
             <objects>
-                <viewController id="u3f-lO-dZu" sceneMemberID="viewController">
+                <viewController id="u3f-lO-dZu" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6aS-he-4lZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Um1-6k-hn5"/>
@@ -746,9 +746,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwv-SH-CS0">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fwv-SH-CS0">
                                 <rect key="frame" x="233" y="137" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchFlipped:" destination="u3f-lO-dZu" eventType="valueChanged" id="HS4-in-wA8"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Fake Coordinates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXe-70-vl6">
                                 <rect key="frame" x="39" y="142" width="171" height="21"/>
@@ -757,13 +760,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eJr-Yy-pUy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eJr-Yy-pUy">
                                 <rect key="frame" x="185" y="207" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTO-08-T4n">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTO-08-T4n">
                                 <rect key="frame" x="185" y="270" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -792,6 +795,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Debug Settings" id="bQN-dl-uH1"/>
+                    <connections>
+                        <outlet property="debugSwitch" destination="fwv-SH-CS0" id="mjw-fF-UMv"/>
+                        <outlet property="latitudeField" destination="eJr-Yy-pUy" id="Ytj-1y-xG6"/>
+                        <outlet property="longitudeField" destination="kTO-08-T4n" id="U0p-8l-zKe"/>
+                        <outlet property="saveSettings" destination="22p-oB-p0D" id="YIk-hD-NpZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bY2-5m-4FQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

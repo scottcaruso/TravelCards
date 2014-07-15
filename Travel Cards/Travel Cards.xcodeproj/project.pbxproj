@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30294E5A1974ED6B00BE115B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30294E591974ED6B00BE115B /* SettingsViewController.m */; };
 		3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */; };
 		3041F5F0196B230000C5E26C /* Antipasto_extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */; };
 		3041F5F1196B230300C5E26C /* Antipasto_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */; };
@@ -61,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30294E581974ED6B00BE115B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		30294E591974ED6B00BE115B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extrabold.otf; sourceTree = "<group>"; };
 		3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extralight.otf; sourceTree = "<group>"; };
 		3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_regular.otf; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 				307DD8FC1959336300860DB9 /* CollectionsViewController.m */,
 				306B58C2195BEE2B005DADB8 /* CustomCollectionViewCell.h */,
 				306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */,
+				30294E581974ED6B00BE115B /* SettingsViewController.h */,
+				30294E591974ED6B00BE115B /* SettingsViewController.m */,
 				3086008E1950149A003FF8A1 /* Images.xcassets */,
 				3086007D1950149A003FF8A1 /* Supporting Files */,
 			);
@@ -397,6 +402,7 @@
 				308600871950149A003FF8A1 /* AppDelegate.m in Sources */,
 				308600831950149A003FF8A1 /* main.m in Sources */,
 				307DD8E3195407AD00860DB9 /* MainMenuViewController.m in Sources */,
+				30294E5A1974ED6B00BE115B /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
