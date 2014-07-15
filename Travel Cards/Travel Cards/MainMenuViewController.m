@@ -30,10 +30,11 @@
     [self.navigationItem setHidesBackButton:YES];
     
     dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
+    dictionaryOfNamesAndClassNames = [[NSMutableDictionary alloc] init];
     
     //Step 1 - Start Geolocating user
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    bool fakeCoordinates = [defaults objectForKey:@"FakeCoordinates"];
+    bool fakeCoordinates = [defaults boolForKey:@"FakeCoordinates"];
     double savedLatitude = [defaults doubleForKey:@"Latitude"];
     double savedLongitude = [defaults doubleForKey:@"Longitude"];
     if (fakeCoordinates)
@@ -52,9 +53,6 @@
     
     //When we load the view, we are going to run the Geolocation functions. For now, we are spoofing the
     //data so that we can test the application as if we are in the New York area.
-    
-    cityName.text = @"New York, NY";
-    cityDataString = @"NewYork";
     
     [self setFonts];
     [super viewDidLoad];
@@ -128,12 +126,15 @@
                 NSNumber *thisLon = [object objectForKey:@"longitude"];
                 double latDouble = [thisLat doubleValue];
                 double lonDouble = [thisLon doubleValue];
+                NSString *thisCityCode = [object objectForKey:@"cityClassName"];
+                [dictionaryOfNamesAndClassNames setValue:thisCityCode forKey:[object objectForKey:@"cityName"]];
                 CLLocation *thisLocation = [[CLLocation alloc] initWithLatitude:latDouble longitude:lonDouble];
                 [dictionaryofCoordinates setValue:thisLocation forKey:[object objectForKey:@"cityName"]];
             }
             CLLocationDistance distance = 10000000000000;
             NSString *nameOfCity;
             CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+            
             //Step 3 - Compare current location to other locations to find out which, if any, is closest
             for (int x = 0; x < [dictionaryofCoordinates count]; x++)
             {
@@ -147,6 +148,8 @@
                 }
             }
             //THIS IS A DEBUG POPUP FOR TESTING PURPOSES. WILL BE REMOVED IN FINAL UI
+            cityName.text = nameOfCity;
+            cityDataString = [dictionaryOfNamesAndClassNames objectForKey:nameOfCity];
             NSString *alertString = [[NSString alloc] initWithFormat:@"The location nearest to you is %@, which is %f meters away.",nameOfCity,distance];
             UIAlertView *closestLocation = [[UIAlertView alloc] initWithTitle:@"PLACEHOLDER" message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             closestLocation.alertViewStyle = UIAlertViewStyleDefault;

@@ -61,7 +61,7 @@
     {
         savedCoordinates = false;
     }
-    [defaults setBool:true forKey:@"FakeCoordinates"];
+    [defaults setBool:savedCoordinates forKey:@"FakeCoordinates"];
     [defaults setDouble:latitude forKey:@"Latitude"];
     [defaults setDouble:longitude forKey:@"Longitude"];
     [defaults synchronize];

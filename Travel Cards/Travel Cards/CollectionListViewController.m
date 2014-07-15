@@ -151,38 +151,38 @@
                     [ownedCities addObject:[arrayOfCollections objectAtIndex:x]];
                 }
             }
+            PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    numberOfUnownedRows = objects.count;
+                    for (PFObject *object in objects)
+                    {
+                        [unsortedCities addObject:[object objectForKey:@"cityName"]];
+                        [citiesPlusCodes setValue:[object objectForKey:@"cityClassName"] forKey:[object objectForKey:@"cityName"]];
+                    }
+                    NSArray *arrayOfKeys = [citiesPlusCodes allKeys];
+                    for (int x = 0; x < [citiesPlusCodes count]; x++)
+                    {
+                        NSString *thisKey = [arrayOfKeys objectAtIndex:x];
+                        NSString *thisCityCode = [citiesPlusCodes objectForKey:thisKey];
+                        for (int x = 0; x < [ownedCities count]; x++)
+                        {
+                            if ([thisCityCode isEqualToString:[ownedCities objectAtIndex:x]])
+                            {
+                                [unsortedCities removeObject:thisKey];
+                            }
+                        }
+                    }
+                    listOfUnownedCities = (NSMutableArray*)[unsortedCities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+                    [collectionTable reloadData];
+                } else {
+                    // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
         }
     }];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            numberOfUnownedRows = objects.count;
-            for (PFObject *object in objects)
-            {
-                [unsortedCities addObject:[object objectForKey:@"cityName"]];
-                [citiesPlusCodes setValue:[object objectForKey:@"cityClassName"] forKey:[object objectForKey:@"cityName"]];
-            }
-            NSArray *arrayOfKeys = [citiesPlusCodes allKeys];
-            for (int x = 0; x < [citiesPlusCodes count]; x++)
-            {
-                NSString *thisKey = [arrayOfKeys objectAtIndex:x];
-                NSString *thisCityCode = [citiesPlusCodes objectForKey:thisKey];
-                for (int x = 0; x < [ownedCities count]; x++)
-                {
-                    if ([thisCityCode isEqualToString:[ownedCities objectAtIndex:x]])
-                    {
-                        [unsortedCities removeObject:thisKey];
-                    }
-                }
-            }
-            listOfUnownedCities = (NSMutableArray*)[unsortedCities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-            [collectionTable reloadData];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
