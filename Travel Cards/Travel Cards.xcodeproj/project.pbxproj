@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		30294E5A1974ED6B00BE115B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30294E591974ED6B00BE115B /* SettingsViewController.m */; };
+		30294E5C19763CE900BE115B /* popup_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 30294E5B19763CE800BE115B /* popup_background.png */; };
 		3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */; };
 		3041F5F0196B230000C5E26C /* Antipasto_extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */; };
 		3041F5F1196B230300C5E26C /* Antipasto_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		30294E581974ED6B00BE115B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		30294E591974ED6B00BE115B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		30294E5B19763CE800BE115B /* popup_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup_background.png; sourceTree = "<group>"; };
 		3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extrabold.otf; sourceTree = "<group>"; };
 		3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extralight.otf; sourceTree = "<group>"; };
 		3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_regular.otf; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */,
 				309A0385196CE47E00B64FE9 /* placeholder.jpg */,
+				30294E5B19763CE800BE115B /* popup_background.png */,
 				309A0387196CE4C400B64FE9 /* travelcardslogo.png */,
 			);
 			name = Images;
@@ -370,6 +373,7 @@
 				309A0386196CE47E00B64FE9 /* placeholder.jpg in Resources */,
 				3086008F1950149A003FF8A1 /* Images.xcassets in Resources */,
 				308600811950149A003FF8A1 /* InfoPlist.strings in Resources */,
+				30294E5C19763CE900BE115B /* popup_background.png in Resources */,
 				3086008A1950149A003FF8A1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

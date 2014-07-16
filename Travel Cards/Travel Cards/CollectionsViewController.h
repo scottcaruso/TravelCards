@@ -17,6 +17,7 @@
 }
 
 @property NSString *cityCodeName;
+@property NSString *cityName;
 
 -(void)retrieveNumberOfLandmarks;
 -(UIImage*)convertURLtoImage:(NSString*)url;

@@ -139,6 +139,7 @@
     CLLocation *myLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     CLLocation *pointLocation = [[CLLocation alloc] initWithLatitude:point.coordinate.latitude longitude:point.coordinate.longitude];
     closeEnoughToCheckIn = [self canWeCheckIn:myLocation landmark:pointLocation];
+    [advanceToPostcard setEnabled:true];
 }
 
 -(void)verifyIfCollectionExistsAndCreateIfNot

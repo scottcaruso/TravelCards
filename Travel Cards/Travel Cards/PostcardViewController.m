@@ -131,6 +131,13 @@
     postcardTitle.titleLabel.font=font;
     [postcardDetails setFont:thinFont];
     addToCollectionButton.titleLabel.font = boldFont;
+    [welcomeTo setFont:font];
+    [locationNameLabel setFont:font];
+    [shareThisWith setFont:font];
+    [yourFriends setFont:font];
+    facebookButton.titleLabel.font = boldFont;
+    twitterButton.titleLabel.font = boldFont;
+    closeButton.titleLabel.font = boldFont;
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:

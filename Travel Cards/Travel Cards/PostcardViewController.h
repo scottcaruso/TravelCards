@@ -24,7 +24,10 @@
     
     IBOutlet UIView *mainView;
     IBOutlet UIView *modalView;
+    IBOutlet UILabel *welcomeTo;
     IBOutlet UILabel *locationNameLabel;
+    IBOutlet UILabel *shareThisWith;
+    IBOutlet UILabel *yourFriends;
     IBOutlet UIButton *facebookButton;
     IBOutlet UIButton *twitterButton;
     IBOutlet UIButton *closeButton;

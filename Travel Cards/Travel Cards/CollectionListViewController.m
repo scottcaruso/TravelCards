@@ -195,6 +195,7 @@
         NSString *cityCodeName = [citiesPlusCodes objectForKey:cityName];
         CollectionsViewController *newView = [segue destinationViewController];
         newView.cityCodeName = cityCodeName;
+        newView.cityName = cityName;
     }
 }
 

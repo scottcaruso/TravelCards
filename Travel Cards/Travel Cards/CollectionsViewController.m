@@ -16,7 +16,7 @@
 @end
 
 @implementation CollectionsViewController
-@synthesize cityCodeName;
+@synthesize cityCodeName,cityName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +32,8 @@
     listOfLandmarks = [[NSMutableArray alloc] initWithObjects:nil];
     listOfURLs = [[NSMutableArray alloc] initWithObjects:nil];
     [self retrieveNumberOfLandmarks];
+    
+    [self setTitle:cityName];
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:

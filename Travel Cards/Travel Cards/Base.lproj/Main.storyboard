@@ -330,7 +330,7 @@
                                     <segue destination="rnH-72-eyp" kind="push" identifier="goToCollection" id="bJF-rz-mIX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-Lh-pHD">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-Lh-pHD">
                                 <rect key="frame" x="-17" y="479" width="355" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
@@ -416,33 +416,37 @@
                                 <rect key="frame" x="25" y="145" width="269" height="278"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsI-tl-Eey">
-                                        <rect key="frame" x="89" y="10" width="91" height="21"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="popup_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="YUK-pF-oRI">
+                                        <rect key="frame" x="0.0" y="-5" width="275" height="289"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsI-tl-Eey">
+                                        <rect key="frame" x="0.0" y="10" width="269" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PLACEHOLDER NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs8-HO-2nt">
-                                        <rect key="frame" x="45" y="39" width="178" height="21"/>
+                                        <rect key="frame" x="0.0" y="39" width="269" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share this experience" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWM-c5-aHr">
-                                        <rect key="frame" x="49" y="82" width="171" height="25"/>
+                                        <rect key="frame" x="0.0" y="82" width="269" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="with your friends!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-vt-tP8">
-                                        <rect key="frame" x="49" y="103" width="171" height="25"/>
+                                        <rect key="frame" x="0.0" y="103" width="269" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emO-sG-aNq">
-                                        <rect key="frame" x="88" y="142" width="93" height="30"/>
+                                        <rect key="frame" x="5" y="142" width="259" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="On Facebook">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -452,7 +456,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdC-W7-b6n">
-                                        <rect key="frame" x="99" y="180" width="70" height="30"/>
+                                        <rect key="frame" x="5" y="180" width="259" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="On Twitter">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -462,7 +466,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vj9-Ye-qTj">
-                                        <rect key="frame" x="90" y="218" width="89" height="30"/>
+                                        <rect key="frame" x="5" y="218" width="259" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Close Popup">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -472,7 +476,8 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -481,6 +486,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addToCollectionButton" destination="09v-lA-ESZ" id="fBb-ia-R8J"/>
+                        <outlet property="closeButton" destination="Vj9-Ye-qTj" id="RRE-On-iVv"/>
                         <outlet property="facebookButton" destination="emO-sG-aNq" id="QhG-PW-3C7"/>
                         <outlet property="locationNameLabel" destination="qs8-HO-2nt" id="sTu-0S-dGb"/>
                         <outlet property="mainView" destination="YBF-d9-T6T" id="EDx-Dy-ems"/>
@@ -488,8 +494,11 @@
                         <outlet property="postcardDetails" destination="jze-2b-hvo" id="3xD-Tl-aoR"/>
                         <outlet property="postcardImage" destination="RXq-ge-ftg" id="nJ6-TT-X1g"/>
                         <outlet property="postcardTitle" destination="HKH-WK-6hz" id="og2-zO-hRu"/>
+                        <outlet property="shareThisWith" destination="wWM-c5-aHr" id="Amo-VQ-YUc"/>
                         <outlet property="thisView" destination="i2Q-T5-1Re" id="iep-5N-wBI"/>
                         <outlet property="twitterButton" destination="RdC-W7-b6n" id="l0z-Na-VsU"/>
+                        <outlet property="welcomeTo" destination="qsI-tl-Eey" id="MDN-A3-qm7"/>
+                        <outlet property="yourFriends" destination="g2B-vt-tP8" id="Fi8-ok-ZpY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HqN-ur-UTo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -836,6 +845,7 @@
     <resources>
         <image name="newyork_mainmenu.png" width="150" height="150"/>
         <image name="placeholder.jpg" width="1024" height="768"/>
+        <image name="popup_background.png" width="275" height="275"/>
         <image name="travelcardslogo.png" width="350" height="200"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -846,7 +856,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="4nk-T0-jBq"/>
         <segue reference="1p0-X3-cTl"/>
-        <segue reference="oX0-ch-f08"/>
+        <segue reference="oXT-Sa-t6V"/>
         <segue reference="bJF-rz-mIX"/>
     </inferredMetricsTieBreakers>
 </document>
