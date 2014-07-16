@@ -569,6 +569,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Leaderboard" id="7ts-AO-Sz4"/>
+                    <connections>
+                        <outlet property="achievementTable" destination="LNK-VN-ogW" id="FuU-Kz-H0t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mN1-XE-4S2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

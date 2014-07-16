@@ -8,6 +8,7 @@
 
 #import "AchievementsMenuViewController.h"
 #import "AchievementTableViewCell.h"
+#import <Parse/Parse.h>
 
 @interface AchievementsMenuViewController ()
 
@@ -26,6 +27,11 @@
 
 - (void)viewDidLoad
 {
+    arrayOfScores = [[NSMutableArray alloc] initWithArray:nil];
+    arrayOfUsers = [[NSMutableArray alloc] initWithArray:nil];
+    
+    [self getLeaderboardNames];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -44,7 +50,7 @@
 //This creates the rows for the ViewController table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [arrayOfUsers count];
 }
 
 //This feeds the data for the table view
@@ -57,12 +63,43 @@
     {
         NSString *ranking = [[NSString alloc] initWithFormat:@"%i",indexPath.row+1];
         thisCell.ranking.text = ranking;
-        thisCell.userName.text = @"Placeholder User Name";
-        thisCell.score.text = @"N/A";
+        if ([arrayOfUsers count] > 0)
+        {
+            thisCell.userName.text = [arrayOfUsers objectAtIndex:indexPath.row];
+            NSNumber *score = [arrayOfScores objectAtIndex:indexPath.row];
+            thisCell.score.text = [score stringValue];
+        }
     }
     return thisCell;
 }
 
-
+-(void)getLeaderboardNames
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+    [query orderByDescending:@"score"];
+    query.limit = 10;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            for (PFObject *object in objects)
+            {
+                NSString *thisUserName = [object objectForKey:@"userName"];
+                NSNumber *thisScore = [object objectForKey:@"score"];
+                [arrayOfUsers addObject:thisUserName];
+                if (thisScore != nil)
+                {
+                    [arrayOfScores addObject:thisScore];
+                } else
+                {
+                    [arrayOfScores addObject:[NSNumber numberWithInt:0]];
+                }
+            }
+            [achievementTable reloadData];
+        } else
+        {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
 
 @end

@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface AchievementsMenuViewController : UIViewController <UITableViewDelegate>
+{
+    NSMutableArray *arrayOfUsers;
+    NSMutableArray *arrayOfScores;
+    
+    IBOutlet UITableView *achievementTable;
+}
 
 @end
