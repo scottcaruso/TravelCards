@@ -29,6 +29,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
     viewingAppUser = true;
+    otherUserName = @"";
     
     numberOfAchievementCategories = 1; //This is just placeholder for now. It will be generated from the dynamic data.
     
@@ -192,6 +193,8 @@
             }
         }
         [achievementTable reloadData];
+        viewingAppUser = true;
+        [compareToFriend setTitle:@"Compare To Friend" forState:UIControlStateNormal];
     }];
 }
 
@@ -199,6 +202,7 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Friend Username Entry" message:@"Please enter your friend's username." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Search",nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [[alert textFieldAtIndex:0] setText:otherUserName];
     [alert show];
 }
 
@@ -233,6 +237,7 @@
                         }
                         NSString *scoreString = [[NSString alloc] initWithFormat:@"Total Score: %@",thisScore];
                         totalScore.text = scoreString;
+                        otherUserName = thisUserName;
                         for (int x = 0; x < [achievementCodes count]; x++)
                         {
                             NSNumber *collectedStatus = [object objectForKey:[achievementCodes objectAtIndex:x]];
@@ -246,6 +251,8 @@
                         }
                     }
                     [achievementTable reloadData];
+                    viewingAppUser = false;
+                    [compareToFriend setTitle:@"Return to Your Details" forState:UIControlStateNormal];
                 }
             } else
             {
@@ -265,7 +272,7 @@
         [self getFriendDetails];
     } else
     {
-        
+        [self getAchievementCompletionStatuses];
     }
 }
 
