@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AchievementsViewController : UIViewController <UITableViewDelegate>
+@interface AchievementsViewController : UIViewController <UITableViewDelegate,UIAlertViewDelegate>
 {
     IBOutlet UITableView *achievementTable;
     IBOutlet UIButton *compareToFriend;
@@ -21,6 +21,9 @@
     NSNumber *userID;
     NSString *thisUserName;
     NSNumber *thisScore;
+    NSString *otherUserName;
+    NSString *otherScore;
+    bool viewingAppUser;
     
     NSMutableArray *achievementCodes;
     NSMutableDictionary *citiesPlusCodes;

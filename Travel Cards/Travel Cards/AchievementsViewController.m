@@ -28,6 +28,7 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
+    viewingAppUser = true;
     
     numberOfAchievementCategories = 1; //This is just placeholder for now. It will be generated from the dynamic data.
     
@@ -168,6 +169,13 @@
                 thisUserName = [object objectForKey:@"userName"];
                 thisScore = [object objectForKey:@"score"];
                 userName.text = thisUserName;
+                if (thisScore != nil)
+                {
+                    //do nothing
+                } else
+                {
+                    thisScore = [NSNumber numberWithInt:0];
+                }
                 NSString *scoreString = [[NSString alloc] initWithFormat:@"Total Score: %@",thisScore];
                 totalScore.text = scoreString;
                 for (int x = 0; x < [achievementCodes count]; x++)
@@ -185,6 +193,80 @@
         }
         [achievementTable reloadData];
     }];
+}
+
+-(void)getFriendDetails
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Friend Username Entry" message:@"Please enter your friend's username." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Search",nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        UITextField *thisTextField = [alertView textFieldAtIndex:0];
+        PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+        [query whereKey:@"userName" equalTo:thisTextField.text];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                achievementStatus = [[NSMutableArray alloc] initWithObjects:nil];
+                if (objects.count == 0)
+                {
+                    UIAlertView *incorrectUserName = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We did not find that user in the database. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    incorrectUserName.alertViewStyle = UIAlertViewStyleDefault;
+                    [incorrectUserName show];
+                } else
+                {
+                    for (PFObject *object in objects)
+                    {
+                        thisUserName = [object objectForKey:@"userName"];
+                        thisScore = [object objectForKey:@"score"];
+                        userName.text = thisUserName;
+                        if (thisScore != nil)
+                        {
+                            //do nothing
+                        } else
+                        {
+                            thisScore = [NSNumber numberWithInt:0];
+                        }
+                        NSString *scoreString = [[NSString alloc] initWithFormat:@"Total Score: %@",thisScore];
+                        totalScore.text = scoreString;
+                        for (int x = 0; x < [achievementCodes count]; x++)
+                        {
+                            NSNumber *collectedStatus = [object objectForKey:[achievementCodes objectAtIndex:x]];
+                            if (collectedStatus)
+                            {
+                                [achievementStatus addObject:@"Complete"];
+                            } else
+                            {
+                                [achievementStatus addObject:@"Not Complete"];
+                            }
+                        }
+                    }
+                    [achievementTable reloadData];
+                }
+            } else
+            {
+                UIAlertView *incorrectUserName = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We did not find that user in the database. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                incorrectUserName.alertViewStyle = UIAlertViewStyleDefault;
+                [incorrectUserName show];
+            }
+        }];
+    }
+}
+
+
+-(IBAction)clickCompareButton:(id)sender
+{
+    if (viewingAppUser)
+    {
+        [self getFriendDetails];
+    } else
+    {
+        
+    }
 }
 
 @end

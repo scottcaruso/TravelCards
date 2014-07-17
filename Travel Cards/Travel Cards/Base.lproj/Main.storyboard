@@ -636,6 +636,9 @@
                                 <state key="normal" title="Compare to Friend">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickCompareButton:" destination="0dl-ua-Ryj" eventType="touchUpInside" id="UzV-7o-DJT"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-Vb-uB7">
                                 <rect key="frame" x="28" y="75" width="272" height="21"/>
