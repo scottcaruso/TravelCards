@@ -610,7 +610,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-g9-FS7">
-                                <rect key="frame" x="0.0" y="218" width="320" height="308"/>
+                                <rect key="frame" x="0.0" y="218" width="320" height="267"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -629,12 +629,37 @@
                                     <segue destination="1E4-io-1Za" kind="push" id="IYR-24-5g3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-Ck-l9h">
+                                <rect key="frame" x="-17" y="484" width="355" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Compare to Friend">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-Vb-uB7">
+                                <rect key="frame" x="28" y="52" width="272" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDO-ME-h0T">
+                                <rect key="frame" x="24" y="184" width="272" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Achievements" id="tEq-QK-ET9"/>
                     <connections>
+                        <outlet property="achievementDescription" destination="YBQ-KH-mSd" id="MxI-9Y-2zv"/>
+                        <outlet property="achievementImage" destination="R2k-Tg-Od8" id="5gW-FP-lnt"/>
                         <outlet property="achievementTable" destination="2Pr-g9-FS7" id="chQ-FL-Fo5"/>
+                        <outlet property="compareToFriend" destination="4Er-Ck-l9h" id="ycm-zD-LMl"/>
+                        <outlet property="totalScore" destination="IDO-ME-h0T" id="5LN-5m-wdA"/>
+                        <outlet property="userName" destination="wF6-Vb-uB7" id="0Yq-wD-y40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1s2-wn-FG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -867,7 +892,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="4nk-T0-jBq"/>
         <segue reference="1p0-X3-cTl"/>
-        <segue reference="oXT-Sa-t6V"/>
         <segue reference="bJF-rz-mIX"/>
+        <segue reference="oXT-Sa-t6V"/>
     </inferredMetricsTieBreakers>
 </document>

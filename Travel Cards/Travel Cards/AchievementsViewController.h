@@ -11,6 +11,12 @@
 @interface AchievementsViewController : UIViewController <UITableViewDelegate>
 {
     IBOutlet UITableView *achievementTable;
+    IBOutlet UIButton *compareToFriend;
+    IBOutlet UILabel *userName;
+    IBOutlet UILabel *totalScore;
+    IBOutlet UIImageView *achievementImage;
+    IBOutlet UITextView *achievementDescription;
+    
     int numberOfAchievementCategories;
     NSNumber *userID;
     
