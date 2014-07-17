@@ -738,7 +738,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="ZwA-bZ-bEf" customClass="CustomCollectionViewCell">
-                                        <rect key="frame" x="10" y="0.0" width="140" height="140"/>
+                                        <rect key="frame" x="10" y="64" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -749,9 +749,11 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXC-H2-87E">
-                                                    <rect key="frame" x="8" y="105" width="125" height="21"/>
+                                                    <rect key="frame" x="0.0" y="105" width="140" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -856,26 +858,6 @@
             </objects>
             <point key="canvasLocation" x="336" y="-62"/>
         </scene>
-        <!--Found Location Popup-->
-        <scene sceneID="mfY-BY-bgx">
-            <objects>
-                <viewController id="2yy-Bk-gFX" userLabel="Found Location Popup" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mSz-jM-EYi"/>
-                        <viewControllerLayoutGuide type="bottom" id="IOP-4m-hWi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NxA-LH-uRb">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="250"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4J7-wH-Yil" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="456" y="-1506"/>
-        </scene>
     </scenes>
     <resources>
         <image name="newyork_mainmenu.png" width="150" height="150"/>
@@ -889,9 +871,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="9oO-2h-1dY"/>
+        <segue reference="bJF-rz-mIX"/>
         <segue reference="4nk-T0-jBq"/>
         <segue reference="1p0-X3-cTl"/>
-        <segue reference="bJF-rz-mIX"/>
-        <segue reference="ikO-uC-fyE"/>
     </inferredMetricsTieBreakers>
 </document>
