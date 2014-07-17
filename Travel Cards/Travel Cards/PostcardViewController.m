@@ -14,7 +14,7 @@
 @end
 
 @implementation PostcardViewController
-@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID,closeEnoughToCheckIn,isADealAvailable,dealText;
+@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID,closeEnoughToCheckIn,isADealAvailable,dealText,imageCopyright,imageYear;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +36,9 @@
     self.title=locationName;
     postcardDetails.text = locationDescription;
     postcardImage.image = [self convertURLtoImage:imageURL];
+    
+    NSString *copyrightText = [[NSString alloc] initWithFormat:@"Image by %@. Copyright %@.",imageCopyright,imageYear];
+    copyright.text = copyrightText;
     
     int deal = [isADealAvailable intValue];
     
@@ -128,6 +131,7 @@
     UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
     UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
     UIFont *thinFont = [UIFont fontWithName:@"Antipasto-ExtraLight" size:15];
+    UIFont *smallFont = [UIFont fontWithName:@"Antipasto-ExtraLight" size:12];
     postcardTitle.titleLabel.font=font;
     [postcardDetails setFont:thinFont];
     addToCollectionButton.titleLabel.font = boldFont;
@@ -138,6 +142,7 @@
     facebookButton.titleLabel.font = boldFont;
     twitterButton.titleLabel.font = boldFont;
     closeButton.titleLabel.font = boldFont;
+    [copyright setFont:smallFont];
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:

@@ -18,6 +18,7 @@
     IBOutlet UIImageView *postcardImage;
     IBOutlet UIView *thisView;
     IBOutlet UIButton *addToCollectionButton;
+    IBOutlet UILabel *copyright;
     NSString *thisObjectID;
     PFQuery *query;
     bool isThisCardAlreadyOwned;
@@ -41,6 +42,8 @@
 @property NSNumber *userID;
 @property NSNumber *isADealAvailable;
 @property NSString *dealText;
+@property NSString *imageCopyright;
+@property NSString *imageYear;
 @property bool closeEnoughToCheckIn;
 
 -(void)obtainObjectID;

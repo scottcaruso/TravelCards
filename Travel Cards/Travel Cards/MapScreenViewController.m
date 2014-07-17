@@ -66,6 +66,8 @@
                 NSNumber *currentLocationLongitude = [object objectForKey:@"longitude"];
                 NSString *imageURL = [object objectForKey:@"imageURL"];
                 NSString *landmarkID = [object objectForKey:@"landmarkID"];
+                NSString *imageCopyright = [object objectForKey:@"photoCredit"];
+                NSString *imageYear = [object objectForKey:@"photoYear"];
                 NSNumber *isADealAvailable = [object objectForKey:@"dealAvailable"];
                 int deal = [isADealAvailable intValue];
                 NSString *currentDealText;
@@ -76,7 +78,7 @@
                 {
                     currentDealText = @"No deal!";
                 }
-                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, landmarkID, isADealAvailable, currentDealText, nil];
+                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, landmarkID, isADealAvailable, currentDealText, imageCopyright, imageYear, nil];
                 [locationData setValue:arrayOfData forKey:currentLocationName];
             }
             [self addAnnotations];
@@ -189,6 +191,8 @@
         newView.closeEnoughToCheckIn = closeEnoughToCheckIn;
         newView.isADealAvailable = [thisData objectAtIndex:5];
         newView.dealText = [thisData objectAtIndex:6];
+        newView.imageCopyright = [thisData objectAtIndex:7];
+        newView.imageYear = [thisData objectAtIndex:8];
     }
     if ([[segue identifier] isEqualToString:@"goToCollection"])
     {
@@ -213,6 +217,8 @@
         newView.closeEnoughToCheckIn = true;
         newView.isADealAvailable = [thisData objectAtIndex:5];
         newView.dealText = [thisData objectAtIndex:6];
+        newView.imageCopyright = [thisData objectAtIndex:7];
+        newView.imageYear = [thisData objectAtIndex:8];
     }
 }
 
