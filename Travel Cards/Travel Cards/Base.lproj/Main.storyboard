@@ -323,7 +323,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="por-jk-KIa">
-                                <rect key="frame" x="0.0" y="67" width="320" height="415"/>
+                                <rect key="frame" x="0.0" y="67" width="320" height="458"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="4HJ-Pm-1CK" id="Aqr-b7-qVW"/>
@@ -341,26 +341,15 @@
                                     <segue destination="rnH-72-eyp" kind="push" identifier="goToCollection" id="bJF-rz-mIX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-Lh-pHD">
-                                <rect key="frame" x="-17" y="479" width="355" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="View Postcard">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="kaY-2b-49z" kind="push" identifier="advanceToPostcard" id="oXT-Sa-t6V"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="(CITY NAME HERE)" id="HKU-Vg-f55"/>
                     <connections>
                         <outlet property="advanceToCollections" destination="ttA-jD-n0s" id="c0I-Sn-RME"/>
-                        <outlet property="advanceToPostcard" destination="nO7-Lh-pHD" id="JQw-Cn-se9"/>
                         <outlet property="locationMap" destination="por-jk-KIa" id="QEb-ps-Jwy"/>
                         <segue destination="kaY-2b-49z" kind="push" identifier="fromAlertView" id="oX0-ch-f08"/>
+                        <segue destination="kaY-2b-49z" kind="push" identifier="toPostcard" id="ikO-uC-fyE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMo-Ku-kGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -903,6 +892,6 @@
         <segue reference="4nk-T0-jBq"/>
         <segue reference="1p0-X3-cTl"/>
         <segue reference="bJF-rz-mIX"/>
-        <segue reference="oXT-Sa-t6V"/>
+        <segue reference="ikO-uC-fyE"/>
     </inferredMetricsTieBreakers>
 </document>

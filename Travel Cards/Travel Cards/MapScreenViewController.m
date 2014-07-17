@@ -141,7 +141,22 @@
     CLLocation *myLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     CLLocation *pointLocation = [[CLLocation alloc] initWithLatitude:point.coordinate.latitude longitude:point.coordinate.longitude];
     closeEnoughToCheckIn = [self canWeCheckIn:myLocation landmark:pointLocation];
-    [advanceToPostcard setEnabled:true];
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation
+{
+    MKPinAnnotationView *newAnnotation = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"pinLocation"];
+    
+    newAnnotation.canShowCallout = true;
+    newAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+    return newAnnotation;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    [self performSegueWithIdentifier:@"toPostcard" sender:self];
+    
 }
 
 -(void)verifyIfCollectionExistsAndCreateIfNot
@@ -164,7 +179,6 @@
 {
     UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
     //UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
-    advanceToPostcard.titleLabel.font = font;
     advanceToCollections.titleLabel.font = font;
     
     [self.navigationController.navigationBar setTitleTextAttributes:
@@ -176,7 +190,7 @@
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"advanceToPostcard"])
+    if ([[segue identifier] isEqualToString:@"toPostcard"])
     {
         // Get reference to the destination view controller
         PostcardViewController *newView = [segue destinationViewController];

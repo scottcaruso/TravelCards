@@ -12,7 +12,6 @@
 @interface MapScreenViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 {
     IBOutlet MKMapView *locationMap;
-    IBOutlet UIButton *advanceToPostcard;
     IBOutlet UIButton *advanceToCollections;
     
     NSMutableDictionary *locationData;
