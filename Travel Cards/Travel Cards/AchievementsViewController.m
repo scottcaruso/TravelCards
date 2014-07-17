@@ -165,6 +165,11 @@
             achievementStatus = [[NSMutableArray alloc] initWithObjects:nil];
             for (PFObject *object in objects)
             {
+                thisUserName = [object objectForKey:@"userName"];
+                thisScore = [object objectForKey:@"score"];
+                userName.text = thisUserName;
+                NSString *scoreString = [[NSString alloc] initWithFormat:@"Total Score: %@",thisScore];
+                totalScore.text = scoreString;
                 for (int x = 0; x < [achievementCodes count]; x++)
                 {
                     NSNumber *collectedStatus = [object objectForKey:[achievementCodes objectAtIndex:x]];

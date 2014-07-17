@@ -19,6 +19,8 @@
     
     int numberOfAchievementCategories;
     NSNumber *userID;
+    NSString *thisUserName;
+    NSNumber *thisScore;
     
     NSMutableArray *achievementCodes;
     NSMutableDictionary *citiesPlusCodes;
