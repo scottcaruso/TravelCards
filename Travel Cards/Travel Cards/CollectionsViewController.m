@@ -86,7 +86,7 @@
 -(void)retrieveNumberOfLandmarks
 {
     PFQuery *query = [PFQuery queryWithClassName:cityCodeName];
-    [query orderByDescending:@"objectID"];
+    [query orderByAscending:@"landmark"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
