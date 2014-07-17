@@ -31,6 +31,7 @@
 {
     listOfLandmarks = [[NSMutableArray alloc] initWithObjects:nil];
     listOfURLs = [[NSMutableArray alloc] initWithObjects:nil];
+    listOfDescriptions = [[NSMutableArray alloc] initWithObjects:nil];
     [self retrieveNumberOfLandmarks];
     
     [self setTitle:cityName];
@@ -82,8 +83,10 @@
             {
                 NSString *currentLocationName = [object objectForKey:@"landmark"];
                 NSString *imageURL = [object objectForKey:@"imageURL"];
+                NSString *currentDescription = [object objectForKey:@"description"];
                 [listOfLandmarks addObject:currentLocationName];
                 [listOfURLs addObject:imageURL];
+                [listOfDescriptions addObject:currentDescription];
             }
             [collectionView reloadData];
         } else {
@@ -111,7 +114,7 @@
         PostcardViewController *newView = [segue destinationViewController];
         newView.locationDatabase = cityCodeName;
         newView.locationName = cell.locationName.text;
-        //newView.locationDescription = [thisData objectAtIndex:0];
+        newView.locationDescription = [listOfDescriptions objectAtIndex:selectedIndexPath.row];
         newView.imageURL = [listOfURLs objectAtIndex:selectedIndexPath.row];
         //newView.landmarkID = [thisData objectAtIndex:4];
     }

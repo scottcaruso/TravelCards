@@ -13,6 +13,7 @@
     int numberOfLocations;
     NSMutableArray *listOfLandmarks;
     NSMutableArray *listOfURLs;
+    NSMutableArray *listOfDescriptions;
     IBOutlet UICollectionView *collectionView;
 }
 
