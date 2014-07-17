@@ -131,6 +131,7 @@
     [desiredUserName setFont:font];
     [desiredPassword setFont:font];
     [retypePassword setFont:font];
+    [emailAddress setFont:font];
     submitButton.titleLabel.font = boldFont;
     
     [self.navigationController.navigationBar setTitleTextAttributes:
@@ -149,6 +150,9 @@
     {
         [desiredPassword resignFirstResponder];
     } else if ([retypePassword isFirstResponder] && [touch view] != retypePassword)
+    {
+        [retypePassword resignFirstResponder];
+    } else if ([emailAddress isFirstResponder] && [touch view] != emailAddress)
     {
         [retypePassword resignFirstResponder];
     }
