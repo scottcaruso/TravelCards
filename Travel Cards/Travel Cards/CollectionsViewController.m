@@ -16,7 +16,7 @@
 @end
 
 @implementation CollectionsViewController
-@synthesize cityCodeName,cityName;
+@synthesize cityCodeName,cityName,userID;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +32,8 @@
     listOfLandmarks = [[NSMutableArray alloc] initWithObjects:nil];
     listOfURLs = [[NSMutableArray alloc] initWithObjects:nil];
     listOfDescriptions = [[NSMutableArray alloc] initWithObjects:nil];
+    listOfLandmarkCodes = [[NSMutableArray alloc] initWithObjects:nil];
+    collectionStatus = [[NSMutableArray alloc] initWithObjects:nil];
     [self retrieveNumberOfLandmarks];
     
     [self setTitle:cityName];
@@ -70,12 +72,21 @@
         cell.locationName.text = [listOfLandmarks objectAtIndex:indexPath.row];
         [cell.backgroundImage setImage:thisImage];
     }
+    NSString *thisStatus = [collectionStatus objectAtIndex:indexPath.row];
+    if ([thisStatus isEqualToString:@"No"])
+    {
+        cell.backgroundImage.layer.opacity = 0.3f;
+    } else
+    {
+        cell.backgroundImage.layer.opacity = 1.0f;
+    }
     return cell;
 }
 
 -(void)retrieveNumberOfLandmarks
 {
     PFQuery *query = [PFQuery queryWithClassName:cityCodeName];
+    [query orderByDescending:@"objectID"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
@@ -84,13 +95,48 @@
                 NSString *currentLocationName = [object objectForKey:@"landmark"];
                 NSString *imageURL = [object objectForKey:@"imageURL"];
                 NSString *currentDescription = [object objectForKey:@"description"];
+                NSString *currentLandmarkCode = [object objectForKey:@"landmarkID"];
                 [listOfLandmarks addObject:currentLocationName];
                 [listOfURLs addObject:imageURL];
                 [listOfDescriptions addObject:currentDescription];
+                [listOfLandmarkCodes addObject:currentLandmarkCode];
             }
-            [collectionView reloadData];
+            [self retrieveCollectionStatus];
         } else {
             // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(void)retrieveCollectionStatus
+{
+    NSString *queryString = [[NSString alloc] initWithFormat:@"%@Collection",cityCodeName];
+    PFQuery *query = [PFQuery queryWithClassName:queryString];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            for (PFObject *object in objects)
+            {
+                if (userID == [object objectForKey:@"userID"])
+                {
+                    for (int x = 0; x < [listOfLandmarkCodes count]; x++)
+                    {
+                        NSString *currentLandmark = [listOfLandmarkCodes objectAtIndex:x];
+                        NSString *landmarkOwned = [object objectForKey:currentLandmark];
+                        if (landmarkOwned != nil)
+                        {
+                            [collectionStatus addObject:@"Yes"];
+                        } else
+                        {
+                            [collectionStatus addObject:@"No"];
+                        }
+                    }
+                }
+            }
+            [collectionView reloadData];
+        } else
+        {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];

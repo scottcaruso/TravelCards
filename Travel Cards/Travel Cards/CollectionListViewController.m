@@ -196,6 +196,7 @@
         CollectionsViewController *newView = [segue destinationViewController];
         newView.cityCodeName = cityCodeName;
         newView.cityName = cityName;
+        newView.userID = userID;
     }
 }
 
