@@ -128,7 +128,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Desired Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LSQ-Wp-rXQ">
-                                <rect key="frame" x="29" y="252" width="263" height="30"/>
+                                <rect key="frame" x="29" y="218" width="263" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -138,7 +138,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Desired Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cHs-qM-uzE">
-                                <rect key="frame" x="29" y="301" width="263" height="30"/>
+                                <rect key="frame" x="29" y="267" width="263" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -148,13 +148,23 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Retype Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VgP-WD-CgG">
-                                <rect key="frame" x="29" y="352" width="263" height="30"/>
+                                <rect key="frame" x="29" y="318" width="263" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="textFieldReturn:" destination="rho-hK-amK" eventType="editingDidEndOnExit" id="5Tj-Wg-7Oh"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ky1-Yt-CBo">
+                                <rect key="frame" x="27" y="369" width="263" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textFieldReturn:" destination="rho-hK-amK" eventType="editingDidEndOnExit" id="UfE-y4-mCN"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hH4-hE-jB0">
@@ -180,6 +190,7 @@
                     <connections>
                         <outlet property="desiredPassword" destination="cHs-qM-uzE" id="Xma-F8-AUm"/>
                         <outlet property="desiredUserName" destination="LSQ-Wp-rXQ" id="VFv-I6-CTu"/>
+                        <outlet property="emailAddress" destination="ky1-Yt-CBo" id="T0j-Vi-l3K"/>
                         <outlet property="retypePassword" destination="VgP-WD-CgG" id="EcC-ZW-tWZ"/>
                         <outlet property="submitButton" destination="hH4-hE-jB0" id="9Ll-TO-WQT"/>
                         <segue destination="34H-w2-Os8" kind="push" identifier="CreateUserSuccess" id="4nk-T0-jBq"/>

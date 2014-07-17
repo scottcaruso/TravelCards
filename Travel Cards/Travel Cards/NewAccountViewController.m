@@ -55,6 +55,7 @@
     NSString *enteredUserName = desiredUserName.text;
     NSString *enteredPassword = desiredPassword.text;
     NSString *confirmedPassword = retypePassword.text;
+    NSString *enteredEmail = emailAddress.text;
     if ([enteredUserName isEqualToString:@""] || [enteredPassword isEqualToString:@""] || [confirmedPassword isEqualToString:@""])
     {
         UIAlertView *checkEntry = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"It looks like you've left one of the fields blank. Please try again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -72,6 +73,7 @@
         PFUser *user = [PFUser user];
         user.username = enteredUserName;
         user.password = enteredPassword;
+        user.email =enteredEmail;
         user[@"userID"] = newUserNumber;
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -112,7 +114,6 @@
                      NSNumber *userID = [user objectForKey:@"userID"];
                      [defaults setValue:userID forKey:@"SavedUserID"];
                      [defaults synchronize];
-                     //[self performSegueWithIdentifier:@"Login" sender:self];
                      [self performSegueWithIdentifier:@"CreateUserSuccess" sender:self];
                  } else
                  {
