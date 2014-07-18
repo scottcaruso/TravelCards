@@ -17,6 +17,7 @@
     NSMutableArray *listOfLandmarkCodes;
     NSMutableArray *collectionStatus;
     IBOutlet UICollectionView *collectionView;
+    bool collectionExists;
 }
 
 @property NSString *cityCodeName;

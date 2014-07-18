@@ -121,7 +121,10 @@
                 }
             }
         }
-        collectionItem = [arrayOfOwnedCollections objectAtIndex:indexPath.row];
+        if ([arrayOfOwnedCollections count] > 0)
+        {
+            collectionItem = [arrayOfOwnedCollections objectAtIndex:indexPath.row];
+        }
     } else
     {
         collectionItem = [listOfUnownedCities objectAtIndex:indexPath.row];
@@ -152,6 +155,7 @@
                 }
             }
             PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
+            [query whereKey:@"isActive" equalTo:[NSNumber numberWithInt:1]];
             [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 if (!error) {
                     numberOfUnownedRows = objects.count;

@@ -72,13 +72,16 @@
         cell.locationName.text = [listOfLandmarks objectAtIndex:indexPath.row];
         [cell.backgroundImage setImage:thisImage];
     }
-    NSString *thisStatus = [collectionStatus objectAtIndex:indexPath.row];
-    if ([thisStatus isEqualToString:@"No"])
+    if ([collectionStatus count] > 0)
     {
-        cell.backgroundImage.layer.opacity = 0.3f;
-    } else
-    {
-        cell.backgroundImage.layer.opacity = 1.0f;
+        NSString *thisStatus = [collectionStatus objectAtIndex:indexPath.row];
+        if ([thisStatus isEqualToString:@"No"])
+        {
+            cell.backgroundImage.layer.opacity = 0.3f;
+        } else
+        {
+            cell.backgroundImage.layer.opacity = 1.0f;
+        }
     }
     return cell;
 }
@@ -134,6 +137,7 @@
                     }
                 }
             }
+            collectionExists = true;
             [collectionView reloadData];
         } else
         {
@@ -164,6 +168,22 @@
         newView.imageURL = [listOfURLs objectAtIndex:selectedIndexPath.row];
         //newView.landmarkID = [thisData objectAtIndex:4];
     }
+}
+
+-(void)verifyIfCollectionExistsAndCreateIfNot
+{
+    NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",cityCodeName];
+    PFQuery *query = [PFQuery queryWithClassName:collectionString];
+    [query whereKey:@"userID" equalTo:userID];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (objects.count == 0)
+         {
+             PFObject *newUser = [PFObject objectWithClassName:collectionString];
+             newUser[@"userID"] = userID;
+             [newUser saveInBackground];
+         }
+     }];
 }
 
 @end
