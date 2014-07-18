@@ -215,6 +215,7 @@
         
         // Pass the city identifier, latitude, and longitude of the current location
         newView.cityCodeName = city;
+        newView.cityName = cityTitle;
     }
     if ([[segue identifier] isEqualToString:@"fromAlertView"])
     {
