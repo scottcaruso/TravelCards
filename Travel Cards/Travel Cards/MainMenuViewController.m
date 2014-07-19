@@ -25,13 +25,8 @@
     return self;
 }
 
-- (void)viewDidLoad
+-(void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationItem setHidesBackButton:YES];
-    
-    dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
-    dictionaryOfNamesAndClassNames = [[NSMutableDictionary alloc] init];
-    
     //Step 1 - Start Geolocating user
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool fakeCoordinates = [defaults boolForKey:@"FakeCoordinates"];
@@ -49,6 +44,15 @@
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [locationManager startUpdatingLocation];
     }
+    [super viewWillAppear:false];
+}
+
+- (void)viewDidLoad
+{
+    [self.navigationItem setHidesBackButton:YES];
+    
+    dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
+    dictionaryOfNamesAndClassNames = [[NSMutableDictionary alloc] init];
 
     
     //When we load the view, we are going to run the Geolocation functions. For now, we are spoofing the
