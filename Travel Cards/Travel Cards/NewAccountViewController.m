@@ -76,8 +76,10 @@
         user.email =enteredEmail;
         user[@"userID"] = newUserNumber;
         
+        
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
+                [self addUserToAchievementsDatabase:newUserNumber userName:enteredUserName];
                 NSString *successString = [NSString stringWithFormat:@"The account %@ was successfully created.",enteredUserName];
                 UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success!" message:successString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 success.alertViewStyle = UIAlertViewStyleDefault;
@@ -90,6 +92,14 @@
             }
         }];
     }
+}
+
+-(void)addUserToAchievementsDatabase:(NSNumber*)userID userName:(NSString*)userName
+{
+    PFObject *achievements = [PFObject objectWithClassName:@"AchievementCompletion"];
+    achievements[@"userID"] = userID;
+    achievements[@"userName"] = userName;
+    [achievements saveInBackground];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
