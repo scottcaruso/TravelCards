@@ -116,15 +116,68 @@
     [query getObjectInBackgroundWithId:thisObjectID block:^(PFObject *collectionObject, NSError *error)
     {
         collectionObject[landmarkID] = stringFromDate;
+        NSNumber *thisNumberCollected = [collectionObject objectForKey:@"numberOfCollected"];
+        int newNumberInt = [thisNumberCollected intValue] + 1;
+        numberCollected = [NSNumber numberWithInt:newNumberInt];
+        collectionObject[@"numberOfCollected"] = numberCollected;
         [collectionObject saveInBackground];
     }];
+    [self checkForAchievement];
     [addToCollectionButton setTitle:@"Already collected!" forState:UIControlStateNormal];
     [addToCollectionButton setEnabled:false];
     locationNameLabel.text = locationName;
     modalView.hidden = false;
     mainView.layer.opacity = .35f;
+}
+
+-(void)checkForAchievement
+{
+    PFQuery *achievementQuery = [PFQuery queryWithClassName:@"Achievements"];
+    [achievementQuery whereKey:@"achievementCategory" equalTo:locationDatabase];
+    [achievementQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             for (PFObject *object in objects)
+             {
+                 NSNumber *checkinsNeeded = [object objectForKey:@"checkinsNeeded"];
+                 if ([checkinsNeeded isEqualToNumber:numberCollected])
+                 {
+                     NSNumber *achievementScore = [object objectForKey:@"numberOfPoints"];
+                     NSString *achievementName = [object objectForKey:@"achievementName"];
+                     NSString *achievementDescription = [object objectForKey:@"achievementDescription"];
+                     NSString *objectID = object.objectId;
+                     [self collectAchievement:objectID newScore:achievementScore];
+                     UIAlertView *achievementAlert = [[UIAlertView alloc] initWithTitle:achievementName message:achievementDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                     achievementAlert.alertViewStyle = UIAlertViewStyleDefault;
+                     [achievementAlert show];
+                 }
+             }
+         }
+     }];
+}
+
+-(void)collectAchievement:(NSString*)objectID newScore:(NSNumber*)scoreToAdd
+{
+    PFQuery *achievementCollection = [PFQuery queryWithClassName:@"AchievementCompletion"];
+    [achievementCollection whereKey:@"userID" equalTo:userID];
+    [achievementCollection findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             for (PFObject *object in objects)
+             {
+                 NSNumber *currentScore = [object objectForKey:@"score"];
+                 int newScore = [currentScore intValue] + [scoreToAdd intValue];
+                 object[objectID] = @1;
+                 object[@"score"] = [NSNumber numberWithInt:newScore];
+                 [object saveInBackground];
+             }
+         }
+     }];
 
 }
+
 
 -(void)setFonts
 {

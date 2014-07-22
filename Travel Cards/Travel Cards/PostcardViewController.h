@@ -22,6 +22,7 @@
     NSString *thisObjectID;
     PFQuery *query;
     bool isThisCardAlreadyOwned;
+    NSNumber *numberCollected;
     
     IBOutlet UIView *mainView;
     IBOutlet UIView *modalView;
