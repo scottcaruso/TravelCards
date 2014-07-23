@@ -31,11 +31,11 @@
     viewingAppUser = true;
     otherUserName = @"";
     
-    numberOfAchievementCategories = 1; //This is just placeholder for now. It will be generated from the dynamic data.
     
     citiesPlusCodes = [[NSMutableDictionary alloc] init];
     achievementsByCity = [[NSMutableDictionary alloc] init];
     listOfUnownedCities = [[NSMutableArray alloc] initWithObjects:nil];
+    achievementCodes = [[NSMutableArray alloc] initWithObjects:nil];
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
@@ -58,14 +58,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     //This returns the number of Achievement categories as stored in Parse
-    return numberOfAchievementCategories;
+    return [listOfUnownedCities count];
 }
 
 //This creates the rows for the ViewController table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //We should create a dictionary or something similar that matches up the ID of the section with the number of achievements in it. In this case, we will simply use a static value.
-    if (section < numberOfAchievementCategories)
+    if (section < [listOfUnownedCities count])
     {
         return 3;
     } else
@@ -77,14 +76,12 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSString *sectionName;
-    switch (section)
+    for (int x = 0; x < [listOfUnownedCities count]; x++)
     {
-        case 0:
-            sectionName = @"New York";
-            break;
-        default:
-            sectionName = @"Collections";
-            break;
+        if (x == section)
+        {
+            sectionName = [listOfUnownedCities objectAtIndex:x];
+        }
     }
     return sectionName;
 }
@@ -100,32 +97,59 @@
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     NSString *achievementText;
+    NSString *statusText;
     if ([achievementsByCity count] != 0)
     {
-        NSMutableArray *thisCityAchievements = [achievementsByCity objectForKey:@"NewYork"];
-        achievementText = [thisCityAchievements objectAtIndex:indexPath.row];
+        NSString *currentCity = [listOfUnownedCities objectAtIndex:indexPath.section];
+        NSString *cityCode = [citiesPlusCodes objectForKey:currentCity];
+        NSMutableArray *achievementDetails = [achievementsByCity objectForKey:cityCode];
+        NSMutableArray *achievementName = [achievementDetails objectAtIndex:0];
+        NSMutableArray *theseAchievements = [achievementDetails objectAtIndex:2];
+        achievementText = [achievementName objectAtIndex:indexPath.row];
+        for (int x = 0; x < [theseAchievements count]; x ++)
+        {
+            if (x == indexPath.row)
+            {
+                NSString *achievementID = [theseAchievements objectAtIndex:x];
+                statusText = [achievementStatus objectForKey:achievementID];
+            }
+        }
     } else
     {
         achievementText = @"Placeholder";
+        statusText = @"Placeholder";
     }
     thisCell.textLabel.text = achievementText;
-    thisCell.detailTextLabel.text = [achievementStatus objectAtIndex:indexPath.row];
+    thisCell.detailTextLabel.text = statusText;
     return thisCell;
 }
 
 -(void)retrieveAchievements
 {
     __block NSMutableArray *unsortedCities = [[NSMutableArray alloc] initWithObjects:nil];
+    __block NSMutableArray *unsortedCodes = [[NSMutableArray alloc] initWithObjects:nil];
     PFQuery *cityQuery = [PFQuery queryWithClassName:@"CityNames"];
+    [cityQuery whereKey:@"isActive" equalTo:@1];
     [cityQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (PFObject *object in objects)
             {
                 [unsortedCities addObject:[object objectForKey:@"cityName"]];
+                [unsortedCodes addObject:[object objectForKey:@"cityClassName"]];
                 [citiesPlusCodes setValue:[object objectForKey:@"cityClassName"] forKey:[object objectForKey:@"cityName"]];
             }
             listOfUnownedCities = (NSMutableArray*)[unsortedCities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-            [self putAchievementsIntoDictionary];
+            for (int x = 0; x < [unsortedCodes count]; x++)
+            {
+                if (x != [unsortedCodes count] - 1)
+                {
+                    [self putAchievementsIntoDictionary:[unsortedCodes objectAtIndex:x] runTableReload:false];
+                } else
+                {
+                    [self putAchievementsIntoDictionary:[unsortedCodes objectAtIndex:x] runTableReload:true];
+                }
+
+            }
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -133,24 +157,31 @@
     }];
 }
 
--(void)putAchievementsIntoDictionary
+-(void)putAchievementsIntoDictionary:(NSString*)cityCodeName runTableReload:(bool)reload
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Achievements"];
+    [query whereKey:@"achievementCategory" equalTo:cityCodeName];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            achievementCodes = [[NSMutableArray alloc] initWithObjects:nil];
             NSMutableArray *achievementNames = [[NSMutableArray alloc] initWithObjects:nil];
+            NSMutableArray *achievementDescriptions = [[NSMutableArray alloc] initWithObjects:nil];
+            NSMutableArray *thisLocationsAchievements = [[NSMutableArray alloc] initWithObjects:nil];
             for (PFObject *object in objects)
             {
                 [achievementCodes addObject:object.objectId];
-                NSString *achievementCity = [object objectForKey:@"achievementCategory"];
-                if ([achievementCity isEqualToString:@"NewYork"])
-                {
-                    [achievementNames addObject:[object objectForKey:@"achievementName"]];
-                    [achievementsByCity setValue:achievementNames forKey:achievementCity];
-                }
+                [achievementNames addObject:[object objectForKey:@"achievementName"]];
+                [achievementDescriptions addObject:[object objectForKey:@"achievementDescription"]];
+                [thisLocationsAchievements addObject:object.objectId];
             }
-            [self getAchievementCompletionStatuses];
+            NSMutableArray *achievementDetails = [[NSMutableArray alloc] initWithObjects:nil];
+            [achievementDetails addObject:achievementNames];
+            [achievementDetails addObject:achievementDescriptions];
+            [achievementDetails addObject:thisLocationsAchievements];
+            [achievementsByCity setValue:achievementDetails forKey:cityCodeName];
+            if (reload)
+            {
+                [self getAchievementCompletionStatuses];
+            }
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -163,8 +194,9 @@
     PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
     [query whereKey:@"userID" equalTo:userID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            achievementStatus = [[NSMutableArray alloc] initWithObjects:nil];
+        if (!error)
+        {
+            achievementStatus = [[NSMutableDictionary alloc] init];
             for (PFObject *object in objects)
             {
                 thisUserName = [object objectForKey:@"userName"];
@@ -181,20 +213,21 @@
                 totalScore.text = scoreString;
                 for (int x = 0; x < [achievementCodes count]; x++)
                 {
-                    NSNumber *collectedStatus = [object objectForKey:[achievementCodes objectAtIndex:x]];
+                    NSString *achievementCode = [achievementCodes objectAtIndex:x];
+                    NSNumber *collectedStatus = [object objectForKey:achievementCode];
                     if (collectedStatus)
                     {
-                        [achievementStatus addObject:@"Complete"];
+                        [achievementStatus setValue:@"Complete" forKey:achievementCode];
                     } else
                     {
-                        [achievementStatus addObject:@"Not Complete"];
+                        [achievementStatus setValue:@"Not Complete" forKey:achievementCode];
                     }
                 }
             }
+            [achievementTable reloadData];
+            viewingAppUser = true;
+            [compareToFriend setTitle:@"Compare To Friend" forState:UIControlStateNormal];
         }
-        [achievementTable reloadData];
-        viewingAppUser = true;
-        [compareToFriend setTitle:@"Compare To Friend" forState:UIControlStateNormal];
     }];
 }
 
@@ -215,7 +248,7 @@
         [query whereKey:@"userName" equalTo:thisTextField.text];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
-                achievementStatus = [[NSMutableArray alloc] initWithObjects:nil];
+                achievementStatus = [[NSMutableDictionary alloc] init];
                 if (objects.count == 0)
                 {
                     UIAlertView *incorrectUserName = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We did not find that user in the database. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -241,12 +274,13 @@
                         for (int x = 0; x < [achievementCodes count]; x++)
                         {
                             NSNumber *collectedStatus = [object objectForKey:[achievementCodes objectAtIndex:x]];
+                            NSString *achievementCode = [achievementCodes objectAtIndex:x];
                             if (collectedStatus)
                             {
-                                [achievementStatus addObject:@"Complete"];
+                                [achievementStatus setValue:@"Complete" forKey:achievementCode];
                             } else
                             {
-                                [achievementStatus addObject:@"Not Complete"];
+                                [achievementStatus setValue:@"Not Complete" forKey:achievementCode];
                             }
                         }
                     }

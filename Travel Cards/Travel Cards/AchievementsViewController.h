@@ -31,7 +31,7 @@
     NSMutableDictionary *achievementsByCity;
     NSMutableArray *collectedOrNot;
     
-    NSMutableArray *achievementStatus;
+    NSMutableDictionary *achievementStatus;
 }
 
 @end
