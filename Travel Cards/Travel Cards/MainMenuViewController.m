@@ -43,11 +43,20 @@
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [locationManager startUpdatingLocation];
+        cityName.hidden = false;
+        tapImageLabel.hidden = false;
+        advanceButton.enabled = true;
     }
-    cityName.hidden = false;
-    tapImageLabel.hidden = false;
-    advanceButton.enabled = true;
     [super viewWillAppear:false];
+}
+
+-(void)locationManager:(CLLocationManager *)inManager didFailWithError:(NSError *)inError{
+    UIAlertView *gpsOff = [[UIAlertView alloc] initWithTitle:@"GPS is turned off" message:@"Location Services are currently disabled or disallowed. Please enable them to use this application!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    gpsOff.alertViewStyle = UIAlertViewStyleDefault;
+    [gpsOff show];
+    cityName.hidden = true;
+    tapImageLabel.hidden = true;
+    advanceButton.enabled = false;
 }
 
 - (void)viewDidLoad
