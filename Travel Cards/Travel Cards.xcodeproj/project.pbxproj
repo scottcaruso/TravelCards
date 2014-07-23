@@ -50,6 +50,7 @@
 		308600B11952B19C003FF8A1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600B01952B19C003FF8A1 /* MapKit.framework */; };
 		309A0386196CE47E00B64FE9 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 309A0385196CE47E00B64FE9 /* placeholder.jpg */; };
 		309A0388196CE4C400B64FE9 /* travelcardslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 309A0387196CE4C400B64FE9 /* travelcardslogo.png */; };
+		30BE864A197F788000FAF709 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BE8649197F788000FAF709 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,8 @@
 		308600B01952B19C003FF8A1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		309A0385196CE47E00B64FE9 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		309A0387196CE4C400B64FE9 /* travelcardslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = travelcardslogo.png; sourceTree = "<group>"; };
+		30BE8648197F788000FAF709 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		30BE8649197F788000FAF709 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,8 @@
 				306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */,
 				30294E581974ED6B00BE115B /* SettingsViewController.h */,
 				30294E591974ED6B00BE115B /* SettingsViewController.m */,
+				30BE8648197F788000FAF709 /* Reachability.h */,
+				30BE8649197F788000FAF709 /* Reachability.m */,
 				3086008E1950149A003FF8A1 /* Images.xcassets */,
 				3086007D1950149A003FF8A1 /* Supporting Files */,
 			);
@@ -397,6 +402,7 @@
 				307DD8E0195405A800860DB9 /* CollectionListViewController.m in Sources */,
 				3069E098196E4C84004C109E /* AchievementTableViewCell.m in Sources */,
 				3086008D1950149A003FF8A1 /* ViewController.m in Sources */,
+				30BE864A197F788000FAF709 /* Reachability.m in Sources */,
 				308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */,
 				306B58C4195BEE2B005DADB8 /* CustomCollectionViewCell.m in Sources */,
 				307DD8FD1959336300860DB9 /* CollectionsViewController.m in Sources */,

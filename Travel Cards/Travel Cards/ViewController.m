@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Reachability.h"
 
 @interface ViewController ()
 
@@ -19,23 +20,34 @@
     [self.navigationItem setHidesBackButton:YES];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool savedUser = [defaults valueForKey:@"IsSaved"];
-    if (savedUser)
-    {
-        NSString *savedUserName = [defaults valueForKey:@"SavedUserName"];
-        NSString *savedPassword = [defaults valueForKey:@"SavedPassword"];
-        [PFUser logInWithUsernameInBackground:savedUserName password:savedPassword
-                                        block:^(PFUser *user, NSError *error)
-         {
-             if (user)
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        UIAlertView *noNetwork = [[UIAlertView alloc] initWithTitle:@"Poor network conditions" message:@"TravelCards requires a network connection to function. Please try again with a stronger network connection." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        noNetwork.alertViewStyle = UIAlertViewStyleDefault;
+        [noNetwork show];
+        submitButton.enabled = false;
+        newUserButton.enabled = false;
+    } else {
+        if (savedUser)
+        {
+            NSString *savedUserName = [defaults valueForKey:@"SavedUserName"];
+            NSString *savedPassword = [defaults valueForKey:@"SavedPassword"];
+            [PFUser logInWithUsernameInBackground:savedUserName password:savedPassword
+                                            block:^(PFUser *user, NSError *error)
              {
-                 [self performSegueWithIdentifier:@"Login" sender:self];
-             } else
-             {
-                 UIAlertView *loginFailed = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem logging you in with your saved details. Please re-enter them." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                 loginFailed.alertViewStyle = UIAlertViewStyleDefault;
-                 [loginFailed show];
-             }
-         }];
+                 if (user)
+                 {
+                     [self performSegueWithIdentifier:@"Login" sender:self];
+                 } else
+                 {
+                     UIAlertView *loginFailed = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem logging you in with your saved details. Please re-enter them." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                     loginFailed.alertViewStyle = UIAlertViewStyleDefault;
+                     [loginFailed show];
+                 }
+             }];
+        }
+
     }
     
     [self.navigationController.navigationBar setTitleTextAttributes:
