@@ -125,6 +125,7 @@
     
     //Step 2 - Parse the Travel Cards location data
     PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
+    [query whereKey:@"isActive" equalTo:@1];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (PFObject *object in objects)
@@ -158,10 +159,14 @@
             {
                 UIAlertView *tooFar = [[UIAlertView alloc] initWithTitle:@"Too far!" message:@"The nearest TravelCards location is over 50 miles from you. Check back soon - we're always adding new landmarks!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 tooFar.alertViewStyle = UIAlertViewStyleDefault;
+                [tooFar show];
                 cityName.hidden = true;
                 tapImageLabel.hidden = true;
                 advanceButton.enabled = false;
             }
+            cityName.text = nameOfCity;
+            cityDataString = [dictionaryOfNamesAndClassNames objectForKey:nameOfCity];
+            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
