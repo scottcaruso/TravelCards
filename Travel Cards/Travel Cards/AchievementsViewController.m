@@ -124,6 +124,16 @@
     return thisCell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cityClicked = [listOfUnownedCities objectAtIndex:indexPath.section];
+    NSString *cityCode = [citiesPlusCodes objectForKey:cityClicked];
+    NSMutableArray *achievementDetails = [achievementsByCity objectForKey:cityCode];
+    NSMutableArray *description = [achievementDetails objectAtIndex:1];
+    NSString *thisDescription = [description objectAtIndex:indexPath.row];
+    achievementDescription.text = thisDescription;
+}
+
 -(void)retrieveAchievements
 {
     __block NSMutableArray *unsortedCities = [[NSMutableArray alloc] initWithObjects:nil];

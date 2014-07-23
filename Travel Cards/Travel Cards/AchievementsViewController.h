@@ -14,7 +14,6 @@
     IBOutlet UIButton *compareToFriend;
     IBOutlet UILabel *userName;
     IBOutlet UILabel *totalScore;
-    IBOutlet UIImageView *achievementImage;
     IBOutlet UITextView *achievementDescription;
     
     int numberOfAchievementCategories;

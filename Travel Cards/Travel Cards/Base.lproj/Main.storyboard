@@ -594,12 +594,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="R2k-Tg-Od8">
-                                <rect key="frame" x="28" y="106" width="104" height="77"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Text describing the achievement goes here." translatesAutoresizingMaskIntoConstraints="NO" id="YBQ-KH-mSd">
-                                <rect key="frame" x="170" y="106" width="122" height="80"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Click on an achievement to view details about it!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBQ-KH-mSd">
+                                <rect key="frame" x="20" y="137" width="280" height="151"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -637,13 +633,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-Vb-uB7">
-                                <rect key="frame" x="28" y="75" width="272" height="21"/>
+                                <rect key="frame" x="24" y="79" width="272" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDO-ME-h0T">
-                                <rect key="frame" x="24" y="208" width="272" height="21"/>
+                                <rect key="frame" x="24" y="108" width="272" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -654,7 +650,6 @@
                     <navigationItem key="navigationItem" title="Achievements" id="tEq-QK-ET9"/>
                     <connections>
                         <outlet property="achievementDescription" destination="YBQ-KH-mSd" id="MxI-9Y-2zv"/>
-                        <outlet property="achievementImage" destination="R2k-Tg-Od8" id="5gW-FP-lnt"/>
                         <outlet property="achievementTable" destination="2Pr-g9-FS7" id="chQ-FL-Fo5"/>
                         <outlet property="compareToFriend" destination="4Er-Ck-l9h" id="ycm-zD-LMl"/>
                         <outlet property="totalScore" destination="IDO-ME-h0T" id="5LN-5m-wdA"/>
@@ -738,7 +733,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="ZwA-bZ-bEf" customClass="CustomCollectionViewCell">
-                                        <rect key="frame" x="10" y="64" width="140" height="140"/>
+                                        <rect key="frame" x="10" y="0.0" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
