@@ -301,6 +301,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="TravelCards" id="2gR-Sa-ftl"/>
                     <connections>
+                        <outlet property="advanceButton" destination="fiI-kW-Jaq" id="m6m-hZ-lW4"/>
                         <outlet property="cityName" destination="bb0-qq-esV" id="pPm-fz-9Vf"/>
                         <outlet property="mainMenuTable" destination="6ZD-w2-xig" id="W3y-mW-tgc"/>
                         <outlet property="tapImageLabel" destination="m49-al-f6f" id="ONd-7n-01p"/>

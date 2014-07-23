@@ -14,6 +14,7 @@
     IBOutlet UILabel *cityName;
     IBOutlet UILabel *tapImageLabel;
     IBOutlet UITableView *mainMenuTable;
+    IBOutlet UIButton *advanceButton;
     
     NSString *cityDataString;
     CLLocationManager *locationManager;

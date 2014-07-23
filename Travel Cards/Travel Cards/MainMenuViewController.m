@@ -44,6 +44,9 @@
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [locationManager startUpdatingLocation];
     }
+    cityName.hidden = false;
+    tapImageLabel.hidden = false;
+    advanceButton.enabled = true;
     [super viewWillAppear:false];
 }
 
@@ -151,21 +154,19 @@
                     nameOfCity = [arrayOfKeys objectAtIndex:x];
                 }
             }
-            //THIS IS A DEBUG POPUP FOR TESTING PURPOSES. WILL BE REMOVED IN FINAL UI
-            cityName.text = nameOfCity;
-            cityDataString = [dictionaryOfNamesAndClassNames objectForKey:nameOfCity];
-            NSString *alertString = [[NSString alloc] initWithFormat:@"The location nearest to you is %@, which is %f meters away.",nameOfCity,distance];
-            UIAlertView *closestLocation = [[UIAlertView alloc] initWithTitle:@"PLACEHOLDER" message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            closestLocation.alertViewStyle = UIAlertViewStyleDefault;
-            [closestLocation show];
+            if (distance > 80467)
+            {
+                UIAlertView *tooFar = [[UIAlertView alloc] initWithTitle:@"Too far!" message:@"The nearest TravelCards location is over 50 miles from you. Check back soon - we're always adding new landmarks!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                tooFar.alertViewStyle = UIAlertViewStyleDefault;
+                cityName.hidden = true;
+                tapImageLabel.hidden = true;
+                advanceButton.enabled = false;
+            }
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    
-    //Step 4 - Determine if this location is within X distance of current location -- NOT SURE THAT I WANT TO DO THIS
-    //Step 5 - Update Main Menu accordingly and set instance variables
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
