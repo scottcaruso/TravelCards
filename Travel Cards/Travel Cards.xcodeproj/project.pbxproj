@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3009B9961980DA1900DB4C12 /* cityscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3009B9951980DA1900DB4C12 /* cityscape.jpg */; };
 		30294E5A1974ED6B00BE115B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30294E591974ED6B00BE115B /* SettingsViewController.m */; };
 		30294E5C19763CE900BE115B /* popup_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 30294E5B19763CE800BE115B /* popup_background.png */; };
 		3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */; };
@@ -14,7 +15,6 @@
 		3041F5F1196B230300C5E26C /* Antipasto_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */; };
 		3069E095196E4751004C109E /* AchievementsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3069E094196E4751004C109E /* AchievementsMenuViewController.m */; };
 		3069E098196E4C84004C109E /* AchievementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3069E097196E4C84004C109E /* AchievementTableViewCell.m */; };
-		306B58BC195A9DA9005DADB8 /* newyork_mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */; };
 		306B58BF195B9265005DADB8 /* PostcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58BE195B9265005DADB8 /* PostcardViewController.m */; };
 		306B58C4195BEE2B005DADB8 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */; };
 		307DD8DD1954058D00860DB9 /* AchievementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307DD8DC1954058D00860DB9 /* AchievementsViewController.m */; };
@@ -48,7 +48,6 @@
 		308600A21950149A003FF8A1 /* Travel_CardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600A11950149A003FF8A1 /* Travel_CardsTests.m */; };
 		308600AF1952ADAA003FF8A1 /* MapScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */; };
 		308600B11952B19C003FF8A1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308600B01952B19C003FF8A1 /* MapKit.framework */; };
-		309A0386196CE47E00B64FE9 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 309A0385196CE47E00B64FE9 /* placeholder.jpg */; };
 		309A0388196CE4C400B64FE9 /* travelcardslogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 309A0387196CE4C400B64FE9 /* travelcardslogo.png */; };
 		30BE864A197F788000FAF709 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BE8649197F788000FAF709 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
@@ -64,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3009B9951980DA1900DB4C12 /* cityscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cityscape.jpg; sourceTree = "<group>"; };
 		30294E581974ED6B00BE115B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		30294E591974ED6B00BE115B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		30294E5B19763CE800BE115B /* popup_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup_background.png; sourceTree = "<group>"; };
@@ -74,7 +74,6 @@
 		3069E094196E4751004C109E /* AchievementsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsMenuViewController.m; sourceTree = "<group>"; };
 		3069E096196E4C84004C109E /* AchievementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementTableViewCell.h; sourceTree = "<group>"; };
 		3069E097196E4C84004C109E /* AchievementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementTableViewCell.m; sourceTree = "<group>"; };
-		306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newyork_mainmenu.png; path = "Travel Cards/newyork_mainmenu.png"; sourceTree = "<group>"; };
 		306B58BD195B9265005DADB8 /* PostcardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostcardViewController.h; sourceTree = "<group>"; };
 		306B58BE195B9265005DADB8 /* PostcardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostcardViewController.m; sourceTree = "<group>"; };
 		306B58C2195BEE2B005DADB8 /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
@@ -121,7 +120,6 @@
 		308600AD1952ADAA003FF8A1 /* MapScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScreenViewController.h; sourceTree = "<group>"; };
 		308600AE1952ADAA003FF8A1 /* MapScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapScreenViewController.m; sourceTree = "<group>"; };
 		308600B01952B19C003FF8A1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		309A0385196CE47E00B64FE9 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		309A0387196CE4C400B64FE9 /* travelcardslogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = travelcardslogo.png; sourceTree = "<group>"; };
 		30BE8648197F788000FAF709 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		30BE8649197F788000FAF709 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -165,8 +163,7 @@
 		3041F5EA196B229500C5E26C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				306B58BB195A9DA9005DADB8 /* newyork_mainmenu.png */,
-				309A0385196CE47E00B64FE9 /* placeholder.jpg */,
+				3009B9951980DA1900DB4C12 /* cityscape.jpg */,
 				30294E5B19763CE800BE115B /* popup_background.png */,
 				309A0387196CE4C400B64FE9 /* travelcardslogo.png */,
 			);
@@ -371,11 +368,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3041F5F1196B230300C5E26C /* Antipasto_regular.otf in Resources */,
-				306B58BC195A9DA9005DADB8 /* newyork_mainmenu.png in Resources */,
 				3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */,
 				3041F5F0196B230000C5E26C /* Antipasto_extralight.otf in Resources */,
 				309A0388196CE4C400B64FE9 /* travelcardslogo.png in Resources */,
-				309A0386196CE47E00B64FE9 /* placeholder.jpg in Resources */,
+				3009B9961980DA1900DB4C12 /* cityscape.jpg in Resources */,
 				3086008F1950149A003FF8A1 /* Images.xcassets in Resources */,
 				308600811950149A003FF8A1 /* InfoPlist.strings in Resources */,
 				30294E5C19763CE900BE115B /* popup_background.png in Resources */,
