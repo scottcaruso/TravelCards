@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad
 {
+    //Immediately get the number of users so that we can properly assign a UserID.
     PFQuery *query = [PFUser query];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
@@ -51,6 +52,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Verify that all of the entered details are valid. If they are, check that the UserName doesn't already exist. If not, go ahead and create the user in the database, assign him a UserID, and also add him to the Achievements table.
 -(IBAction)clickNewAccountButton:(id)sender
 {
     NSString *enteredUserName = desiredUserName.text;
@@ -95,6 +97,7 @@
     }
 }
 
+//Create an entry in the Achievements table for this user. Called during new user creation.
 -(void)addUserToAchievementsDatabase:(NSNumber*)userID userName:(NSString*)userName
 {
     PFObject *achievements = [PFObject objectWithClassName:@"AchievementCompletion"];
@@ -115,7 +118,7 @@
                  if (user)
                  {
                      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                     //Need to add Save Login Details button.
+                     //If we decide to ever allow the user to Save Details from this screen, this code is here.
                      /*if ([saveLoginDetails isOn])
                      {
                          [defaults setValue:enteredUserName forKey:@"SavedUserName"];
@@ -154,6 +157,7 @@
       NSFontAttributeName, nil]];
 }
 
+//Dismiss keyboard from textfields.
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
@@ -168,11 +172,12 @@
         [retypePassword resignFirstResponder];
     } else if ([emailAddress isFirstResponder] && [touch view] != emailAddress)
     {
-        [retypePassword resignFirstResponder];
+        [emailAddress resignFirstResponder];
     }
     [super touchesBegan:touches withEvent:event];
 }
 
+//Dismiss keyboard.
 -(IBAction)textFieldReturn:(id)sender
 {
     [sender resignFirstResponder];

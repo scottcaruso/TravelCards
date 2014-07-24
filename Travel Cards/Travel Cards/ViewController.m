@@ -17,9 +17,13 @@
 
 - (void)viewDidLoad
 {
-    [self.navigationItem setHidesBackButton:YES];
+    [self.navigationItem setHidesBackButton:YES]; //We never want to see a back button no matter how we get to this screen.
+    
+    //Determine if the user has opted to save his login details for faster access to the app.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool savedUser = [defaults valueForKey:@"IsSaved"];
+    
+    //Confirm that a network connection exists, and stop the user from proceeding if it does not.
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
@@ -29,6 +33,7 @@
         submitButton.enabled = false;
         newUserButton.enabled = false;
     } else {
+        //if the user is saved, grab his data and log him in automatically.
         if (savedUser)
         {
             NSString *savedUserName = [defaults valueForKey:@"SavedUserName"];
@@ -53,7 +58,6 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIFont fontWithName:@"Antipasto" size:21],
       NSFontAttributeName, nil]];
-    
     [self setFonts];
     
     [super viewDidLoad];
@@ -66,6 +70,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//The function handles what happens after the user clicks the submit button. It does some basic error checking before logging the user in.
 -(IBAction)clickSubmitButton:(id)sender
 {
     NSString *enteredUserName = userName.text;
@@ -104,6 +109,7 @@
     }
 }
 
+//Use the custom font on this screen.
 -(void)setFonts
 {
     UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
@@ -122,6 +128,7 @@
       NSFontAttributeName, nil]];
 }
 
+//Dismiss the keyboard.
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
@@ -135,6 +142,7 @@
     [super touchesBegan:touches withEvent:event];
 }
 
+//Dismiss the keyboard.
 -(IBAction)textFieldReturn:(id)sender
 {
     [sender resignFirstResponder];
