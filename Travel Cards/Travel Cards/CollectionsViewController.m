@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad
 {
+    [loading startAnimating];
     listOfLandmarks = [[NSMutableArray alloc] initWithObjects:nil];
     listOfURLs = [[NSMutableArray alloc] initWithObjects:nil];
     listOfDescriptions = [[NSMutableArray alloc] initWithObjects:nil];
@@ -143,6 +144,7 @@
             }
             collectionExists = true;
             [collectionView reloadData];
+            [self stopSpinningAndShowUI];
         } else
         {
             UIAlertView *errorMsg = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem retrieving data from the database. Please try again shortly." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -192,6 +194,12 @@
              [newUser saveInBackground];
          }
      }];
+}
+
+-(void)stopSpinningAndShowUI
+{
+    [loading stopAnimating];
+    collectionView.hidden = false;
 }
 
 @end

@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad
 {
+    [loading startAnimating];
     //Load the saved User ID
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
@@ -177,6 +178,7 @@
             [newUser saveInBackground];
         }
     }];
+    [self stopSpinningAndShowUI];
 }
 
 -(void)setFonts
@@ -293,6 +295,13 @@
             [self performSegueWithIdentifier:@"fromAlertView" sender:self];
         }
     }
+}
+
+-(void)stopSpinningAndShowUI
+{
+    [loading stopAnimating];
+    locationMap.hidden = false;
+    advanceToCollections.hidden = false;
 }
 
 @end

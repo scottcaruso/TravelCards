@@ -17,6 +17,7 @@
     NSMutableArray *listOfLandmarkCodes;
     NSMutableArray *collectionStatus;
     IBOutlet UICollectionView *collectionView;
+    IBOutlet UIActivityIndicatorView *loading;
     bool collectionExists;
 }
 

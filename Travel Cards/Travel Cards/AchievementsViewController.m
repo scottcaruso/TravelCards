@@ -40,7 +40,7 @@
       NSFontAttributeName, nil]];
     
     [self retrieveAchievements];
-    
+    [self setFonts];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -87,6 +87,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"Cell";
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    UIFont *smallerFont = [UIFont fontWithName:@"Antipasto" size:14];
     
     UITableViewCell *thisCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (thisCell == nil)
@@ -117,19 +119,26 @@
         statusText = @"Placeholder";
     }
     thisCell.textLabel.text = achievementText;
+    thisCell.textLabel.font = font;
     thisCell.detailTextLabel.text = statusText;
+    thisCell.detailTextLabel.font = smallerFont;
     return thisCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIFont *smallerFont = [UIFont fontWithName:@"Antipasto" size:16];
     NSString *cityClicked = [listOfUnownedCities objectAtIndex:indexPath.section];
     NSString *cityCode = [citiesPlusCodes objectForKey:cityClicked];
     NSMutableArray *achievementDetails = [achievementsByCity objectForKey:cityCode];
     NSMutableArray *description = [achievementDetails objectAtIndex:1];
     NSString *thisDescription = [description objectAtIndex:indexPath.row];
-    achievementDescription.text = thisDescription;
+    [achievementDescription setText:thisDescription];
+    [achievementDescription setFont:smallerFont];
+    [achievementDescription setTextAlignment:NSTextAlignmentCenter];
+    [achievementDescription setTextColor:[UIColor colorWithRed:.94f green:.82f blue:.19f alpha:1]];
 }
+
 
 -(void)retrieveAchievements
 {
@@ -239,14 +248,40 @@
                 }
             }
             [achievementTable reloadData];
-            viewingAppUser = true;
-            [compareToFriend setTitle:@"Compare To Friend" forState:UIControlStateNormal];
+            [self stopSpinningAndShowUI];
         } else {
             UIAlertView *errorMsg = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem retrieving data from the database. Please try again shortly." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             errorMsg.alertViewStyle = UIAlertViewStyleDefault;
             [errorMsg show];
         }
     }];
+}
+
+-(void)setFonts
+{
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    UIFont *smallerFont = [UIFont fontWithName:@"Antipasto" size:16];
+    UIFont *boldFont = [UIFont fontWithName:@"Antipasto-ExtraBold" size:20];
+    userName.font = boldFont;
+    totalScore.font = font;
+    achievementDescription.font = smallerFont;
+    leaderboards.titleLabel.font = font;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Antipasto-ExtraBold" size:21],
+      NSFontAttributeName, nil]];
+    
+}
+
+-(void)stopSpinningAndShowUI
+{
+    [loading stopAnimating];
+    achievementTable.hidden = false;
+    userName.hidden = false;
+    totalScore.hidden = false;
+    achievementDescription.hidden = false;
+    leaderboards.hidden = false;
 }
 
 @end

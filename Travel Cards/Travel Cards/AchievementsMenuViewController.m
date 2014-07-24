@@ -57,6 +57,8 @@
 //This feeds the data for the table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:20];
+    UIFont *smallerFont = [UIFont fontWithName:@"Antipasto" size:14];
     static NSString *cellIdentifier = @"Cell";
     
     AchievementTableViewCell *thisCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -64,11 +66,14 @@
     {
         NSString *ranking = [[NSString alloc] initWithFormat:@"%i",indexPath.row+1];
         thisCell.ranking.text = ranking;
+        thisCell.ranking.font = smallerFont;
         if ([arrayOfUsers count] > 0)
         {
             thisCell.userName.text = [arrayOfUsers objectAtIndex:indexPath.row];
+            thisCell.userName.font = font;
             NSNumber *score = [arrayOfScores objectAtIndex:indexPath.row];
             thisCell.score.text = [score stringValue];
+            thisCell.score.font = font;
         }
     }
     return thisCell;

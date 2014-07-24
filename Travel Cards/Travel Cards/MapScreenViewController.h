@@ -13,6 +13,7 @@
 {
     IBOutlet MKMapView *locationMap;
     IBOutlet UIButton *advanceToCollections;
+    IBOutlet UIActivityIndicatorView *loading;
     
     NSMutableDictionary *locationData;
     NSString *currentlySelectedAnnotation;
