@@ -47,7 +47,6 @@
                  }
              }];
         }
-
     }
     
     [self.navigationController.navigationBar setTitleTextAttributes:

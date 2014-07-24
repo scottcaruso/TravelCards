@@ -191,6 +191,9 @@
     NSLog(@"latitude:%f,longitude:%f",latitude,longitude);
     [self runGeolocationAndLocationFinding];
     [locationManager stopUpdatingLocation];
+    cityName.hidden = false;
+    tapImageLabel.hidden = false;
+    advanceButton.enabled = true;
 }
 
 -(void)logUserOut

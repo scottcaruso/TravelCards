@@ -14,6 +14,11 @@
     NSMutableArray *arrayOfScores;
     
     IBOutlet UITableView *achievementTable;
+    
+    IBOutlet UISegmentedControl *leaderboardSelect;
+    IBOutlet UIButton *addUser;
 }
+
+-(IBAction)onSegmentSelect:(id)sender;
 
 @end

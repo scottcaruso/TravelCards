@@ -27,10 +27,8 @@
 
 - (void)viewDidLoad
 {
-    arrayOfScores = [[NSMutableArray alloc] initWithArray:nil];
-    arrayOfUsers = [[NSMutableArray alloc] initWithArray:nil];
-    
-    [self getLeaderboardNames];
+    addUser.hidden = true;
+    [self getOverallLeaderboardNames];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -73,8 +71,10 @@
     return thisCell;
 }
 
--(void)getLeaderboardNames
+-(void)getOverallLeaderboardNames
 {
+    arrayOfScores = [[NSMutableArray alloc] initWithArray:nil];
+    arrayOfUsers = [[NSMutableArray alloc] initWithArray:nil];
     PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
     [query orderByDescending:@"score"];
     query.limit = 10;
@@ -100,6 +100,20 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+}
+
+-(IBAction)onSegmentSelect:(id)sender
+{
+    if (leaderboardSelect.selectedSegmentIndex == 0)
+    {
+        [self getOverallLeaderboardNames];
+        achievementTable.hidden = false;
+        addUser.hidden = true;
+    } else if (leaderboardSelect.selectedSegmentIndex == 1)
+    {
+        achievementTable.hidden = true;
+        addUser.hidden = false;
+    }
 }
 
 @end
