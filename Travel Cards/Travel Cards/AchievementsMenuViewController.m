@@ -105,16 +105,47 @@
     }];
 }
 
+-(void)getFriendsLeaderboardNames
+{
+    arrayOfScores = [[NSMutableArray alloc] initWithArray:nil];
+    arrayOfUsers = [[NSMutableArray alloc] initWithArray:nil];
+    PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+    [query whereKey:@"userName" containedIn:arrayOfFriends];
+    [query orderByDescending:@"score"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            for (PFObject *object in objects)
+            {
+                NSString *thisUserName = [object objectForKey:@"userName"];
+                NSNumber *thisScore = [object objectForKey:@"score"];
+                [arrayOfUsers addObject:thisUserName];
+                if (thisScore != nil)
+                {
+                    [arrayOfScores addObject:thisScore];
+                } else
+                {
+                    [arrayOfScores addObject:[NSNumber numberWithInt:0]];
+                }
+            }
+            [achievementTable reloadData];
+        } else
+        {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
+}
+
 -(IBAction)onSegmentSelect:(id)sender
 {
     if (leaderboardSelect.selectedSegmentIndex == 0)
     {
         [self getOverallLeaderboardNames];
-        achievementTable.hidden = false;
         addUser.hidden = true;
     } else if (leaderboardSelect.selectedSegmentIndex == 1)
     {
-        achievementTable.hidden = true;
+        [self getFriendsLeaderboardNames];
         addUser.hidden = false;
     }
 }
