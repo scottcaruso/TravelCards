@@ -27,6 +27,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [loading startAnimating];
     //Step 1 - Start Geolocating user
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool fakeCoordinates = [defaults boolForKey:@"FakeCoordinates"];
@@ -176,7 +177,7 @@
             }
             cityName.text = nameOfCity;
             cityDataString = [dictionaryOfNamesAndClassNames objectForKey:nameOfCity];
-            
+            [self stopSpinningAndShowUI];
         } else {
             UIAlertView *errorMsg = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem retrieving data from the database. Please try again shortly." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             errorMsg.alertViewStyle = UIAlertViewStyleDefault;
@@ -238,5 +239,14 @@
          [self logUserOut];
      }
  }
+
+-(void)stopSpinningAndShowUI
+{
+    [loading stopAnimating];
+    cityName.hidden = false;
+    tapImageLabel.hidden = false;
+    mainMenuTable.hidden = false;
+    advanceButton.hidden = false;
+}
 
 @end
