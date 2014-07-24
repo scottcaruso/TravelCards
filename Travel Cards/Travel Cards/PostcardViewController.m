@@ -117,17 +117,59 @@
     {
         collectionObject[landmarkID] = stringFromDate;
         NSNumber *thisNumberCollected = [collectionObject objectForKey:@"numberOfCollected"];
+        if (thisNumberCollected == nil)
+        {
+            thisNumberCollected = [NSNumber numberWithInt:0];
+        }
         int newNumberInt = [thisNumberCollected intValue] + 1;
         numberCollected = [NSNumber numberWithInt:newNumberInt];
         collectionObject[@"numberOfCollected"] = numberCollected;
         [collectionObject saveInBackground];
     }];
+    [self checkIfCollectionIsTracked];
     [self checkForAchievement];
     [addToCollectionButton setTitle:@"Already collected!" forState:UIControlStateNormal];
     [addToCollectionButton setEnabled:false];
     locationNameLabel.text = locationName;
     modalView.hidden = false;
     mainView.layer.opacity = .35f;
+}
+
+-(void)checkIfCollectionIsTracked
+{
+    __block bool doesExist = false;
+    __block NSMutableArray *arrayOfCollections = [[NSMutableArray alloc] initWithObjects:nil];
+    PFQuery *user = [PFUser query];
+    [user whereKey:@"userID" equalTo:userID];
+    [user findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects)
+            {
+                arrayOfCollections = [object objectForKey:@"arrayOfCollections"];
+                if ([arrayOfCollections count] > 0)
+                {
+                    for (int x = 0; x < [arrayOfCollections count]; x++)
+                    {
+                        NSString *collectionItem = [arrayOfCollections objectAtIndex:x];
+                        if ([collectionItem isEqualToString:locationDatabase])
+                        {
+                            doesExist = true;
+                        }
+                    }
+                }
+                if (!doesExist)
+                {
+                    if (arrayOfCollections == nil)
+                    {
+                        arrayOfCollections = [[NSMutableArray alloc] initWithObjects:nil];
+                    }
+                    [arrayOfCollections addObject:locationDatabase];
+                    object[@"arrayOfCollections"] = arrayOfCollections;
+                    [object saveInBackground];
+                }
+            }
+        }
+    }];
 }
 
 -(void)checkForAchievement

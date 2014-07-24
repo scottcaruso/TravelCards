@@ -199,13 +199,8 @@
 -(void)logUserOut
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    bool fakeCoordinates = [defaults objectForKey:@"FakeCoordinates"];
-    double savedLatitude = [defaults doubleForKey:@"Latitude"];
-    double savedLongitude = [defaults doubleForKey:@"Longitude"];
     [defaults removePersistentDomainForName:@"com.fullsail.TestApp.Travel-Cards"];
-    [defaults setBool:fakeCoordinates forKey:@"FakeCoordinates"];
-    [defaults setDouble:savedLatitude forKey:@"Latitude"];
-    [defaults setDouble:savedLongitude forKey:@"Longitude"];
+    [defaults setBool:false forKey:@"FakeCoordinates"];;
     [defaults synchronize];
 }
 
