@@ -79,6 +79,7 @@
     arrayOfScores = [[NSMutableArray alloc] initWithArray:nil];
     arrayOfUsers = [[NSMutableArray alloc] initWithArray:nil];
     PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query orderByDescending:@"score"];
     query.limit = 10;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -110,6 +111,7 @@
     arrayOfScores = [[NSMutableArray alloc] initWithArray:nil];
     arrayOfUsers = [[NSMutableArray alloc] initWithArray:nil];
     PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"userName" containedIn:arrayOfFriends];
     [query orderByDescending:@"score"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -163,6 +165,7 @@
     {
         UITextField *thisTextField = [alertView textFieldAtIndex:0];
         PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+        query.cachePolicy = kPFCachePolicyNetworkElseCache;
         [query whereKey:@"userName" equalTo:thisTextField.text];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
@@ -210,6 +213,7 @@
 -(void)retrieveUsersFriends
 {
     PFQuery *user = [PFUser query];
+    user.cachePolicy = kPFCachePolicyNetworkElseCache;
     [user whereKey:@"userID" equalTo:userID];
     [user findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -229,6 +233,7 @@
 -(void)executeFriendAdd:(NSMutableArray*)updatedArray
 {
     PFQuery *user = [PFUser query];
+    user.cachePolicy = kPFCachePolicyNetworkElseCache;
     [user whereKey:@"userID" equalTo:userID];
     [user findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {

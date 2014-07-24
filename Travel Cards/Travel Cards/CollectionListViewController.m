@@ -140,6 +140,7 @@
     __block NSMutableArray *unsortedCities = [[NSMutableArray alloc] initWithObjects:nil];
     __block NSMutableArray *arrayOfCollections = [[NSMutableArray alloc] initWithObjects:nil];
     PFQuery *user = [PFUser query];
+    user.cachePolicy = kPFCachePolicyNetworkElseCache;
     [user whereKey:@"userID" equalTo:userID];
     [user findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -155,6 +156,7 @@
                 }
             }
             PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
+            query.cachePolicy = kPFCachePolicyNetworkElseCache;
             [query whereKey:@"isActive" equalTo:[NSNumber numberWithInt:1]];
             [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 if (!error) {

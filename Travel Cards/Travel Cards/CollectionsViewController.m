@@ -89,6 +89,7 @@
 -(void)retrieveNumberOfLandmarks
 {
     PFQuery *query = [PFQuery queryWithClassName:cityCodeName];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query orderByAscending:@"landmark"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
@@ -116,6 +117,7 @@
 {
     NSString *queryString = [[NSString alloc] initWithFormat:@"%@Collection",cityCodeName];
     PFQuery *query = [PFQuery queryWithClassName:queryString];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
@@ -174,6 +176,7 @@
 {
     NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",cityCodeName];
     PFQuery *query = [PFQuery queryWithClassName:collectionString];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"userID" equalTo:userID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {

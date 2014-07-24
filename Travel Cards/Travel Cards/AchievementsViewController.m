@@ -136,6 +136,7 @@
     __block NSMutableArray *unsortedCities = [[NSMutableArray alloc] initWithObjects:nil];
     __block NSMutableArray *unsortedCodes = [[NSMutableArray alloc] initWithObjects:nil];
     PFQuery *cityQuery = [PFQuery queryWithClassName:@"CityNames"];
+    cityQuery.cachePolicy = kPFCachePolicyNetworkElseCache;
     [cityQuery whereKey:@"isActive" equalTo:@1];
     [cityQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -167,6 +168,7 @@
 -(void)putAchievementsIntoDictionary:(NSString*)cityCodeName runTableReload:(bool)reload
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Achievements"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"achievementCategory" equalTo:cityCodeName];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -199,6 +201,7 @@
 -(void)getAchievementCompletionStatuses
 {
     PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"userID" equalTo:userID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
