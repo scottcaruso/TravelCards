@@ -85,7 +85,9 @@
             [self addAnnotations];
             [self nearbyCheckinPossible];
         } else {
-            // Log details of the failure
+            UIAlertView *errorMsg = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem retrieving data from the database. Please try again shortly." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            errorMsg.alertViewStyle = UIAlertViewStyleDefault;
+            [errorMsg show];
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];

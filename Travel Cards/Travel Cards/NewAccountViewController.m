@@ -128,6 +128,9 @@
                      [self performSegueWithIdentifier:@"CreateUserSuccess" sender:self];
                  } else
                  {
+                     UIAlertView *loginFailed = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem logging you in. Please check your login details and try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                     loginFailed.alertViewStyle = UIAlertViewStyleDefault;
+                     [loginFailed show];
                      NSLog(@"%@",error);
                  }
              }];
