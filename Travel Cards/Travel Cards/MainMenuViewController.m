@@ -135,6 +135,7 @@
     //Step 2 - Parse the Travel Cards location data
     PFQuery *query = [PFQuery queryWithClassName:@"CityNames"];
     [query whereKey:@"isActive" equalTo:@1];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (PFObject *object in objects)

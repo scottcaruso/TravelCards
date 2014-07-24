@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     PFQuery *query = [PFUser query];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
         if (!error)
         {

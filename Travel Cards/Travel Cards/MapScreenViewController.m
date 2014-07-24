@@ -54,6 +54,7 @@
 -(void)getDataForLocation:(NSString*)className
 {
     PFQuery *query = [PFQuery queryWithClassName:className];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
@@ -163,6 +164,7 @@
 {
     NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",city];
     PFQuery *query = [PFQuery queryWithClassName:collectionString];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"userID" equalTo:userID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {

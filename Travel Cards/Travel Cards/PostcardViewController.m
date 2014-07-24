@@ -72,6 +72,7 @@
 {
     NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",locationDatabase];
     query = [PFQuery queryWithClassName:collectionString];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"userID" equalTo:userID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
@@ -140,6 +141,7 @@
     __block bool doesExist = false;
     __block NSMutableArray *arrayOfCollections = [[NSMutableArray alloc] initWithObjects:nil];
     PFQuery *user = [PFUser query];
+    user.cachePolicy = kPFCachePolicyNetworkElseCache;
     [user whereKey:@"userID" equalTo:userID];
     [user findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -175,6 +177,7 @@
 -(void)checkForAchievement
 {
     PFQuery *achievementQuery = [PFQuery queryWithClassName:@"Achievements"];
+    achievementQuery.cachePolicy = kPFCachePolicyNetworkElseCache;
     [achievementQuery whereKey:@"achievementCategory" equalTo:locationDatabase];
     [achievementQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
@@ -202,6 +205,7 @@
 -(void)collectAchievement:(NSString*)objectID newScore:(NSNumber*)scoreToAdd
 {
     PFQuery *achievementCollection = [PFQuery queryWithClassName:@"AchievementCompletion"];
+    achievementCollection.cachePolicy = kPFCachePolicyNetworkElseCache;
     [achievementCollection whereKey:@"userID" equalTo:userID];
     [achievementCollection findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
