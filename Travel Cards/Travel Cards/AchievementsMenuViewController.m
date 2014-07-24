@@ -27,6 +27,9 @@
 
 - (void)viewDidLoad
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    userID = [defaults objectForKey:@"SavedUserID"];
+    [self retrieveUsersFriends];
     addUser.hidden = true;
     [self getOverallLeaderboardNames];
     
@@ -114,6 +117,100 @@
         achievementTable.hidden = true;
         addUser.hidden = false;
     }
+}
+
+-(IBAction)addFriend:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Add Friend" message:@"Please enter your friend's username." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Search",nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        UITextField *thisTextField = [alertView textFieldAtIndex:0];
+        PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
+        [query whereKey:@"userName" equalTo:thisTextField.text];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                //achievementStatus = [[NSMutableDictionary alloc] init];
+                if (objects.count == 0)
+                {
+                    UIAlertView *incorrectUserName = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We did not find that user in the database. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    incorrectUserName.alertViewStyle = UIAlertViewStyleDefault;
+                    [incorrectUserName show];
+                } else
+                {
+                    bool friendExists = false;
+                    for (PFObject *object in objects)
+                    {
+                        NSString *thisUserName = [object objectForKey:@"userName"];
+                        for (int x = 0; x < [arrayOfFriends count]; x++)
+                        {
+                            NSString *thisFriend = [arrayOfFriends objectAtIndex:x];
+                            if ([thisFriend isEqualToString:thisUserName])
+                            {
+                                UIAlertView *alreadyExists = [[UIAlertView alloc] initWithTitle:@"Users Already Friends" message:@"The desired user is already friends with you!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                alreadyExists.alertViewStyle = UIAlertViewStyleDefault;
+                                [alreadyExists show];
+                                friendExists = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!friendExists)
+                    {
+                        [arrayOfFriends addObject:thisTextField.text];
+                        [self executeFriendAdd:arrayOfFriends];
+                    }
+                }
+            } else
+            {
+                UIAlertView *incorrectUserName = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We did not find that user in the database. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                incorrectUserName.alertViewStyle = UIAlertViewStyleDefault;
+                [incorrectUserName show];
+            }
+        }];
+    }
+}
+
+-(void)retrieveUsersFriends
+{
+    PFQuery *user = [PFUser query];
+    [user whereKey:@"userID" equalTo:userID];
+    [user findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects)
+            {
+                arrayOfFriends = [[NSMutableArray alloc] initWithObjects:nil];
+                arrayOfFriends = [object objectForKey:@"arrayOfFriends"];
+            }
+            if (arrayOfFriends == nil)
+            {
+               arrayOfFriends = [[NSMutableArray alloc] initWithObjects:nil];
+            }
+        }
+    }];
+}
+
+-(void)executeFriendAdd:(NSMutableArray*)updatedArray
+{
+    PFQuery *user = [PFUser query];
+    [user whereKey:@"userID" equalTo:userID];
+    [user findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects)
+            {
+                object[@"arrayOfFriends"] = arrayOfFriends;
+                [object saveInBackground];
+                UIAlertView *friendAdd = [[UIAlertView alloc] initWithTitle:@"Friend added!" message:@"The user was added to your friend list!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                friendAdd.alertViewStyle = UIAlertViewStyleDefault;
+                [friendAdd show];
+            }
+        }
+    }];
 }
 
 @end

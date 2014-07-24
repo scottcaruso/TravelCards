@@ -28,9 +28,6 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
-    viewingAppUser = true;
-    otherUserName = @"";
-    
     
     citiesPlusCodes = [[NSMutableDictionary alloc] init];
     achievementsByCity = [[NSMutableDictionary alloc] init];
@@ -239,85 +236,6 @@
             [compareToFriend setTitle:@"Compare To Friend" forState:UIControlStateNormal];
         }
     }];
-}
-
--(void)getFriendDetails
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Friend Username Entry" message:@"Please enter your friend's username." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Search",nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [[alert textFieldAtIndex:0] setText:otherUserName];
-    [alert show];
-}
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 1)
-    {
-        UITextField *thisTextField = [alertView textFieldAtIndex:0];
-        PFQuery *query = [PFQuery queryWithClassName:@"AchievementCompletion"];
-        [query whereKey:@"userName" equalTo:thisTextField.text];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                achievementStatus = [[NSMutableDictionary alloc] init];
-                if (objects.count == 0)
-                {
-                    UIAlertView *incorrectUserName = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We did not find that user in the database. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    incorrectUserName.alertViewStyle = UIAlertViewStyleDefault;
-                    [incorrectUserName show];
-                } else
-                {
-                    for (PFObject *object in objects)
-                    {
-                        thisUserName = [object objectForKey:@"userName"];
-                        thisScore = [object objectForKey:@"score"];
-                        userName.text = thisUserName;
-                        if (thisScore != nil)
-                        {
-                            //do nothing
-                        } else
-                        {
-                            thisScore = [NSNumber numberWithInt:0];
-                        }
-                        NSString *scoreString = [[NSString alloc] initWithFormat:@"Total Score: %@",thisScore];
-                        totalScore.text = scoreString;
-                        otherUserName = thisUserName;
-                        for (int x = 0; x < [achievementCodes count]; x++)
-                        {
-                            NSNumber *collectedStatus = [object objectForKey:[achievementCodes objectAtIndex:x]];
-                            NSString *achievementCode = [achievementCodes objectAtIndex:x];
-                            if (collectedStatus)
-                            {
-                                [achievementStatus setValue:@"Complete" forKey:achievementCode];
-                            } else
-                            {
-                                [achievementStatus setValue:@"Not Complete" forKey:achievementCode];
-                            }
-                        }
-                    }
-                    [achievementTable reloadData];
-                    viewingAppUser = false;
-                    [compareToFriend setTitle:@"Return to Your Details" forState:UIControlStateNormal];
-                }
-            } else
-            {
-                UIAlertView *incorrectUserName = [[UIAlertView alloc] initWithTitle:@"Error" message:@"We did not find that user in the database. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                incorrectUserName.alertViewStyle = UIAlertViewStyleDefault;
-                [incorrectUserName show];
-            }
-        }];
-    }
-}
-
-
--(IBAction)clickCompareButton:(id)sender
-{
-    if (viewingAppUser)
-    {
-        [self getFriendDetails];
-    } else
-    {
-        [self getAchievementCompletionStatuses];
-    }
 }
 
 @end

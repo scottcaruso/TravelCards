@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AchievementsMenuViewController : UIViewController <UITableViewDelegate>
+@interface AchievementsMenuViewController : UIViewController <UITableViewDelegate,UIAlertViewDelegate>
 {
     NSMutableArray *arrayOfUsers;
     NSMutableArray *arrayOfScores;
+    NSNumber *userID;
+    
+    NSMutableArray *arrayOfFriends;
     
     IBOutlet UITableView *achievementTable;
     
@@ -20,5 +23,6 @@
 }
 
 -(IBAction)onSegmentSelect:(id)sender;
+-(IBAction)addFriend:(id)sender;
 
 @end
