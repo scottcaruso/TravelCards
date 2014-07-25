@@ -30,10 +30,12 @@
 - (void)viewDidLoad
 {
     [loading startAnimating];
+    
     //Load the saved User ID
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
     
+    //This is a value that we can change to determine how close the user needs to be in order to check in to a location. In meters.
     defaultCheckinDistance = 750;
     
     locationData = [[NSMutableDictionary alloc] init];
@@ -52,6 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Retrieve the specific data for the city we have Geolocated to. This includes the images, IDs, and deals. All of this is dynamic from the Parse database. Take all of them and create a dictionary of them so that we can retrieve them whenever an annotation is clicked on.
 -(void)getDataForLocation:(NSString*)className
 {
     PFQuery *query = [PFQuery queryWithClassName:className];
@@ -243,6 +246,7 @@
     }
 }
 
+//Determines if the current annotation is close enough to check in based on the default value set in the top.
 -(bool)canWeCheckIn:(CLLocation*)userLocation landmark:(CLLocation*)landmark
 {
     CLLocationDistance currentDistance = [userLocation distanceFromLocation:landmark];
@@ -255,6 +259,7 @@
     }
 }
 
+//Verifies the distance between the current location and the city's landmarks. If there's one close by, we implore the user to view the postcard.
 -(void)nearbyCheckinPossible
 {
     int numberOfLandmarks = [locationData count];

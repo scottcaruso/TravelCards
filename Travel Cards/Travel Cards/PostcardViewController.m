@@ -30,7 +30,6 @@
     //Load the saved User ID
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
-    
     [self obtainObjectID];
     
     self.title=locationName;
@@ -68,6 +67,7 @@
     return image;
 }
 
+//Get the objectID for this specific location. We need it to properly track checkins.
 -(void)obtainObjectID
 {
     NSString *collectionString = [[NSString alloc] initWithFormat:@"%@Collection",locationDatabase];

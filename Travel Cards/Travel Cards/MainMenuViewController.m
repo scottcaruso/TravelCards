@@ -27,8 +27,10 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    //Loading notification
     [loading startAnimating];
-    //Step 1 - Start Geolocating user
+    
+    //First, check if we are using fake coordinates. This is only used in a testing build in which the user has been able to specify his own latitude and longitude.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     bool fakeCoordinates = [defaults boolForKey:@"FakeCoordinates"];
     double savedLatitude = [defaults doubleForKey:@"Latitude"];
@@ -40,10 +42,12 @@
         [self runGeolocationAndLocationFinding];
     } else
     {
+        //Start geolocation services.
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [locationManager startUpdatingLocation];
+        //If these things have been turned off, turn them back on.
         cityName.hidden = false;
         tapImageLabel.hidden = false;
         advanceButton.enabled = true;
@@ -55,6 +59,8 @@
     UIAlertView *gpsOff = [[UIAlertView alloc] initWithTitle:@"GPS is turned off" message:@"Location Services are currently disabled or disallowed. Please enable them to use this application!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     gpsOff.alertViewStyle = UIAlertViewStyleDefault;
     [gpsOff show];
+    
+    //If GPS is turned off, prevent the dynamic elements from being tappable.
     cityName.hidden = true;
     tapImageLabel.hidden = true;
     advanceButton.enabled = false;
@@ -66,10 +72,6 @@
     
     dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
     dictionaryOfNamesAndClassNames = [[NSMutableDictionary alloc] init];
-
-    
-    //When we load the view, we are going to run the Geolocation functions. For now, we are spoofing the
-    //data so that we can test the application as if we are in the New York area.
     
     [self setFonts];
     [super viewDidLoad];
@@ -110,12 +112,14 @@
         menuItem = @"Achicevements";
     } else if (indexPath.row == 2)
     {
+        //Comment out Credits and activate menuItem=Settings for a test build. Do the reverse for a release build.
         thisCell = [tableView dequeueReusableCellWithIdentifier:@"Settings"];
-        menuItem = @"Settings";
+        //menuItem = @"Settings";
+        menuItem = @"Credits";
     } else if (indexPath.row == 3)
     {
         thisCell = [tableView dequeueReusableCellWithIdentifier:@"User"];
-        menuItem = @"User Control";
+        menuItem = @"Log Out";
     }
     if (thisCell == nil)
     {
@@ -128,6 +132,7 @@
     return thisCell;
 }
 
+//This happens immediately after we get a latitude and longitude.
 -(void)runGeolocationAndLocationFinding
 {
     /* This is where the Geolocation will run, along with determining if there is a Travel Cards destination somewhere
@@ -150,9 +155,10 @@
                 CLLocation *thisLocation = [[CLLocation alloc] initWithLatitude:latDouble longitude:lonDouble];
                 [dictionaryofCoordinates setValue:thisLocation forKey:[object objectForKey:@"cityName"]];
             }
-            CLLocationDistance distance = 10000000000000;
+        
+            CLLocationDistance distance = 10000000000000; //This is merely a default value that's impossibly far away from anything in the United States.
             NSString *nameOfCity;
-            CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+            CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude]; //This is the CLLocation object for the currently Geolocated location.
             
             //Step 3 - Compare current location to other locations to find out which, if any, is closest
             for (int x = 0; x < [dictionaryofCoordinates count]; x++)
@@ -166,7 +172,7 @@
                     nameOfCity = [arrayOfKeys objectAtIndex:x];
                 }
             }
-            if (distance > 80467)
+            if (distance > 80467) //This is the approximate value of meters that equals 50 miles.
             {
                 UIAlertView *tooFar = [[UIAlertView alloc] initWithTitle:@"Too far!" message:@"The nearest TravelCards location is over 50 miles from you. Check back soon - we're always adding new landmarks!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 tooFar.alertViewStyle = UIAlertViewStyleDefault;
@@ -187,19 +193,22 @@
     }];
 }
 
+//We only get a single latitude and longitude. We don't want to be constantly pinging and updating.
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     CLLocation *lastLocation = [locations lastObject];
     longitude = lastLocation.coordinate.longitude;
     latitude = lastLocation.coordinate.latitude;
-    NSLog(@"latitude:%f,longitude:%f",latitude,longitude);
     [self runGeolocationAndLocationFinding];
     [locationManager stopUpdatingLocation];
+    
+    //Display the clickable elements once we're sure we've actually updated.
     cityName.hidden = false;
     tapImageLabel.hidden = false;
     advanceButton.enabled = true;
 }
 
+//If the Logout button is clicked, this is what we do.
 -(void)logUserOut
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
