@@ -255,6 +255,7 @@
                 UIAlertView *friendAdd = [[UIAlertView alloc] initWithTitle:@"Friend added!" message:@"The user was added to your friend list!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 friendAdd.alertViewStyle = UIAlertViewStyleDefault;
                 [friendAdd show];
+                [self getFriendsLeaderboardNames];
             }
         }
     }];
