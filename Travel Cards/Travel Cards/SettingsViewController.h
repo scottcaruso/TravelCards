@@ -14,6 +14,7 @@
     IBOutlet UITextField *latitudeField;
     IBOutlet UITextField *longitudeField;
     IBOutlet UIButton *saveSettings;
+    IBOutlet UITextView *textView;
 }
 
 @end

@@ -25,6 +25,10 @@
 
 - (void)viewDidLoad
 {
+    UIFont *font = [UIFont fontWithName:@"Antipasto" size:15];
+    [textView setFont:font];
+    [textView setTextAlignment:NSTextAlignmentCenter];
+    [textView setTextColor:[UIColor colorWithRed:.94f green:.82f blue:.19f alpha:1]];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

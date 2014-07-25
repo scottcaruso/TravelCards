@@ -112,9 +112,7 @@
         menuItem = @"Achicevements";
     } else if (indexPath.row == 2)
     {
-        //Comment out Credits and activate menuItem=Settings for a test build. Do the reverse for a release build.
         thisCell = [tableView dequeueReusableCellWithIdentifier:@"Settings"];
-        //menuItem = @"Settings";
         menuItem = @"Credits";
     } else if (indexPath.row == 3)
     {
