@@ -43,7 +43,14 @@
              {
                  if (user)
                  {
-                     [self performSegueWithIdentifier:@"Login" sender:self];
+                     if ([user objectForKey:@"isPartnerAdmin"] == [NSNumber numberWithInt:1])
+                     {
+                        [self performSegueWithIdentifier:@"adminLogin" sender:self];
+                     } else
+                     {
+                        [self performSegueWithIdentifier:@"Login" sender:self];
+                     }
+
                  } else
                  {
                      UIAlertView *loginFailed = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem logging you in with your saved details. Please re-enter them." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -97,7 +104,13 @@
                     NSNumber *userID = [user objectForKey:@"userID"];
                     [defaults setValue:userID forKey:@"SavedUserID"];
                     [defaults synchronize];
-                    [self performSegueWithIdentifier:@"Login" sender:self];
+                    if ([user objectForKey:@"isPartnerAdmin"] == [NSNumber numberWithInt:1])
+                    {
+                        [self performSegueWithIdentifier:@"adminLogin" sender:self];
+                    } else
+                    {
+                        [self performSegueWithIdentifier:@"Login" sender:self];
+                    }
                 } else
                 {
                     NSLog(@"%@",error);
