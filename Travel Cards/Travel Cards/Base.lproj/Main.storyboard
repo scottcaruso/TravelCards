@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="-648" y="-1640"/>
         </scene>
-        <!--View Controller - Partner Admin-->
+        <!--Partner Admin View Controller - Partner Admin-->
         <scene sceneID="pQB-QQ-39K">
             <objects>
-                <viewController id="fr6-AO-spx" sceneMemberID="viewController">
+                <viewController id="fr6-AO-spx" customClass="PartnerAdminViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gAd-PO-rpd"/>
                         <viewControllerLayoutGuide type="bottom" id="Da4-yB-Z5d"/>
@@ -288,6 +288,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Partner Admin" id="nSS-qu-PMm"/>
+                    <connections>
+                        <outlet property="availability" destination="N77-2w-0YB" id="pIj-5j-9MH"/>
+                        <outlet property="cityName" destination="ZlA-dw-StW" id="7oZ-8o-Wxj"/>
+                        <outlet property="landmarkName" destination="xeF-2f-VNl" id="ySs-qn-hpO"/>
+                        <outlet property="limitedDeal" destination="6xn-Hf-ILd" id="h4S-GC-Iu9"/>
+                        <outlet property="maxViews" destination="PHr-gT-77W" id="tgO-8G-cDf"/>
+                        <outlet property="noLabel" destination="JTu-fW-7zw" id="a4R-Co-v9B"/>
+                        <outlet property="numberOfDeal" destination="O3Y-Ip-F7Z" id="PK0-06-0D0"/>
+                        <outlet property="offLabel" destination="Tgs-Ot-wgH" id="Ynj-Jv-bhH"/>
+                        <outlet property="onLabel" destination="Rub-j9-eCK" id="Fkq-HM-cMd"/>
+                        <outlet property="onOff" destination="k6d-BM-cX1" id="Ywb-Aw-oKc"/>
+                        <outlet property="pickerView" destination="D8j-IL-9Jc" id="v9h-8E-lTD"/>
+                        <outlet property="textField" destination="knu-vC-w76" id="8Fg-Qj-Hqi"/>
+                        <outlet property="yesLabel" destination="FFy-Ud-7Xj" id="Kow-gP-edC"/>
+                        <outlet property="yesNo" destination="ke1-iy-fUz" id="poB-t5-bdR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHH-0n-nWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

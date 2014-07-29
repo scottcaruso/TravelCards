@@ -13,6 +13,7 @@
 		3041F5EF196B22F700C5E26C /* Antipasto_extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */; };
 		3041F5F0196B230000C5E26C /* Antipasto_extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */; };
 		3041F5F1196B230300C5E26C /* Antipasto_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */; };
+		3048E6EE198744D600940C18 /* PartnerAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3048E6ED198744D600940C18 /* PartnerAdminViewController.m */; };
 		3069E095196E4751004C109E /* AchievementsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3069E094196E4751004C109E /* AchievementsMenuViewController.m */; };
 		3069E098196E4C84004C109E /* AchievementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3069E097196E4C84004C109E /* AchievementTableViewCell.m */; };
 		306B58BF195B9265005DADB8 /* PostcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306B58BE195B9265005DADB8 /* PostcardViewController.m */; };
@@ -70,6 +71,8 @@
 		3041F5EC196B22D600C5E26C /* Antipasto_extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extrabold.otf; sourceTree = "<group>"; };
 		3041F5ED196B22D600C5E26C /* Antipasto_extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_extralight.otf; sourceTree = "<group>"; };
 		3041F5EE196B22D600C5E26C /* Antipasto_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Antipasto_regular.otf; sourceTree = "<group>"; };
+		3048E6EC198744D600940C18 /* PartnerAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerAdminViewController.h; sourceTree = "<group>"; };
+		3048E6ED198744D600940C18 /* PartnerAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartnerAdminViewController.m; sourceTree = "<group>"; };
 		3069E093196E4751004C109E /* AchievementsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsMenuViewController.h; sourceTree = "<group>"; };
 		3069E094196E4751004C109E /* AchievementsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsMenuViewController.m; sourceTree = "<group>"; };
 		3069E096196E4C84004C109E /* AchievementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementTableViewCell.h; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 				306B58C3195BEE2B005DADB8 /* CustomCollectionViewCell.m */,
 				30294E581974ED6B00BE115B /* SettingsViewController.h */,
 				30294E591974ED6B00BE115B /* SettingsViewController.m */,
+				3048E6EC198744D600940C18 /* PartnerAdminViewController.h */,
+				3048E6ED198744D600940C18 /* PartnerAdminViewController.m */,
 				30BE8648197F788000FAF709 /* Reachability.h */,
 				30BE8649197F788000FAF709 /* Reachability.m */,
 				3086008E1950149A003FF8A1 /* Images.xcassets */,
@@ -405,6 +410,7 @@
 				3069E095196E4751004C109E /* AchievementsMenuViewController.m in Sources */,
 				307DD8FA1957B44300860DB9 /* NewAccountViewController.m in Sources */,
 				307DD8DD1954058D00860DB9 /* AchievementsViewController.m in Sources */,
+				3048E6EE198744D600940C18 /* PartnerAdminViewController.m in Sources */,
 				308600871950149A003FF8A1 /* AppDelegate.m in Sources */,
 				308600831950149A003FF8A1 /* main.m in Sources */,
 				307DD8E3195407AD00860DB9 /* MainMenuViewController.m in Sources */,
