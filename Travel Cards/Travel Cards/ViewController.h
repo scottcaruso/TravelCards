@@ -18,6 +18,8 @@
     IBOutlet UIButton *submitButton;
     IBOutlet UIButton *newUserButton;
     IBOutlet UISwitch *saveLoginDetails;
+    
+    NSString *userNameToPass;
 }
 
 -(IBAction)clickSubmitButton:(id)sender;

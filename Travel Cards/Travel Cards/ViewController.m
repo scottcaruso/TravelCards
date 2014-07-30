@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Reachability.h"
+#import "PartnerAdminViewController.h"
 
 @interface ViewController ()
 
@@ -38,6 +39,7 @@
         {
             NSString *savedUserName = [defaults valueForKey:@"SavedUserName"];
             NSString *savedPassword = [defaults valueForKey:@"SavedPassword"];
+            userNameToPass = savedUserName;
             [PFUser logInWithUsernameInBackground:savedUserName password:savedPassword
                                             block:^(PFUser *user, NSError *error)
              {
@@ -89,6 +91,7 @@
         [checkEntry show];
     } else
     {
+        userNameToPass = enteredUserName;
         [PFUser logInWithUsernameInBackground:enteredUserName password:enteredPassword
             block:^(PFUser *user, NSError *error)
             {
@@ -153,6 +156,15 @@
         [password resignFirstResponder];
     }
     [super touchesBegan:touches withEvent:event];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"adminLogin"])
+    {
+        PartnerAdminViewController *view = [segue destinationViewController];
+        view.username = userNameToPass;
+    }
 }
 
 //Dismiss the keyboard.

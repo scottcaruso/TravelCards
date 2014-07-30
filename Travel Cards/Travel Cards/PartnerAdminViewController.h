@@ -23,7 +23,15 @@
     IBOutlet UISwitch *onOff;
     IBOutlet UISwitch *yesNo;
     IBOutlet UITextField *numberOfDeal;
-    IBOutlet UIPickerView *pickerView;
+    IBOutlet UIPickerView *picker;
+    
+    NSString *pickerClicked;
+    
+    NSMutableArray *cities;
+    NSMutableArray *allowedCities;
+    NSMutableDictionary *citiesAndLandmarks;
 }
+
+@property NSString *username;
 
 @end
