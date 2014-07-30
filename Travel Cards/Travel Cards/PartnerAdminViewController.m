@@ -38,7 +38,7 @@
         {
             for (PFObject *object in objects)
             {
-                [cities addObject:[object objectForKey:@"cityName"]];
+                [cities addObject:[object objectForKey:@"cityClassName"]];
             }
             PFQuery *query = [PFQuery queryWithClassName:@"Partners"];
             [query whereKey:@"username" equalTo:username];
@@ -55,7 +55,7 @@
                             if ([object objectForKey:cityCode] != nil)
                             {
                                 [allowedCities addObject:cityCode];
-                                [allowedLandmarks addObject:[object objectForKey:cityCode]];
+                                allowedLandmarks = [object objectForKey:cityCode];
                             }
                             [citiesAndLandmarks setValue:allowedLandmarks forKey:cityCode];
                         }
@@ -101,12 +101,16 @@
 {
     if ([pickerClicked isEqualToString:@"City"])
     {
-        return [cities count];
+        return [allowedCities count];
+    } else if ([pickerClicked isEqualToString:@"Landmark"])
+    {
+        NSString *city = cityName.titleLabel.text;
+        NSMutableArray *thisCity = [citiesAndLandmarks objectForKey:city];
+        return [thisCity count];
     } else
     {
-        
+        return 0;
     }
-    return 0;
 }
 
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
@@ -114,24 +118,74 @@
     
     if ([pickerClicked isEqualToString:@"City"])
     {
-        NSString *city = [cities objectAtIndex:row];
+        NSString *city = [allowedCities objectAtIndex:row];
         return city;
+    } else if ([pickerClicked isEqualToString:@"Landmark"])
+    {
+        NSString *city = cityName.titleLabel.text;
+        NSMutableArray *thisCity = [citiesAndLandmarks objectForKey:city];
+        NSString *landmark = [thisCity objectAtIndex:row];
+        return landmark;
     } else
     {
-        
+        return nil;
     }
-    return nil;
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if ([pickerClicked isEqualToString:@"City"])
     {
-        NSString *text = [cities objectAtIndex:row];
+        NSString *text = [allowedCities objectAtIndex:row];
         [cityName setTitle:text forState:UIControlStateNormal];
-    } else
+        [landmarkName setHidden:false];
+        [landmarkName setEnabled:true];
+    } else if ([pickerClicked isEqualToString:@"Landmark"])
     {
-        
+        NSString *city = cityName.titleLabel.text;
+        NSMutableArray *thisCity = [citiesAndLandmarks objectForKey:city];
+        NSString *landmark = [thisCity objectAtIndex:row];
+        [landmarkName setTitle:landmark forState:UIControlStateNormal];
+        PFQuery *query = [PFQuery queryWithClassName:city];
+        [query whereKey:@"landmark" equalTo:landmark];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error)
+            {
+                PFObject *object = [objects objectAtIndex:0];
+                NSNumber *dealAvailability = [object objectForKey:@"dealAvailable"];
+                NSString *dealText = [object objectForKey:@"dealText"];
+                NSNumber *dealLimitActive = [object objectForKey:@"dealLimit"];
+                NSNumber *numberDealsLeft = [object objectForKey:@"numberDealsLeft"];
+                if ([dealAvailability isEqualToNumber:[NSNumber numberWithInt:1]])
+                {
+                    [onOff setOn:true];
+                    textField.hidden = false;
+                    textField.text = dealText;
+                } else
+                {
+                    [onOff setOn:false];
+                    textField.hidden = true;
+                    textField.text = @"";
+                }
+                if ([dealLimitActive isEqualToNumber:[NSNumber numberWithInt:1]])
+                {
+                    [yesNo setOn:true];
+                    numberOfDeal.hidden = false;
+                    numberOfDeal.text = [numberDealsLeft stringValue];
+                } else
+                {
+                    [yesNo setOn:false];
+                    numberOfDeal.hidden = true;
+                    numberOfDeal.text = @"";
+                }
+            } else
+            {
+                UIAlertView *errorMsg = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem retrieving data from the database. Please try again shortly." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                errorMsg.alertViewStyle = UIAlertViewStyleDefault;
+                [errorMsg show];
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
     }
     [picker setHidden:true];
 }
@@ -139,6 +193,13 @@
 -(IBAction)chooseCity:(id)sender
 {
     pickerClicked = @"City";
+    [picker reloadAllComponents];
+    [picker setHidden:false];
+}
+
+-(IBAction)chooseLandmark:(id)sender
+{
+    pickerClicked = @"Landmark";
     [picker reloadAllComponents];
     [picker setHidden:false];
 }

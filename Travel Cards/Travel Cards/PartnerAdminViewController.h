@@ -34,4 +34,7 @@
 
 @property NSString *username;
 
+-(IBAction)chooseCity:(id)sender;
+-(IBAction)chooseLandmark:(id)sender;
+
 @end
