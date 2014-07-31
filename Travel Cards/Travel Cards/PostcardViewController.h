@@ -46,6 +46,8 @@
 @property NSString *imageCopyright;
 @property NSString *imageYear;
 @property bool closeEnoughToCheckIn;
+@property NSNumber *limitedDealStatus;
+@property NSNumber *limitedDealNumber;
 
 -(void)obtainObjectID;
 -(UIImage*)convertURLtoImage:(NSString*)url;

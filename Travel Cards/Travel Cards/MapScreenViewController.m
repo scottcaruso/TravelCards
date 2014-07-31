@@ -27,10 +27,8 @@
     return self;
 }
 
-- (void)viewDidLoad
+-(void)viewWillAppear:(BOOL)animated
 {
-    [loading startAnimating];
-    
     //Load the saved User ID
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
@@ -42,6 +40,13 @@
     [self.navigationItem setTitle:cityTitle];
     [self getDataForLocation:city];
     [self verifyIfCollectionExistsAndCreateIfNot];
+    
+    [super viewWillAppear:false];
+}
+
+- (void)viewDidLoad
+{
+    [loading startAnimating];
     
     [self setFonts];
     [super viewDidLoad];
@@ -74,6 +79,12 @@
                 NSString *imageCopyright = [object objectForKey:@"photoCredit"];
                 NSString *imageYear = [object objectForKey:@"photoYear"];
                 NSNumber *isADealAvailable = [object objectForKey:@"dealAvailable"];
+                NSNumber *limitedDealAvailable = [object objectForKey:@"dealLimit"];
+                NSNumber *numberOfDeals = [object objectForKey:@"numberDealsLeft"];
+                if (numberOfDeals == nil)
+                {
+                    numberOfDeals = [NSNumber numberWithInt:0];
+                }
                 int deal = [isADealAvailable intValue];
                 NSString *currentDealText;
                 if (deal == 1)
@@ -83,7 +94,7 @@
                 {
                     currentDealText = @"No deal!";
                 }
-                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, landmarkID, isADealAvailable, currentDealText, imageCopyright, imageYear, nil];
+                NSArray *arrayOfData = [[NSArray alloc] initWithObjects:currentLocationDescription,currentLocationLatitude, currentLocationLongitude, imageURL, landmarkID, isADealAvailable, currentDealText, imageCopyright, imageYear, limitedDealAvailable, numberOfDeals, nil];
                 [locationData setValue:arrayOfData forKey:currentLocationName];
             }
             [self addAnnotations];
@@ -216,6 +227,8 @@
         newView.dealText = [thisData objectAtIndex:6];
         newView.imageCopyright = [thisData objectAtIndex:7];
         newView.imageYear = [thisData objectAtIndex:8];
+        newView.limitedDealStatus = [thisData objectAtIndex:9];
+        newView.limitedDealNumber = [thisData objectAtIndex:10];
     }
     if ([[segue identifier] isEqualToString:@"goToCollection"])
     {
@@ -243,6 +256,8 @@
         newView.dealText = [thisData objectAtIndex:6];
         newView.imageCopyright = [thisData objectAtIndex:7];
         newView.imageYear = [thisData objectAtIndex:8];
+        newView.limitedDealStatus = [thisData objectAtIndex:9];
+        newView.limitedDealNumber = [thisData objectAtIndex:10];
     }
 }
 

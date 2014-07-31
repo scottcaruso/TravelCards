@@ -172,12 +172,12 @@
             }
             if (distance > 80467) //This is the approximate value of meters that equals 50 miles.
             {
+                [cityName setHidden:true];
+                [tapImageLabel setHidden:true];
+                [advanceButton setEnabled:false];
                 UIAlertView *tooFar = [[UIAlertView alloc] initWithTitle:@"Too far!" message:@"The nearest TravelCards location is over 50 miles from you. Check back soon - we're always adding new landmarks!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 tooFar.alertViewStyle = UIAlertViewStyleDefault;
                 [tooFar show];
-                cityName.hidden = true;
-                tapImageLabel.hidden = true;
-                advanceButton.enabled = false;
             }
             cityName.text = nameOfCity;
             cityDataString = [dictionaryOfNamesAndClassNames objectForKey:nameOfCity];

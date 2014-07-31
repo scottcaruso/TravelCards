@@ -14,7 +14,7 @@
 @end
 
 @implementation PostcardViewController
-@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID,closeEnoughToCheckIn,isADealAvailable,dealText,imageCopyright,imageYear;
+@synthesize locationDatabase,locationName,locationDescription,imageURL,landmarkID,userID,closeEnoughToCheckIn,isADealAvailable,dealText,imageCopyright,imageYear,limitedDealStatus,limitedDealNumber;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,19 +25,18 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+
+    [super viewWillAppear:false];
+}
+
 - (void)viewDidLoad
 {
     //Load the saved User ID
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
     [self obtainObjectID];
-    
-    self.title=locationName;
-    postcardDetails.text = locationDescription;
-    postcardImage.image = [self convertURLtoImage:imageURL];
-    
-    NSString *copyrightText = [[NSString alloc] initWithFormat:@"Image by %@. Copyright %@.",imageCopyright,imageYear];
-    copyright.text = copyrightText;
     
     int deal = [isADealAvailable intValue];
     
@@ -46,6 +45,13 @@
         [postcardTitle setTitle:@"Tap here for a great deal!" forState:UIControlStateNormal];
         postcardTitle.hidden = false;
     }
+    
+    self.title=locationName;
+    postcardDetails.text = locationDescription;
+    postcardImage.image = [self convertURLtoImage:imageURL];
+    
+    NSString *copyrightText = [[NSString alloc] initWithFormat:@"Image by %@. Copyright %@.",imageCopyright,imageYear];
+    copyright.text = copyrightText;
     
     [self setFonts];
     [super viewDidLoad];
@@ -282,6 +288,26 @@
 
 -(IBAction)clickDealButton:(id)sender
 {
+    int limitedDeal = [limitedDealStatus intValue];
+    if (limitedDeal == 1)
+    {
+        int numberOfDealsLeft = [limitedDealNumber intValue];
+        int dealMinusOne = numberOfDealsLeft - 1;
+        PFQuery *updateDeals = [PFQuery queryWithClassName:locationDatabase];
+        [updateDeals whereKey:@"landmarkID" equalTo:landmarkID];
+        [updateDeals findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error)
+            {
+                PFObject *thisLandmark = [objects objectAtIndex:0];
+                thisLandmark[@"numberDealsLeft"] = [NSNumber numberWithInt:dealMinusOne];
+                if (dealMinusOne == 0)
+                {
+                    thisLandmark[@"dealAvailable"] = [NSNumber numberWithInt:0];
+                }
+                [thisLandmark saveInBackground];
+            }
+        }];
+    }
     UIAlertView *dealAlert = [[UIAlertView alloc] initWithTitle:@"Special deal!" message:dealText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     dealAlert.alertViewStyle = UIAlertViewStyleDefault;
     [dealAlert show];
