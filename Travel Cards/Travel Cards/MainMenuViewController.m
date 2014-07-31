@@ -35,6 +35,9 @@
     bool fakeCoordinates = [defaults boolForKey:@"FakeCoordinates"];
     double savedLatitude = [defaults doubleForKey:@"Latitude"];
     double savedLongitude = [defaults doubleForKey:@"Longitude"];
+    dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
+    dictionaryOfNamesAndClassNames = [[NSMutableDictionary alloc] init];
+    dictionaryOfURLs = [[NSMutableDictionary alloc] init];
     if (fakeCoordinates)
     {
         latitude = savedLatitude;
@@ -69,9 +72,6 @@
 - (void)viewDidLoad
 {
     [self.navigationItem setHidesBackButton:YES];
-    
-    dictionaryofCoordinates = [[NSMutableDictionary alloc] init];
-    dictionaryOfNamesAndClassNames = [[NSMutableDictionary alloc] init];
     
     [self setFonts];
     [super viewDidLoad];
@@ -152,6 +152,7 @@
                 [dictionaryOfNamesAndClassNames setValue:thisCityCode forKey:[object objectForKey:@"cityName"]];
                 CLLocation *thisLocation = [[CLLocation alloc] initWithLatitude:latDouble longitude:lonDouble];
                 [dictionaryofCoordinates setValue:thisLocation forKey:[object objectForKey:@"cityName"]];
+                [dictionaryOfURLs setValue:[object objectForKey:@"imageURL"] forKey:[object objectForKey:@"cityName"]];
             }
         
             CLLocationDistance distance = 10000000000000; //This is merely a default value that's impossibly far away from anything in the United States.
@@ -181,6 +182,9 @@
             }
             cityName.text = nameOfCity;
             cityDataString = [dictionaryOfNamesAndClassNames objectForKey:nameOfCity];
+            NSString *imageURL = [dictionaryOfURLs objectForKey:nameOfCity];
+            UIImage *mainMenuImage = [self convertURLtoImage:imageURL];
+            [advanceButton setBackgroundImage:mainMenuImage forState:UIControlStateNormal];
             [self stopSpinningAndShowUI];
         } else {
             UIAlertView *errorMsg = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"There was a problem retrieving data from the database. Please try again shortly." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -246,6 +250,15 @@
          [self logUserOut];
      }
  }
+
+-(UIImage*)convertURLtoImage:(NSString*)url
+{
+    id path = (NSString*)url;
+    NSURL *thisURL = [NSURL URLWithString:path];
+    NSData *data = [NSData dataWithContentsOfURL:thisURL];
+    UIImage *image = [[UIImage alloc] initWithData:data];
+    return image;
+}
 
 -(void)stopSpinningAndShowUI
 {

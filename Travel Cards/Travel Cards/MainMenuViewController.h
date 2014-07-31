@@ -24,6 +24,7 @@
     
     NSMutableDictionary *dictionaryofCoordinates; //Used to store Parse data so we can figure out which location is the closest.
     NSMutableDictionary *dictionaryOfNamesAndClassNames;
+    NSMutableDictionary *dictionaryOfURLs;
 }
 
 
