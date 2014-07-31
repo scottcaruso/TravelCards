@@ -24,6 +24,7 @@
     IBOutlet UISwitch *yesNo;
     IBOutlet UITextField *numberOfDeal;
     IBOutlet UIPickerView *picker;
+    IBOutlet UIButton *saveButton;
     
     NSString *pickerClicked;
     
@@ -36,5 +37,8 @@
 
 -(IBAction)chooseCity:(id)sender;
 -(IBAction)chooseLandmark:(id)sender;
+-(IBAction)dealActiveClick:(id)sender;
+-(IBAction)setLimitClick:(id)sender;
+-(IBAction)saveButtonClick:(id)sender;
 
 @end
