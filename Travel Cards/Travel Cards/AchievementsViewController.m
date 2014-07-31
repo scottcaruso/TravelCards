@@ -199,11 +199,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIFont *smallerFont = [UIFont fontWithName:@"Antipasto" size:16];
-    NSString *cityClicked = [listOfUnownedCities objectAtIndex:indexPath.section];
-    NSString *cityCode = [citiesPlusCodes objectForKey:cityClicked];
-    NSMutableArray *achievementDetails = [achievementsByCity objectForKey:cityCode];
-    NSMutableArray *description = [achievementDetails objectAtIndex:1];
-    NSString *thisDescription = [description objectAtIndex:indexPath.row];
+    NSString *thisDescription;
+    if ([whichAchievements isEqualToString:@"All"])
+    {
+        NSString *cityClicked = [listOfUnownedCities objectAtIndex:indexPath.section];
+        NSString *cityCode = [citiesPlusCodes objectForKey:cityClicked];
+        NSMutableArray *achievementDetails = [achievementsByCity objectForKey:cityCode];
+        NSMutableArray *description = [achievementDetails objectAtIndex:1];
+        thisDescription = [description objectAtIndex:indexPath.row];
+    } else if ([whichAchievements isEqualToString:@"Completed"])
+    {
+        NSArray *arrayOfKeys = [dictionaryOfCompleted allKeys];
+        NSString *thisKey = [arrayOfKeys objectAtIndex:indexPath.row];
+        NSMutableArray *thisAchievementObject = [dictionaryOfCompleted objectForKey:thisKey];
+        thisDescription = [thisAchievementObject objectAtIndex:1];
+    } else if ([whichAchievements isEqualToString:@"Incomplete"])
+    {
+        NSArray *arrayOfKeys = [dictionaryOfIncomplete allKeys];
+        NSString *thisKey = [arrayOfKeys objectAtIndex:indexPath.row];
+        NSMutableArray *thisAchievementObject = [dictionaryOfIncomplete objectForKey:thisKey];
+        thisDescription = [thisAchievementObject objectAtIndex:1];
+    }
     [achievementDescription setText:thisDescription];
     [achievementDescription setFont:smallerFont];
     [achievementDescription setTextAlignment:NSTextAlignmentCenter];
