@@ -791,7 +791,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBQ-KH-mSd">
-                                <rect key="frame" x="20" y="137" width="280" height="151"/>
+                                <rect key="frame" x="20" y="70" width="280" height="151"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
@@ -845,6 +845,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.93298244480000003" green="0.77001498089999998" blue="0.273729948" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cdj-SA-kLj">
+                                <rect key="frame" x="32" y="204" width="257" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Complete"/>
+                                    <segment title="Incomplete"/>
+                                </segments>
+                                <color key="tintColor" red="0.94592195749999997" green="0.8185093403" blue="0.1900054514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="clickSegmentControl:" destination="0dl-ua-Ryj" eventType="valueChanged" id="O5e-iL-RUU"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -852,6 +865,7 @@
                     <connections>
                         <outlet property="achievementDescription" destination="YBQ-KH-mSd" id="MxI-9Y-2zv"/>
                         <outlet property="achievementTable" destination="2Pr-g9-FS7" id="chQ-FL-Fo5"/>
+                        <outlet property="achievementToggle" destination="cdj-SA-kLj" id="cFM-vm-a0X"/>
                         <outlet property="leaderboards" destination="5HU-Sb-XGR" id="hrU-DC-Duk"/>
                         <outlet property="loading" destination="aFT-Pl-LaE" id="0Kv-I1-mWm"/>
                         <outlet property="totalScore" destination="IDO-ME-h0T" id="5LN-5m-wdA"/>

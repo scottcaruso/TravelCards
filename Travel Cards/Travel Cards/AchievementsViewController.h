@@ -16,6 +16,7 @@
     IBOutlet UITextView *achievementDescription;
     IBOutlet UIButton *leaderboards;
     IBOutlet UIActivityIndicatorView *loading;
+    IBOutlet UISegmentedControl *achievementToggle;
     
     int numberOfAchievementCategories;
     NSNumber *userID;
@@ -30,8 +31,14 @@
     NSMutableArray *listOfUnownedCities;
     NSMutableDictionary *achievementsByCity;
     NSMutableArray *collectedOrNot;
+    NSMutableDictionary *dictionaryOfCompleted;
+    NSMutableDictionary *dictionaryOfIncomplete;
     
     NSMutableDictionary *achievementStatus;
+    
+    NSString *whichAchievements;
 }
+
+-(IBAction)clickSegmentControl:(id)sender;
 
 @end

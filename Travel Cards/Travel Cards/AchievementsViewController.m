@@ -28,11 +28,14 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     userID = [defaults objectForKey:@"SavedUserID"];
+    whichAchievements = @"All";
     
     citiesPlusCodes = [[NSMutableDictionary alloc] init];
     achievementsByCity = [[NSMutableDictionary alloc] init];
     listOfUnownedCities = [[NSMutableArray alloc] initWithObjects:nil];
     achievementCodes = [[NSMutableArray alloc] initWithObjects:nil];
+    dictionaryOfCompleted = [[NSMutableDictionary alloc] init];
+    dictionaryOfIncomplete = [[NSMutableDictionary alloc] init];
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
@@ -55,29 +58,53 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     //This returns the number of Achievement categories as stored in Parse
-    return [listOfUnownedCities count];
+    if ([whichAchievements isEqualToString:@"All"])
+    {
+        return [listOfUnownedCities count];
+    } else
+    {
+        return 1;
+    }
+
 }
 
 //This creates the rows for the ViewController table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section < [listOfUnownedCities count])
+    NSArray *numberComplete = [achievementStatus allKeysForObject:@"Complete"];
+    NSArray *numberIncomplete = [achievementStatus allKeysForObject:@"Not Complete"];
+    int complete = [numberComplete count];
+    int incomplete = [numberIncomplete count];
+    if ([whichAchievements isEqualToString:@"All"])
     {
-        return 3;
-    } else
+        if (section < [listOfUnownedCities count])
+        {
+            return 3;
+        } else
+        {
+            return 0;
+        }
+    } else if ([whichAchievements isEqualToString:@"Completed"])
     {
-    return 0;
+        return complete;
+    } else if ([whichAchievements isEqualToString:@"Incomplete"])
+    {
+        return incomplete;
     }
+    return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *sectionName;
-    for (int x = 0; x < [listOfUnownedCities count]; x++)
+    NSString *sectionName = @"";
+    if ([whichAchievements isEqualToString:@"All"])
     {
-        if (x == section)
+        for (int x = 0; x < [listOfUnownedCities count]; x++)
         {
-            sectionName = [listOfUnownedCities objectAtIndex:x];
+            if (x == section)
+            {
+                sectionName = [listOfUnownedCities objectAtIndex:x];
+            }
         }
     }
     return sectionName;
@@ -95,34 +122,78 @@
     {
         thisCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    NSString *achievementText;
-    NSString *statusText;
-    if ([achievementsByCity count] != 0)
+    if ([whichAchievements isEqualToString:@"All"])
     {
-        NSString *currentCity = [listOfUnownedCities objectAtIndex:indexPath.section];
-        NSString *cityCode = [citiesPlusCodes objectForKey:currentCity];
-        NSMutableArray *achievementDetails = [achievementsByCity objectForKey:cityCode];
-        NSMutableArray *achievementName = [achievementDetails objectAtIndex:0];
-        NSMutableArray *theseAchievements = [achievementDetails objectAtIndex:2];
-        achievementText = [achievementName objectAtIndex:indexPath.row];
-        for (int x = 0; x < [theseAchievements count]; x ++)
+        NSString *achievementText;
+        NSString *statusText;
+        NSString *descriptionText;
+        if ([achievementsByCity count] != 0)
         {
-            if (x == indexPath.row)
+            NSString *currentCity = [listOfUnownedCities objectAtIndex:indexPath.section];
+            NSString *cityCode = [citiesPlusCodes objectForKey:currentCity];
+            NSMutableArray *achievementDetails = [achievementsByCity objectForKey:cityCode];
+            NSMutableArray *achievementName = [achievementDetails objectAtIndex:0];
+            NSMutableArray *achievementDescriptions = [achievementDetails objectAtIndex:1];
+            NSMutableArray *theseAchievements = [achievementDetails objectAtIndex:2];
+            achievementText = [achievementName objectAtIndex:indexPath.row];
+            descriptionText = [achievementDescriptions objectAtIndex:indexPath.row];
+            for (int x = 0; x < [theseAchievements count]; x ++)
             {
-                NSString *achievementID = [theseAchievements objectAtIndex:x];
-                statusText = [achievementStatus objectForKey:achievementID];
+                if (x == indexPath.row)
+                {
+                    NSString *achievementID = [theseAchievements objectAtIndex:x];
+                    statusText = [achievementStatus objectForKey:achievementID];
+                    if ([statusText isEqualToString:@"Complete"])
+                    {
+                        NSMutableArray *theseDetails = [[NSMutableArray alloc] initWithObjects:nil];
+                        [theseDetails addObject:achievementText];
+                        [theseDetails addObject:descriptionText];
+                        [dictionaryOfCompleted setValue:theseDetails forKey:achievementID];
+                    } else if ([statusText isEqualToString:@"Not Complete"])
+                    {
+                        NSMutableArray *theseDetails = [[NSMutableArray alloc] initWithObjects:nil];
+                        [theseDetails addObject:achievementText];
+                        [theseDetails addObject:descriptionText];
+                        [dictionaryOfIncomplete setValue:theseDetails forKey:achievementID];
+                    }
+                }
             }
+        } else
+        {
+            achievementText = @"Placeholder";
+            statusText = @"Placeholder";
         }
-    } else
+        thisCell.textLabel.text = achievementText;
+        thisCell.textLabel.font = font;
+        thisCell.detailTextLabel.text = statusText;
+        thisCell.detailTextLabel.font = smallerFont;
+        
+        return thisCell;
+    } else if ([whichAchievements isEqualToString:@"Completed"])
     {
-        achievementText = @"Placeholder";
-        statusText = @"Placeholder";
+        NSArray *arrayOfKeys = [dictionaryOfCompleted allKeys];
+        NSString *thisKey = [arrayOfKeys objectAtIndex:indexPath.row];
+        NSMutableArray *thisAchievementObject = [dictionaryOfCompleted objectForKey:thisKey];
+        thisCell.textLabel.text = [thisAchievementObject objectAtIndex:0];
+        thisCell.textLabel.font = font;
+        thisCell.detailTextLabel.text = @"Complete";
+        thisCell.detailTextLabel.font = smallerFont;
+        
+        return thisCell;
+    } else if ([whichAchievements isEqualToString:@"Incomplete"])
+    {
+        NSArray *arrayOfKeys = [dictionaryOfIncomplete allKeys];
+        NSString *thisKey = [arrayOfKeys objectAtIndex:indexPath.row];
+        NSMutableArray *thisAchievementObject = [dictionaryOfIncomplete objectForKey:thisKey];
+        thisCell.textLabel.text = [thisAchievementObject objectAtIndex:0];
+        thisCell.textLabel.font = font;
+        thisCell.detailTextLabel.text = @"Not Complete";
+        thisCell.detailTextLabel.font = smallerFont;
+            
+        return thisCell;
     }
-    thisCell.textLabel.text = achievementText;
-    thisCell.textLabel.font = font;
-    thisCell.detailTextLabel.text = statusText;
-    thisCell.detailTextLabel.font = smallerFont;
-    return thisCell;
+    
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -282,6 +353,24 @@
     totalScore.hidden = false;
     achievementDescription.hidden = false;
     leaderboards.hidden = false;
+    achievementToggle.hidden = false;
+}
+
+-(IBAction)clickSegmentControl:(id)sender
+{
+    if ([achievementToggle selectedSegmentIndex] == 0)
+    {
+        whichAchievements = @"All";
+        [self retrieveAchievements];
+    } else if ([achievementToggle selectedSegmentIndex] == 1)
+    {
+        whichAchievements = @"Completed";
+        [self retrieveAchievements];
+    } else if ([achievementToggle selectedSegmentIndex] == 2)
+    {
+        whichAchievements = @"Incomplete";
+        [self retrieveAchievements];
+    }
 }
 
 @end
